@@ -49,7 +49,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             {
                 return _mapper.Map<GeneroEditDto>( _DbContext.generos.SingleOrDefault(g => g.GeneroId == id));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw new Exception("Error al intentar obtener genero");

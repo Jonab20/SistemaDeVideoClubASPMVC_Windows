@@ -174,7 +174,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 TempData["Msg"] = "Socio editado";
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 socioVm.Provincias = _DbContext.Provincias.OrderBy(p => p.NombreProvincia).ToList();
                 socioVm.TipoDeDocumentos = _DbContext.TiposDeDocumento.OrderBy(t => t.Descripcion).ToList();
@@ -218,7 +218,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 TempData["Msg"] = "Socio eliminado con exito";
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 var SocioVm = Mapper.Map<Socio, SocioListViewModel>(socio);
 

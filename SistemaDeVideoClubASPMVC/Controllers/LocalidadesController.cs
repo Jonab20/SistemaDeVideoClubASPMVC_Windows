@@ -198,7 +198,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 TempData["Msg"] = "Localidad editada";
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 localidadVm.Provincias = _DbContext.Provincias
                     .OrderBy(p => p.NombreProvincia).ToList();

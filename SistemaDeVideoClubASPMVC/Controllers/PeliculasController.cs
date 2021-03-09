@@ -166,7 +166,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 TempData["Msg"] = "Pelicula elimindad con exito";
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 pelicula = _DbContext.Peliculas
                 .Include(p => p.Estado)
@@ -233,7 +233,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 TempData["Msg"] = "Pelicula editada";
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 peliculaVm.Calificaciones = CombosHelper.GetCalificaciones();
                 peliculaVm.Estados = CombosHelper.GetEstados();

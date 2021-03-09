@@ -58,15 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneroEntityTypeConfigurations.cs" />
+    <Compile Include="EntityTypeConfigations\GeneroEntityTypeConfigurations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\Facades\IrepositorioGeneros.cs" />
     <Compile Include="Repositorios\RepositorioGeneros.cs" />
     <Compile Include="SistemaDeVideoClubDbContext.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EntityTypeConfigations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SistemaDeVideoClub.Entidades\SistemaDeVideoClubMVC.Entidades.csproj">
       <Project>{7d78767e-58e7-487c-be7e-79bbb12bdcda}</Project>

@@ -87,8 +87,6 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 return View(GeneroVm);
 
             }
-
-            return View(GeneroVm);
         }
 
         [HttpGet]
@@ -129,7 +127,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 TempData["Msg"] = "Genero editado";
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ModelState.AddModelError(string.Empty, "Error inesperado al intentar editar un registro");
                 return View(generoVm);
@@ -179,7 +177,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 TempData["Msg"] = "Genero eliminado.";
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ModelState.AddModelError(string.Empty, "Error al intentar borrar el genero");
                 return View(generoVm);

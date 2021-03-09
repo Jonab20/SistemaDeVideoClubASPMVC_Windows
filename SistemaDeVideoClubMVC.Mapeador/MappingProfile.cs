@@ -54,9 +54,7 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             CreateMap<Genero, GeneroEditDto>().ReverseMap();
             CreateMap<GeneroListDto, GeneroListViewModel>().ReverseMap();
             CreateMap<GeneroEditDto, GeneroEditViewModel>().ReverseMap();
-            //CreateMap<Genero, GeneroEditViewModel>();
-            //CreateMap<Genero, GeneroListViewModel>();
-            //CreateMap<GeneroEditViewModel, Genero>();
+            CreateMap<GeneroEditDto, GeneroListDto>().ReverseMap();
             
         }
     }
