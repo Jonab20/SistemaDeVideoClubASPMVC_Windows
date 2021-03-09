@@ -24,7 +24,15 @@ namespace SistemaDeVideoClub.Servicios.Servicios
         }
         public void Borrar(int? id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _repositorio.Borrar(id);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception (e.Message);
+            }
         }
 
         public bool Existe(GeneroEditDto generoDto)
@@ -41,9 +49,17 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
         }
 
-        public Genero GetGeneroPorId(int id)
+        public GeneroEditDto GetGeneroPorId(int? id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _repositorio.GetGeneroPorId(id);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public List<GeneroListDto> GetLista()

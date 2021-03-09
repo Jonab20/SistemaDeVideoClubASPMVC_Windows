@@ -5,8 +5,10 @@ using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClubASPMVC.App_Start;
 using SistemaDeVideoClubASPMVC.Context;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
+using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Web.Mvc;
 
 namespace SistemaDeVideoClubASPMVC.Controllers
@@ -23,7 +25,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         public GenerosController()
         {
             _Servicio = new ServiciosGenero();
-            _mapper = AutoMapperConfig.Mapper;
+            _mapper = Mapeador.CrearMapper();
             //_DbContext = new VideoClubDbContext();
 
         }
@@ -89,53 +91,50 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             return View(GeneroVm);
         }
 
-        //[HttpGet]
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            GeneroEditDto generoDto = _Servicio.GetGeneroPorId(id);
+            GeneroEditViewModel generoVm = _mapper.Map<GeneroEditViewModel>(generoDto);
 
-        //    var genero = _DbContext.Generos.SingleOrDefault(g => g.GeneroId == id);
-        //    if (genero == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+            if (generoVm == null)
+            {
+                return HttpNotFound();
+            }
+            return View(generoVm);
+        }
 
-        //    GeneroEditViewModel generoVm = Mapper.Map<Genero, GeneroEditViewModel>(genero);
-        //    return View(generoVm);
-        //}
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Edit(GeneroEditViewModel generoVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(generoVm);
+            }
+            GeneroEditDto gemeroDto = _mapper.Map<GeneroEditDto>(generoVm);
+            try
+            {
+                if (_Servicio.Existe(gemeroDto))
+                {
+                    ModelState.AddModelError(string.Empty, "Genero repetido.");
+                    return View(generoVm);
+                }
 
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //public ActionResult Edit(GeneroEditViewModel generoVm)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(generoVm);
-        //    }
-
-        //    var genero = Mapper.Map<GeneroEditViewModel, Genero>(generoVm);
-        //    try
-        //    {
-        //        if (_DbContext.Generos.Any(g => g.Descripcion == genero.Descripcion && g.GeneroId != genero.GeneroId))
-        //        {
-        //            ModelState.AddModelError(string.Empty, "Genero repetido");
-        //            return View(generoVm);
-        //        }
-
-        //        _DbContext.Entry(genero).State = EntityState.Modified;
-        //        _DbContext.SaveChanges();
-        //        TempData["Msg"] = "Genero editado";
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        ModelState.AddModelError(string.Empty, "Error inesperado al intentar editar un registro");
-        //        return View(generoVm);
-        //    }
-        //}
+                _Servicio.Guardar(gemeroDto);
+                TempData["Msg"] = "Genero editado";
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError(string.Empty, "Error inesperado al intentar editar un registro");
+                return View(generoVm);
+            }
+        }
 
         //public ActionResult Details(int? id)
         //{
@@ -152,44 +151,40 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         //}
 
 
-        //[HttpGet]
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        //    var genero = _DbContext.Generos.SingleOrDefault(g => g.GeneroId == id);
-        //    if (genero == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+            GeneroEditDto generoEditDto = _Servicio.GetGeneroPorId(id);
+            if (generoEditDto == null)
+            {
+                return HttpNotFound("Codigo del genero inexistente.");
+            }
+            GeneroEditViewModel generoEditVm = _mapper.Map<GeneroEditViewModel>(generoEditDto);
+            return View(generoEditVm);
+        }
 
-        //    var generoVm = Mapper.Map<Genero, GeneroListViewModel>(genero);
-        //    return View(generoVm);
-        //}
-
-        //[ValidateAntiForgeryToken]
-        //[HttpPost, ActionName("Delete")]
-        //public ActionResult DeleteConfirm(int id)
-        //{
-        //    var genero = _DbContext.Generos.SingleOrDefault(g => g.GeneroId == id);
-        //    try
-        //    {
-        //        _DbContext.Generos.Remove(genero);
-        //        _DbContext.SaveChanges();
-        //        TempData["Msg"] = "Genero eliminado con exito";
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        var generoVm = Mapper.Map<Genero, GeneroListViewModel>(genero);
-
-        //        ModelState.AddModelError(string.Empty, "Error al intentar borrar el genero");
-        //        return View(generoVm);
-        //    }
-        //}
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Delete(GeneroEditViewModel generoVm)
+        {
+            try
+            {
+                generoVm = _mapper.Map<GeneroEditViewModel>(_Servicio.GetGeneroPorId(generoVm.GeneroId));
+                _Servicio.Borrar(generoVm.GeneroId);                  
+                TempData["Msg"] = "Genero eliminado.";
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError(string.Empty, "Error al intentar borrar el genero");
+                return View(generoVm);
+            }
+        }
 
     }
 }

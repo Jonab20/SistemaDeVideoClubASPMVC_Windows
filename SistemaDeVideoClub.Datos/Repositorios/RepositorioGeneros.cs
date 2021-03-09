@@ -43,11 +43,11 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             return _DbContext.generos.Any(g => g.Descripcion == genero.Descripcion && g.GeneroId == genero.GeneroId);
         }
 
-        public Genero GetGeneroPorId(int? id)
+        public GeneroEditDto GetGeneroPorId(int? id)
         {
             try
             {
-                return _DbContext.generos.SingleOrDefault(g => g.GeneroId == id);
+                return _mapper.Map<GeneroEditDto>( _DbContext.generos.SingleOrDefault(g => g.GeneroId == id));
             }
             catch (Exception ex)
             {

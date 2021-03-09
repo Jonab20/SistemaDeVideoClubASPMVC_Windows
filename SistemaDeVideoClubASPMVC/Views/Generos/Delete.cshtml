@@ -1,4 +1,4 @@
-﻿@model  SistemaDeVideoClubASPMVC.ViewModels.Genero.GeneroListViewModel
+﻿@model   SistemaDeVideoClubASPMVC.ViewModels.Genero.GeneroEditViewModel
 
 
 @{
@@ -11,6 +11,7 @@
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model =>model.GeneroId)
     <div class="form-group">
         @Html.LabelFor(m => m.Descripcion)
         @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control", disabled = "disable" })

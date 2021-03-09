@@ -11,7 +11,7 @@ namespace SistemaDeVideoClub.Servicios.Servicios.Facades
     public interface IServiciosGenero
     {
         List<GeneroListDto> GetLista();
-        Genero GetGeneroPorId(int id);
+        GeneroEditDto GetGeneroPorId(int? id);
 
         void Guardar(GeneroEditDto genero);
         void Borrar(int? id);

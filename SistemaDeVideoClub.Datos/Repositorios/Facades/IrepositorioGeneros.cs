@@ -7,7 +7,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios.Facades
     public interface IrepositorioGeneros
     {
         List<GeneroListDto> GetLista();
-        Genero GetGeneroPorId(int? id);
+        GeneroEditDto GetGeneroPorId(int? id);
 
         void Guardar(Genero genero);
 
