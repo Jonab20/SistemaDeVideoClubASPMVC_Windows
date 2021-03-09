@@ -1,0 +1,93 @@
+﻿@model  SistemaDeVideoClubASPMVC.ViewModels.Socio.SocioEditViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar Socio</h2>
+<hr />
+@using (Html.BeginForm("Edit", "Socios", FormMethod.Post))
+{
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.AntiForgeryToken() 
+    <div class="row">
+       @Html.HiddenFor(m => m.SocioId)
+       
+       <div class="col-md-6">
+           <div class="form-group">
+               @Html.LabelFor(m => m.Nombre)
+               @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.Apellido)
+               @Html.TextBoxFor(m => m.Apellido, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.Apellido, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.TipoDeDocumentoId)
+               @Html.DropDownListFor(m => m.TipoDeDocumentoId, new SelectList(Model.TipoDeDocumentos, "TipoDeDocumentoId", "Descripcion"), "Seleccione Tipo de documento", new { @class = "form-control", autofocus = "autofocus" })
+               @Html.ValidationMessageFor(m => m.TipoDeDocumentoId, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.NroDocumento)
+               @Html.TextBoxFor(m => m.NroDocumento, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.NroDocumento, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.Direccion)
+               @Html.TextBoxFor(m => m.Direccion, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.Direccion, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.LocalidadId)
+               @Html.DropDownListFor(m => m.LocalidadId, new SelectList(Model.Localidades, "LocalidadId", "NombreLocalidad"), "Seleccione una localidad", new { @class = "form-control", autofocus = "autofocus" })
+               @Html.ValidationMessageFor(m => m.LocalidadId, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.ProvinciaId)
+               @Html.DropDownListFor(m => m.ProvinciaId, new SelectList(Model.Provincias, "ProvinciaId", "NombreProvincia"), "Seleccione una provincia", new { @class = "form-control", autofocus = "autofocus" })
+               @Html.ValidationMessageFor(m => m.ProvinciaId, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.TelefonoFijo)
+               @Html.TextBoxFor(m => m.TelefonoFijo, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.TelefonoFijo, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.TelefonoMovil)
+               @Html.TextBoxFor(m => m.TelefonoMovil, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.TelefonoMovil, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.CorreoElectronico)
+               @Html.TextBoxFor(m => m.CorreoElectronico, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.CorreoElectronico, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.FechaDeNacimiento)
+               @Html.TextBoxFor(m => m.FechaDeNacimiento, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.FechaDeNacimiento, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.Sancionado)
+               @Html.CheckBoxFor(m => m.Sancionado, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.Sancionado, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               @Html.LabelFor(m => m.Activo)
+               @Html.CheckBoxFor(m => m.Activo, new { @class = "form-control" })
+               @Html.ValidationMessageFor(m => m.Activo, "", new { @class = "text-danger" })
+           </div>
+           <div class="form-group">
+               <button class="btn btn-primary" type="submit">Guardar</button>
+               <a href="@Url.Action("Index", "Socios")" class="btn btn-success">Volver</a>
+       
+           </div>
+       
+       </div>
+    </div>
+
+}
+

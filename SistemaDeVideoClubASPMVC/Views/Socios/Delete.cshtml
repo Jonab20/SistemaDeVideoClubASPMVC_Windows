@@ -1,0 +1,30 @@
+﻿@model  SistemaDeVideoClubASPMVC.ViewModels.Socio.SocioListViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Borrar Socio</h2>
+
+@using (Html.BeginForm("Delete", "Socios", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+<div class="form-group">
+    @Html.LabelFor(m => m.Nombre)
+    @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", disabled = "disable" })
+    @Html.TextBoxFor(m => m.Apellido, new { @class = "form-control", disabled = "disable" })
+</div>
+
+    <div class="form-group">
+        <button class="btn btn-danger">
+            <i class="fas fa-trash-alt"></i>
+            Borrar
+        </button>
+        <a href="@Url.Action("Index", "Socios")" class="btn btn-success">
+            <i class="fas fa-backspace"></i>
+            Volver
+        </a>
+    </div>
+}
+

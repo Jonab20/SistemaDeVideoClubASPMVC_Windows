@@ -1,0 +1,36 @@
+﻿@model  SistemaDeVideoClubASPMVC.ViewModels.Localidad.LocalidadDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles de Localidad</h2>
+<hr />
+<div>
+    <h4>Localidad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreLocalidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreLocalidad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreProvincia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreProvincia)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", "Localidades", new {id = Model.LocalidadId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+
+    <a href="@Url.Action("Index","Localidades")" class="btn btn-info"><i class="fas fa-list"></i></i> Volver</a>
+    @*@Html.ActionLink("Editar", "Edit", new { id = Model.LocalidadId })
+        @Html.ActionLink("Volver", "Index")*@
+</p>
