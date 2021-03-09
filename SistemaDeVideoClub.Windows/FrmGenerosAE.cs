@@ -60,5 +60,10 @@ namespace SistemaDeVideoClub.Windows
         {
             generoDto = generoEditDto;
         }
+
+        private void FrmGenerosAE_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

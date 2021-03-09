@@ -8,7 +8,6 @@ namespace SistemaDeVideoClub.Entidades.DTOs.Genero
 {
     public class GeneroListDto:ICloneable
     {
-
         public int GeneroId { get; set; }
 
         public string Descripcion { get; set; }

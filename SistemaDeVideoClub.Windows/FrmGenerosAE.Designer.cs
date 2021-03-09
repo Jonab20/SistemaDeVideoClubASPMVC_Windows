@@ -89,6 +89,7 @@ namespace SistemaDeVideoClub.Windows
             this.Controls.Add(this.label1);
             this.Name = "FrmGenerosAE";
             this.Text = "FrmGenerosAE";
+            this.Load += new System.EventHandler(this.FrmGenerosAE_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

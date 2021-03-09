@@ -50,6 +50,7 @@ namespace SistemaDeVideoClub.Windows
             this.Controls.Add(this.btngeneros);
             this.Name = "FrmMenuPrincipal";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmMenuPrincipal_Load);
             this.ResumeLayout(false);
 
         }

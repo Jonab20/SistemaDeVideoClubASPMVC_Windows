@@ -22,5 +22,10 @@ namespace SistemaDeVideoClub.Windows
             FrmGeneros frm = new FrmGeneros();
             frm.ShowDialog(this);
         }
+
+        private void FrmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
