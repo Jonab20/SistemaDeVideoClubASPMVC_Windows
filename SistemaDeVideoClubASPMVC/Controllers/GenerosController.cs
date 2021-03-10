@@ -16,38 +16,15 @@ namespace SistemaDeVideoClubASPMVC.Controllers
     public class GenerosController : Controller
     {
         private readonly IServiciosGenero _Servicio;
-
         private readonly IMapper _mapper;
-        //private readonly VideoClubDbContext _DbContext;
-        //private readonly int _registrosPorPagina = 10;
-        //private Listador<GeneroListViewModel> _listador;
         // GET: Generos
         public GenerosController()
         {
             _Servicio = new ServiciosGenero();
             _mapper = Mapeador.CrearMapper();
-            //_DbContext = new VideoClubDbContext();
-
         }
         public ActionResult Index(int pagina=1)
         {
-            //int totalRegistros = _DbContext.Generos.Count();
-
-            //var genero = _DbContext.Generos
-            //    .OrderBy(p => p.Descripcion)
-            //    .Skip((pagina - 1) * _registrosPorPagina)
-            //    .Take(_registrosPorPagina)
-            //    .ToList();
-            //var GeneroVm = Mapper.Map<List<Genero>, List<GeneroListViewModel>>(genero);
-            //var totalPaginas = (int)Math.Ceiling((double)totalRegistros / _registrosPorPagina);
-            //_listador = new Listador<GeneroListViewModel>()
-            //{
-            //    RegistrosPorPagina = _registrosPorPagina,
-            //    TotalPaginas = totalPaginas,
-            //    TotalRegistros = totalRegistros,
-            //    PaginaActual = pagina,
-            //    Registros = GeneroVm
-            //};
             var listaDto = _Servicio.GetLista();
             var listaVm = _mapper.Map<List<GeneroListViewModel>>(listaDto);
             return View(listaVm);

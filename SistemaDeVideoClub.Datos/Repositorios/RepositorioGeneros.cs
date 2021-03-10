@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace SistemaDeVideoClub.Datos.Repositorios
 {
-    public class RepositorioGeneros : IrepositorioGeneros
+    public class RepositorioGeneros : IRepositorioGeneros
     {
         private readonly SistemaDeVideoClubDbContext _DbContext;
         private readonly IMapper _mapper;

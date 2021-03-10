@@ -26,5 +26,6 @@ namespace SistemaDeVideoClub.Datos
         }
 
         public DbSet<Genero> generos { get; set; }
+        public DbSet<Provincia> provincias { get; set; }
     }
 }

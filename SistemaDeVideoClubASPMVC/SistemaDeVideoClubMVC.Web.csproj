@@ -212,8 +212,6 @@
     <Compile Include="ViewModels\Pelicula\PeliculaEditViewModel.cs" />
     <Compile Include="ViewModels\Pelicula\PeliculaListViewModel.cs" />
     <Compile Include="ViewModels\Pelicula\PeliculasDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Provincia\ProvinciaEditViewModel.cs" />
-    <Compile Include="ViewModels\Provincia\ProvinciaListViewModel.cs" />
     <Compile Include="ViewModels\Socio\SocioDetailViewMode.cs" />
     <Compile Include="ViewModels\Socio\SocioEditViewModel.cs" />
     <Compile Include="ViewModels\Socio\SocioListViewModel.cs" />

@@ -1,59 +1,36 @@
 ﻿using AutoMapper;
-using SistemaDeVideoClubASPMVC.Context;
+using SistemaDeVideoClub.Entidades.DTOs.Provincia;
+using SistemaDeVideoClub.Servicios.Servicios;
+using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClubASPMVC.Models;
-using SistemaDeVideoClubASPMVC.ViewModels;
 using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
+using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SistemaDeVideoClubASPMVC.Controllers
 {
     public class ProvinciasController : Controller
     {
-        private readonly VideoClubDbContext _DbContext;
-        private readonly int _registrosPorPagina = 10;
-        private Listador<ProvinciaListViewModel> _listador;
+        private readonly IServiciosProvincia _Servicio;
+        private readonly IMapper _mapper;
         // GET: Provincias
 
         public ProvinciasController()
         {
-            _DbContext = new VideoClubDbContext();
+            _Servicio = new ServicioProvincia();
+            _mapper = Mapeador.CrearMapper();
         }
         public ActionResult Index(int pagina=1)
         {
-            int totalRegistros = _DbContext.Provincias.Count();
-
-            var provincia = _DbContext.Provincias
-                .OrderBy(p => p.NombreProvincia)
-                .Skip((pagina - 1) * _registrosPorPagina)
-                .Take(_registrosPorPagina)
-                .ToList();
-            var ProviciaVm = Mapper.Map<List<Provincia>, List<ProvinciaListViewModel>>(provincia);
-            var totalPaginas = (int)Math.Ceiling((double)totalRegistros / _registrosPorPagina);
-            _listador = new Listador<ProvinciaListViewModel>()
-            {
-                RegistrosPorPagina = _registrosPorPagina,
-                TotalPaginas = totalPaginas,
-                TotalRegistros = totalRegistros,
-                PaginaActual = pagina,
-                Registros = ProviciaVm
-            };
-
-            return View(_listador);
+            var listaDto = _Servicio.GetLista();
+            var listaVm = _mapper.Map<List<ProvinciaListViewModel>>(listaDto);
+            return View(listaVm);
         }
-
-
-
-
-
-
-
-
 
         [HttpGet]
         public ActionResult Edit(int? id)
@@ -62,15 +39,15 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            ProvinciaEditDto provinciaDto = _Servicio.GetProvinciaPorId(id);
+            ProvinciaEditViewModel provinciaVm = _mapper.Map<ProvinciaEditViewModel>(provinciaDto);
 
-            var provincia = _DbContext.Provincias.SingleOrDefault(p => p.ProvinciaId == id);
-            if (provincia == null)
+            if (provinciaVm == null)
             {
                 return HttpNotFound();
             }
-
-            ProvinciaEditViewModel provinciaVm = Mapper.Map<Provincia, ProvinciaEditViewModel>(provincia);
             return View(provinciaVm);
+
         }
 
         [ValidateAntiForgeryToken]
@@ -81,25 +58,22 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             {
                 return View(provinciaVm);
             }
-
-            var provincia = Mapper.Map<ProvinciaEditViewModel, Provincia>(provinciaVm);
+            ProvinciaEditDto gemeroDto = _mapper.Map<ProvinciaEditDto>(provinciaVm);
             try
             {
-                if (_DbContext.Provincias.Any(p => p.NombreProvincia == provincia.NombreProvincia
-                                               && p.ProvinciaId != provincia.ProvinciaId))
+                if (_Servicio.Existe(gemeroDto))
                 {
-                    ModelState.AddModelError(string.Empty, "Provincia repetida");
+                    ModelState.AddModelError(string.Empty, "Provincia repetida.");
                     return View(provinciaVm);
                 }
 
-                _DbContext.Entry(provincia).State = EntityState.Modified;
-                _DbContext.SaveChanges();
+                _Servicio.Guardar(gemeroDto);
                 TempData["Msg"] = "Provincia editada";
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ModelState.AddModelError(string.Empty, "Error inesperado al intentar editar la Provincia");
+                ModelState.AddModelError(string.Empty, "Error inesperado al intentar editar la provincia");
                 return View(provinciaVm);
             }
         }
@@ -117,21 +91,26 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             {
                 return View(provinciaVm);
             }
+            ProvinciaEditDto provinciaDto = _mapper.Map<ProvinciaEditDto>(provinciaVm);
 
-            var provincia = Mapper.Map<ProvinciaEditViewModel, Provincia>(provinciaVm);
-
-            if (!_DbContext.Provincias.Any(p => p.NombreProvincia == provinciaVm.NombreProvincia))
+            if (_Servicio.Existe(provinciaDto))
             {
-                _DbContext.Provincias.Add(provincia);
-                _DbContext.SaveChanges();
-                TempData["Msg"] = "Provincia agregada!";
-
+                ModelState.AddModelError(string.Empty, "Provincia Existente");
+                return View(provinciaVm);
+            }
+            try
+            {
+                _Servicio.Guardar(provinciaDto);
+                TempData["Msg"] = "Provincia Agregada";
                 return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+
+                ModelState.AddModelError(string.Empty, e.Message);
+                return View(provinciaVm);
 
             }
-
-            ModelState.AddModelError(string.Empty, "Provincia repetida...");
-            return View(provinciaVm);
 
         }
 
@@ -143,52 +122,50 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var provincia = _DbContext.Provincias.SingleOrDefault(p => p.ProvinciaId == id);
-            if (provincia == null)
+            ProvinciaEditDto provinciaEditDto = _Servicio.GetProvinciaPorId(id);
+            if (provinciaEditDto == null)
             {
-                return HttpNotFound();
+                return HttpNotFound("Codigo del genero inexistente.");
             }
+            ProvinciaEditViewModel provinciaEditVm = _mapper.Map<ProvinciaEditViewModel>(provinciaEditDto);
+            return View(provinciaEditVm);
 
-            var provinciaVm = Mapper.Map<Provincia, ProvinciaListViewModel>(provincia);
-            return View(provinciaVm);
         }
 
         [ValidateAntiForgeryToken]
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirm(int id)
+        public ActionResult Delete(ProvinciaEditViewModel provinciaVm)
         {
-            var provincia = _DbContext.Provincias.SingleOrDefault(t => t.ProvinciaId == id);
             try
             {
-                _DbContext.Provincias.Remove(provincia);
-                _DbContext.SaveChanges();
-                TempData["Msg"] = "Provincia eliminada";
+                provinciaVm = _mapper.Map<ProvinciaEditViewModel>(_Servicio.GetProvinciaPorId(provinciaVm.ProvinciaId));
+                _Servicio.Borrar(provinciaVm.ProvinciaId);
+                TempData["Msg"] = "Provincia eliminada.";
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                var paisVm = Mapper.Map<Provincia, ProvinciaListViewModel>(provincia);
-
                 ModelState.AddModelError(string.Empty, "Error al intentar borrar la provincia");
-                return View(paisVm);
+                return View(provinciaVm);
             }
+
         }
 
 
-        // GET: Paises/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Provincia provincia = _DbContext.Provincias.Find(id);
-            if (provincia == null)
-            {
-                return HttpNotFound();
-            }
-            return View(provincia);
-        }
+        //// GET: Paises/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Provincia provincia = _DbContext.Provincias.Find(id);
+        //    if (provincia == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(provincia);
+        //}
     }
 
 

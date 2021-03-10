@@ -1,4 +1,4 @@
-﻿@model  SistemaDeVideoClubASPMVC.ViewModels.Provincia.ProvinciaListViewModel
+﻿@model  SistemaDeVideoClubASPMVC.ViewModels.Provincia.ProvinciaEditViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -10,6 +10,7 @@
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ProvinciaId)
     <div class="form-group">
         @Html.LabelFor(m => m.NombreProvincia)
         @Html.TextBoxFor(m => m.NombreProvincia, new { @class = "form-control", disabled = "disable" })
@@ -25,4 +26,4 @@
             Volver
         </a>
     </div>
- }
+}

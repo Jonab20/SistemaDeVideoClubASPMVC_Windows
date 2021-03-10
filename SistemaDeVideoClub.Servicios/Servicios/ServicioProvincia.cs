@@ -1,24 +1,25 @@
-﻿using SistemaDeVideoClub.Entidades.Entidades;
+﻿using AutoMapper;
+using SistemaDeVideoClub.Datos.Repositorios;
+using SistemaDeVideoClub.Entidades.DTOs.Provincia;
+using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
+using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
-using SistemaDeVideoClub.Datos.Repositorios.Facades;
-using SistemaDeVideoClub.Datos.Repositorios;
-using SistemaDeVideoClub.Entidades.DTOs.Genero;
-using AutoMapper;
-using SistemaDeVideoClubMVC.Mapeador;
 
 namespace SistemaDeVideoClub.Servicios.Servicios
 {
-    public class ServiciosGenero : IServiciosGenero
+    public class ServicioProvincia:IServiciosProvincia
     {
-        private readonly IRepositorioGeneros _repositorio;
+        private readonly RepositorioProvincias _repositorio;
         private readonly IMapper _mapper;
-        public ServiciosGenero()
+
+        public ServicioProvincia()
         {
-            _repositorio = new RepositorioGeneros();
+            _repositorio = new RepositorioProvincias();
             _mapper = Mapeador.CrearMapper();
         }
+
         public void Borrar(int? id)
         {
             try
@@ -28,16 +29,16 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             catch (Exception e)
             {
 
-                throw new Exception (e.Message);
+                throw new Exception(e.Message);
             }
         }
 
-        public bool Existe(GeneroEditDto generoDto)
+        public bool Existe(ProvinciaEditDto provinciaDto)
         {
             try
             {
-                Genero genero = _mapper.Map<Genero>(generoDto);
-                return _repositorio.Existe(genero);
+                Provincia provincia = _mapper.Map<Provincia>(provinciaDto);
+                return _repositorio.Existe(provincia);
             }
             catch (Exception e)
             {
@@ -46,20 +47,7 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
         }
 
-        public GeneroEditDto GetGeneroPorId(int? id)
-        {
-            try
-            {
-                return _repositorio.GetGeneroPorId(id);
-            }
-            catch (Exception e)
-            {
-
-                throw new Exception(e.Message);
-            }
-        }
-
-        public List<GeneroListDto> GetLista()
+        public List<ProvinciaListDto> GetLista()
         {
             try
             {
@@ -73,17 +61,30 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
         }
 
-        public void Guardar(GeneroEditDto generoDto)
+        public ProvinciaEditDto GetProvinciaPorId(int? id)
         {
             try
             {
-                Genero genero = _mapper.Map<Genero>(generoDto);
-                _repositorio.Guardar(genero);
+                return _repositorio.GetProvinciaPorId(id);
             }
             catch (Exception e)
             {
 
-                throw new Exception (e.Message);
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void Guardar(ProvinciaEditDto provinciaDto)
+        {
+            try
+            {
+                Provincia provincia = _mapper.Map<Provincia>(provinciaDto);
+                _repositorio.Guardar(provincia);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
             }
         }
     }

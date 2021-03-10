@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SistemaDeVideoClub.Datos.Repositorios.Facades
 {
-    public interface IrepositorioGeneros
+    public interface IRepositorioGeneros
     {
         List<GeneroListDto> GetLista();
         GeneroEditDto GetGeneroPorId(int? id);

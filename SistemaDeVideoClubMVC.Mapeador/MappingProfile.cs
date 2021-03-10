@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Entidades.DTOs.Genero;
+using SistemaDeVideoClub.Entidades.DTOs.Provincia;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
+using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
 using System;
 
 namespace SistemaDeVideoClubASPMVC.App_Start
@@ -11,6 +13,8 @@ namespace SistemaDeVideoClubASPMVC.App_Start
         public MappingProfile()
         {
             loadGenerosMapping();
+
+            loadProvinciasMapping();
             //CreateMap<Pelicula, PeliculaEditViewModel>();
             //CreateMap<Pelicula, PeliculaListViewModel>()
             //    .ForMember(dest => dest.Genero, (g => g.MapFrom(ge => ge.Genero.Descripcion)))
@@ -42,10 +46,15 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             //CreateMap<Localidad, LocalidadDetailViewModel>()
             //    .ForMember(dest => dest.NombreProvincia, (p => p.MapFrom(pr => pr.Provincia.NombreProvincia)));
             //CreateMap<LocalidadEditViewModel, Localidad>();
+        }
 
-            //CreateMap<Provincia, ProvinciaEditViewModel>();
-            //CreateMap<Provincia, ProvinciaListViewModel>();
-            //CreateMap<ProvinciaEditViewModel, Provincia>();
+        private void loadProvinciasMapping()
+        {
+            CreateMap<Provincia, ProvinciaListDto>();
+            CreateMap<Provincia, ProvinciaEditDto>().ReverseMap();
+            CreateMap<ProvinciaListDto, ProvinciaListViewModel>().ReverseMap();
+            CreateMap<ProvinciaEditDto, ProvinciaEditDto>().ReverseMap();
+            CreateMap<ProvinciaEditDto, ProvinciaListDto>().ReverseMap();
         }
 
         private void loadGenerosMapping()
@@ -54,8 +63,7 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             CreateMap<Genero, GeneroEditDto>().ReverseMap();
             CreateMap<GeneroListDto, GeneroListViewModel>().ReverseMap();
             CreateMap<GeneroEditDto, GeneroEditViewModel>().ReverseMap();
-            CreateMap<GeneroEditDto, GeneroListDto>().ReverseMap();
-            
+            CreateMap<GeneroEditDto, GeneroListDto>().ReverseMap();         
         }
     }
 }
