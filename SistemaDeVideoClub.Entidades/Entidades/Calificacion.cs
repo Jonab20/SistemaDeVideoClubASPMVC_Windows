@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SistemaDeVideoClubASPMVC.Models
+namespace SistemaDeVideoClubASPMVC.Entidades
 {
     public class Calificacion
     {

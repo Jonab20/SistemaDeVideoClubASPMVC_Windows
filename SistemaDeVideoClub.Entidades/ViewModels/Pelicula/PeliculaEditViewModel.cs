@@ -19,13 +19,12 @@ namespace SistemaDeVideoClubASPMVC.ViewModels.Pelicula
         [Display(Name = @"Calificacion")]
         [Required(ErrorMessage = "El campo {0} es requerido")]
         public int CalificacionId { get; set; }
-        public List<Models.Calificacion> Calificaciones { get; set; }
+        //public List<Models.Calificacion> Calificaciones { get; set; }
 
 
         [Display(Name = @"Genero")]
         [Required(ErrorMessage = "El campo {0} es requerido")]
-        public int GeneroId { get; set; }
-        public List<Models.Genero> Generos { get; set; }
+        public string Genero { get; set; }
 
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
@@ -34,9 +33,7 @@ namespace SistemaDeVideoClubASPMVC.ViewModels.Pelicula
 
         [Display(Name = @"Estado")]
         [Required(ErrorMessage = "El campo {0} es requerido")]
-        public int EstadoId { get; set; }
-        public List<Models.Estado> Estados { get; set; }
-
+        public string Estado { get; set; }
 
         [Display(Name = @"Duracion")]
         [Required(ErrorMessage = "El campo {0} es requerido")]

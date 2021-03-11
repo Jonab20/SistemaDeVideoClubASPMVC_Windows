@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Entidades.DTOs.Genero;
-using SistemaDeVideoClub.Servicios.Servicios;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
-using SistemaDeVideoClubASPMVC.App_Start;
-using SistemaDeVideoClubASPMVC.Context;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;

@@ -194,7 +194,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Classes\CombosHelper.cs" />
-    <Compile Include="Context\VideoClubDbContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GenerosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -221,16 +220,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Listador.cs" />
-    <Compile Include="ViewModels\Localidad\LocalidadDetailViewModel.cs" />
-    <Compile Include="ViewModels\Localidad\LocalidadEditViewModel.cs" />
-    <Compile Include="ViewModels\Localidad\LocalidadListViewModel.cs" />
     <Compile Include="ViewModels\PaginadorGenerico.cs" />
-    <Compile Include="ViewModels\Pelicula\PeliculaEditViewModel.cs" />
-    <Compile Include="ViewModels\Pelicula\PeliculaListViewModel.cs" />
-    <Compile Include="ViewModels\Pelicula\PeliculasDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Socio\SocioDetailViewMode.cs" />
-    <Compile Include="ViewModels\Socio\SocioEditViewModel.cs" />
-    <Compile Include="ViewModels\Socio\SocioListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />

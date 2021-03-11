@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Entidades.DTOs.Genero;
+using SistemaDeVideoClub.Entidades.DTOs.Localidad;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
+using SistemaDeVideoClubASPMVC.ViewModels.Localidad;
 using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
 using System;
 
@@ -15,6 +17,8 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             loadGenerosMapping();
 
             loadProvinciasMapping();
+
+            loadLocalidadesMapping();
             //CreateMap<Pelicula, PeliculaEditViewModel>();
             //CreateMap<Pelicula, PeliculaListViewModel>()
             //    .ForMember(dest => dest.Genero, (g => g.MapFrom(ge => ge.Genero.Descripcion)))
@@ -46,6 +50,11 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             //CreateMap<Localidad, LocalidadDetailViewModel>()
             //    .ForMember(dest => dest.NombreProvincia, (p => p.MapFrom(pr => pr.Provincia.NombreProvincia)));
             //CreateMap<LocalidadEditViewModel, Localidad>();
+        }
+
+        private void loadLocalidadesMapping()
+        {
+            CreateMap<LocalidadListDto, LocalidadListViewModel>();
         }
 
         private void loadProvinciasMapping()

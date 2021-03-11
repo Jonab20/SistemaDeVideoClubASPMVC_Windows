@@ -49,8 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\Facades\IServicioLocalidades.cs" />
     <Compile Include="Servicios\Facades\IServiciosGenero.cs" />
     <Compile Include="Servicios\Facades\IServiciosProvincia.cs" />
+    <Compile Include="Servicios\ServicioLocalidades.cs" />
     <Compile Include="Servicios\ServicioProvincia.cs" />
     <Compile Include="Servicios\ServiciosGenero.cs" />
   </ItemGroup>

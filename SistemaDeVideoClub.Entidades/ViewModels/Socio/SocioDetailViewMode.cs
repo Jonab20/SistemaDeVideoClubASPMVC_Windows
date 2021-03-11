@@ -31,15 +31,12 @@ namespace SistemaDeVideoClubASPMVC.ViewModels.Socio
 
         [Display(Name = "Tipo De Documento")]
         public string DescripcionTipoDeDocumento { get; set; }
-        public List<Models.TipoDeDocumento> TipoDeDocumentos { get; set; }
 
         [Display(Name = "Localidad")]
         public string NombreLocalidad { get; set; }
-        public List<Models.Localidad> localidades { get; set; }
 
         [Display(Name = "Provincia")]
         public string NombreProvincia { get; set; }
-        public List<Models.Provincia> provincias { get; set; }
 
         public bool Sancionado { get; set; }
 

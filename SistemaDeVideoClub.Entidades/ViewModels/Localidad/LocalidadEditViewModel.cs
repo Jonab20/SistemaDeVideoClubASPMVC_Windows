@@ -17,8 +17,6 @@ namespace SistemaDeVideoClubASPMVC.ViewModels.Localidad
 
         [Display(Name = @"Provincia")]
         [Required(ErrorMessage = "El campo {0} es requerido")]
-        public int ProvinciaId { get; set; }
-        public List<Models.Provincia> Provincias { get; set; }
-
+        public string Provincia { get; set; }
     }
 }

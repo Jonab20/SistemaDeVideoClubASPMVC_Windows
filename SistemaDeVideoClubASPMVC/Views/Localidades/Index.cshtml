@@ -1,5 +1,5 @@
 ﻿
-@model  SistemaDeVideoClubASPMVC.ViewModels.Listador<SistemaDeVideoClubASPMVC.ViewModels.Localidad.LocalidadListViewModel>
+@model  IEnumerable<SistemaDeVideoClubASPMVC.ViewModels.Localidad.LocalidadListViewModel>
 @{
     ViewBag.Title = "Index";
 }
@@ -24,46 +24,45 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(m => m.Registros.First().NombreLocalidad)
+                @Html.DisplayNameFor(m => m.NombreLocalidad)
             </th>
             <th>
 
             </th>
             <th>
-                @Html.DisplayNameFor(m => m.Registros.First().NombreProvincia)
+                @Html.DisplayNameFor(m => m.Provincia)
             </th>
         </tr>
     </thead>
     <tbody>
-       @if (Model.Registros.Any())
-        {
-            foreach (var item in Model.Registros)
+           @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(m => item.NombreLocalidad)
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Edit","Localidades",new{id=item.LocalidadId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
-                        <a href="@Url.Action("Details","Localidades",new{id=item.LocalidadId})" class="btn btn-info"><i class="fas fa-list"></i> Detalle</a>
-                        <a href="@Url.Action("Delete","Localidades",new{id=item.LocalidadId})" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Borrar
-                        </a>
-        
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(m => item.NombreLocalidad)
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Provincia)
+            </td>
+
+            <td>
+                <a href="@Url.Action("Edit","Localidades",new{id=item.LocalidadId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+                <a href="@Url.Action("Details","Localidades",new{id=item.LocalidadId})" class="btn btn-info"><i class="fas fa-list"></i> Detalle</a>
+                <a href="@Url.Action("Delete","Localidades",new{id=item.LocalidadId})" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Borrar
+                </a>
+
+            </td>
+        </tr>
             }
-         }
-        else
-        {
-            <tr>
-                <td>NO SE AGREGARON LOCALIDADES AUN</td>
-            </tr>
-        }
+           
         
     </tbody>
 </table>
 
-@if (Model.Registros.Any())
+@*@if (Model.Registros.Any())
 {
     <span>
         <strong>@Model.TotalRegistros</strong> registros encontrados
@@ -109,4 +108,4 @@ else
     <span></span>
     @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
         new { @class = "btn btn-sm btn-secondary disabled" })
-}
+}*@

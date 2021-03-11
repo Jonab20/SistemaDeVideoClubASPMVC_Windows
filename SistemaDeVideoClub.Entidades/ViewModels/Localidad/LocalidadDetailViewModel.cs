@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SistemaDeVideoClubASPMVC.ViewModels.Localidad
 {
@@ -17,6 +13,6 @@ namespace SistemaDeVideoClubASPMVC.ViewModels.Localidad
 
         [Display(Name = @"Provincia")]
         public string NombreProvincia { get; set; }
-        public List<Models.Provincia> Provincias { get; set; }
+        //public List<Provincia> Provincias { get; set; }
     }
 }

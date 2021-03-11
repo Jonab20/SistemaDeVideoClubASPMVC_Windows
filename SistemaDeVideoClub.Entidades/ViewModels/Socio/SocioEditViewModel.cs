@@ -26,7 +26,7 @@ namespace SistemaDeVideoClubASPMVC.ViewModels.Socio
         [Range(1, int.MaxValue, ErrorMessage = "Debe seleccionar un Tipo de documento")]
         [Display(Name = @"Tipo De Documento")]
         public int TipoDeDocumentoId { get; set; }
-        public List<Models.TipoDeDocumento> TipoDeDocumentos { get; set; }
+        //public List<Models.TipoDeDocumento> TipoDeDocumentos { get; set; }
 
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
@@ -46,14 +46,14 @@ namespace SistemaDeVideoClubASPMVC.ViewModels.Socio
 
         [Display(Name = @"Localidad")]
         public int LocalidadId { get; set; }
-        public List<Models.Localidad> Localidades { get; set; }
+        //public List<Models.Localidad> Localidades { get; set; }
 
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [Range(1, int.MaxValue, ErrorMessage = "Debe seleccionar una prvincia")]
         [Display(Name = @"Provincia")]
         public int ProvinciaId { get; set; }
-        public List<Models.Provincia> Provincias { get; set; }
+        //public List<Models.Provincia> Provincias { get; set; }
 
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
