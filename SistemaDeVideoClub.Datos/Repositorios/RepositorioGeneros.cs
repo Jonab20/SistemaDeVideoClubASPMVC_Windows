@@ -12,28 +12,26 @@ namespace SistemaDeVideoClub.Datos.Repositorios
 {
     public class RepositorioGeneros : IRepositorioGeneros
     {
-        private readonly SistemaDeVideoClubDbContext _DbContext;
+        private readonly SistemaDeVideoClubDbContext _DbContext;        
         private readonly IMapper _mapper;
-        public RepositorioGeneros()
+
+        public RepositorioGeneros(SistemaDeVideoClubDbContext context)
         {
-            _DbContext = new SistemaDeVideoClubDbContext();
+            _DbContext = context;
             _mapper = Mapeador.CrearMapper();
         }
         public void Borrar(int? id)
         {
             try
             {
-                var generoInDb = _DbContext.generos.Find(id);
+                var generoInDb = _DbContext.generos.SingleOrDefault(g=>g.GeneroId==id);
                 _DbContext.Entry(generoInDb).State = EntityState.Deleted;
-                _DbContext.SaveChanges();
             }
             catch (Exception)
             {
-
                 throw new Exception("Error al intentar borar el genero");
             }
         }
-
         public bool Existe(Genero genero)
         {
             if (genero.GeneroId == 0)
@@ -42,7 +40,6 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             }
             return _DbContext.generos.Any(g => g.Descripcion == genero.Descripcion && g.GeneroId == genero.GeneroId);
         }
-
         public GeneroEditDto GetGeneroPorId(int? id)
         {
             try
@@ -51,11 +48,9 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             }
             catch (Exception)
             {
-
                 throw new Exception("Error al intentar obtener genero");
             }
         }
-
         public List<GeneroListDto> GetLista()
         {
             try
@@ -65,36 +60,28 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             }
             catch (Exception)
             {
-
                 throw new Exception("Error al leer los generos");
             }
         }
-
         public void Guardar(Genero genero)
         {
             try
             {
-
                 if (genero.GeneroId == 0)
                 {
-
                     _DbContext.generos.Add(genero);
-
                 }
                 else
                 {
-                    var generoInDb = _DbContext.generos.Find(genero.GeneroId);
+                    var generoInDb = _DbContext.generos.SingleOrDefault(g => g.GeneroId == genero.GeneroId);
                     generoInDb.Descripcion = genero.Descripcion;
+                    _DbContext.Entry(generoInDb).State = EntityState.Modified;
                 }
-                _DbContext.SaveChanges();
             }
             catch (Exception)
             {
-
                 throw new Exception("Error inesperado al realizar la operacion");
             }
-
-
         }
     }
 }

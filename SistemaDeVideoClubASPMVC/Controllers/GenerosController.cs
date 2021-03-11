@@ -18,9 +18,9 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         private readonly IServiciosGenero _Servicio;
         private readonly IMapper _mapper;
         // GET: Generos
-        public GenerosController()
+        public GenerosController(IServiciosGenero servicio)
         {
-            _Servicio = new ServiciosGenero();
+            _Servicio = servicio;
             _mapper = Mapeador.CrearMapper();
         }
         public ActionResult Index(int pagina=1)

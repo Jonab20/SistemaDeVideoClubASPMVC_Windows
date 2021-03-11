@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SistemaDeVideoClub.Entidades.DTOs.Genero;
+using SistemaDeVideoClub.Entidades.DTOs.Provincia;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClub.Windows.Ninject;
 using System;
@@ -8,98 +8,84 @@ using System.Windows.Forms;
 
 namespace SistemaDeVideoClub.Windows
 {
-    public partial class FrmGeneros : Form
-    {
-
-        public FrmGeneros(IServiciosGenero servicio)
+    public partial class FrmProvincias : Form
+    { 
+        public FrmProvincias(IServiciosProvincia servicio)
         {
             InitializeComponent();
             _Servicio = servicio;
         }
-        private IServiciosGenero _Servicio;
-        private List<GeneroListDto> _listaG;
+
+        private IServiciosProvincia _Servicio;
+        private List<ProvinciaListDto> _listaP;
         private IMapper _mapper;
-        private void FrmGeneros_Load(object sender, EventArgs e)
+
+        private void FrmProvincias_Load(object sender, EventArgs e)
         {
             try
             {
                 _mapper = SistemaDeVideoClubMVC.Mapeador.Mapeador.CrearMapper();
-                _listaG = _Servicio.GetLista();
+                _listaP = _Servicio.GetLista();
                 MostrarDatosEnGrilla();
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
-
         private void MostrarDatosEnGrilla()
         {
             DatosDataGridView.Rows.Clear();
-            foreach (var Genero in _listaG)
+            foreach (var provincia in _listaP)
             {
                 DataGridViewRow r = ConstruirFila();
-                SetearFila(r, Genero);
+                SetearFila(r, provincia);
                 AgregarFila(r);
             }
         }
-
+        private void AgregarFila(DataGridViewRow r)
+        {
+            DatosDataGridView.Rows.Add(r);
+        }
+        private void SetearFila(DataGridViewRow r, ProvinciaListDto provincia)
+        {
+            r.Cells[cmnProvincia.Index].Value = provincia.NombreProvincia;
+            r.Tag = provincia;
+        }
         private DataGridViewRow ConstruirFila()
         {
             var r = new DataGridViewRow();
             r.CreateCells(DatosDataGridView);
             return r;
         }
-
-        private void AgregarFila(DataGridViewRow r)
-        {
-            DatosDataGridView.Rows.Add(r);
-        }
-
-        private void SetearFila(DataGridViewRow r, GeneroListDto genero)
-        {
-            r.Cells[cmnGenero.Index].Value = genero.Descripcion;
-
-            r.Tag = genero;
-        }
-
-        private void tsbCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            FrmGenerosAE frm = DI.Create<FrmGenerosAE>();
-            frm.Text = "Agregar Nuevo Genero";
+            FrmProvinciasAE frm = DI.Create<FrmProvinciasAE>();
+            frm.Text = "Agregar Nueva Provincia";
             DialogResult dr = frm.ShowDialog(this);
             if (dr == DialogResult.OK)
             {
                 try
                 {
-                   GeneroEditDto generoEitDto = frm.GetGenero();
-                    if (_Servicio.Existe(generoEitDto))
+                    ProvinciaEditDto provinciaEditDto = frm.GetProvincia();
+                    if (_Servicio.Existe(provinciaEditDto))
                     {
-                        MessageBox.Show("Genero Repetido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        MessageBox.Show("Provincia Repetida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    _Servicio.Guardar(generoEitDto);
-                    
+                    _Servicio.Guardar(provinciaEditDto);
+
                     DataGridViewRow r = ConstruirFila();
-                    var generoListDto = _mapper.Map<GeneroListDto>(generoEitDto);  
-                    SetearFila(r, generoListDto);
+                    var provinciaListDto = _mapper.Map<ProvinciaListDto>(provinciaEditDto);
+                    SetearFila(r, provinciaListDto);
                     AgregarFila(r);
-                    MessageBox.Show("Genero Agregado con Exito","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information) ;
+                    MessageBox.Show("Provincia Agregada con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception exepcion)
                 {
-
                     MessageBox.Show(exepcion.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
         private void tsbBorrar_Click(object sender, EventArgs e)
         {
             if (DatosDataGridView.SelectedRows.Count == 0)
@@ -107,26 +93,23 @@ namespace SistemaDeVideoClub.Windows
                 return;
             }
             var r = DatosDataGridView.SelectedRows[0];
-            var generoDto = r.Tag as GeneroListDto;
-            DialogResult dr = MessageBox.Show($"¿Desea borrar el Genero {generoDto.Descripcion}?","Confirmar borrado",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
+            var provinciaDto = r.Tag as ProvinciaListDto;
+            DialogResult dr = MessageBox.Show($"¿Desea borrar a pronc{provinciaDto.NombreProvincia}?","Confirmar borrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dr == DialogResult.No)
             {
                 return;
             }
             try
             {
-                _Servicio.Borrar(generoDto.GeneroId);
+                _Servicio.Borrar(provinciaDto.ProvinciaId);
                 DatosDataGridView.Rows.Remove(r);
-                MessageBox.Show("Genero Eliminado con existo","Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Provincia Eliminada con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception exepcion)
             {
-
                 MessageBox.Show(exepcion.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
             }
         }
-
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             if (DatosDataGridView.SelectedRows.Count == 0)
@@ -134,46 +117,46 @@ namespace SistemaDeVideoClub.Windows
                 return;
             }
             var r = DatosDataGridView.SelectedRows[0];
-            var generoDto = r.Tag as GeneroListDto;
-            var generoDtoClon = (GeneroListDto)generoDto.Clone();
-            FrmGenerosAE frm = DI.Create<FrmGenerosAE>();
-            frm.Text = "Editar Genero";
-            GeneroEditDto generoEditDto = _mapper.Map<GeneroEditDto>(generoDto);
-            frm.SetGenero(generoEditDto);
+            var provinciaDto = r.Tag as ProvinciaListDto;
+            var generoDtoClon = (ProvinciaListDto)provinciaDto.Clone();
+            FrmProvinciasAE frm = DI.Create<FrmProvinciasAE>();
+            frm.Text = "Editar Provincia";
+            ProvinciaEditDto provinciaEditDto = _mapper.Map<ProvinciaEditDto>(provinciaDto);
+            frm.SetProvincia(provinciaEditDto);
 
             DialogResult dr = frm.ShowDialog(this);
-            
+
             if (dr == DialogResult.Cancel)
             {
                 return;
             }
-            generoEditDto = frm.GetGenero();
-            if (_Servicio.Existe(generoEditDto))
+            provinciaEditDto = frm.GetProvincia();
+            if (_Servicio.Existe(provinciaEditDto))
             {
-                MessageBox.Show("Genero Repetido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Provincia Repetida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SetearFila(r, generoDtoClon);
                 return;
             }
             try
             {
-                _Servicio.Guardar(generoEditDto);
-                var generoListDto = _mapper.Map<GeneroListDto>(generoEditDto);
-                SetearFila(r, generoListDto);
-                MessageBox.Show("Genero Editado con existo", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _Servicio.Guardar(provinciaEditDto);
+                var provinciaListDto = _mapper.Map<ProvinciaListDto>(provinciaEditDto);
+                SetearFila(r, provinciaListDto);
+                MessageBox.Show("Provincia Editada con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception exepcion)
             {
-
                 MessageBox.Show(exepcion.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SetearFila(r, generoDtoClon);
-
             }
-
         }
-
+        private void tsbCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
         private void tsbActualizar_Click(object sender, EventArgs e)
         {
-            _listaG = _Servicio.GetLista();
+            _listaP = _Servicio.GetLista();
             MostrarDatosEnGrilla();
         }
     }

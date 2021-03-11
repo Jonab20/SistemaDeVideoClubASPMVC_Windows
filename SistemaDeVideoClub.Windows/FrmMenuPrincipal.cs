@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SistemaDeVideoClub.Windows.Ninject;
+using System;
 using System.Windows.Forms;
 
 namespace SistemaDeVideoClub.Windows
@@ -19,13 +13,20 @@ namespace SistemaDeVideoClub.Windows
 
         private void btngeneros_Click(object sender, EventArgs e)
         {
-            FrmGeneros frm = new FrmGeneros();
+            FrmGeneros frm = DI.Create<FrmGeneros>();
             frm.ShowDialog(this);
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void btnProvincias_Click_1(object sender, EventArgs e)
+        {
+            FrmProvincias frm = DI.Create<FrmProvincias>();
+            frm.ShowDialog(this);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace SistemaDeVideoClub.Windows
 {
-    partial class FrmGeneros
+    partial class FrmProvincias
     {
         /// <summary>
         /// Required designer variable.
@@ -33,10 +33,10 @@ namespace SistemaDeVideoClub.Windows
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGeneros));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProvincias));
             this.panel1 = new System.Windows.Forms.Panel();
             this.DatosDataGridView = new System.Windows.Forms.DataGridView();
-            this.cmnGenero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnProvincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
@@ -60,7 +60,7 @@ namespace SistemaDeVideoClub.Windows
             this.panel1.Location = new System.Drawing.Point(0, 74);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 376);
-            this.panel1.TabIndex = 15;
+            this.panel1.TabIndex = 17;
             // 
             // DatosDataGridView
             // 
@@ -78,7 +78,7 @@ namespace SistemaDeVideoClub.Windows
             this.DatosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DatosDataGridView.ColumnHeadersHeight = 30;
             this.DatosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cmnGenero});
+            this.cmnProvincia});
             this.DatosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DatosDataGridView.Location = new System.Drawing.Point(0, 0);
             this.DatosDataGridView.MultiSelect = false;
@@ -102,12 +102,12 @@ namespace SistemaDeVideoClub.Windows
             this.DatosDataGridView.Size = new System.Drawing.Size(800, 376);
             this.DatosDataGridView.TabIndex = 1;
             // 
-            // cmnGenero
+            // cmnProvincia
             // 
-            this.cmnGenero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnGenero.HeaderText = "Genero";
-            this.cmnGenero.Name = "cmnGenero";
-            this.cmnGenero.ReadOnly = true;
+            this.cmnProvincia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnProvincia.HeaderText = "Provincia";
+            this.cmnProvincia.Name = "cmnProvincia";
+            this.cmnProvincia.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -125,7 +125,7 @@ namespace SistemaDeVideoClub.Windows
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 74);
-            this.toolStrip1.TabIndex = 14;
+            this.toolStrip1.TabIndex = 16;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // tsbNuevo
@@ -225,7 +225,7 @@ namespace SistemaDeVideoClub.Windows
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
-            // FrmGeneros
+            // FrmProvincias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -233,9 +233,9 @@ namespace SistemaDeVideoClub.Windows
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmGeneros";
-            this.Text = "FrmGeneros";
-            this.Load += new System.EventHandler(this.FrmGeneros_Load);
+            this.Name = "FrmProvincias";
+            this.Text = "FrmProvincias";
+            this.Load += new System.EventHandler(this.FrmProvincias_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DatosDataGridView)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -260,6 +260,6 @@ namespace SistemaDeVideoClub.Windows
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnGenero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnProvincia;
     }
 }

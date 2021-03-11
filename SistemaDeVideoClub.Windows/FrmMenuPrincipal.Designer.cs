@@ -30,6 +30,7 @@ namespace SistemaDeVideoClub.Windows
         private void InitializeComponent()
         {
             this.btngeneros = new System.Windows.Forms.Button();
+            this.btnProvincias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btngeneros
@@ -42,11 +43,22 @@ namespace SistemaDeVideoClub.Windows
             this.btngeneros.UseVisualStyleBackColor = true;
             this.btngeneros.Click += new System.EventHandler(this.btngeneros_Click);
             // 
+            // btnProvincias
+            // 
+            this.btnProvincias.Location = new System.Drawing.Point(163, 15);
+            this.btnProvincias.Name = "btnProvincias";
+            this.btnProvincias.Size = new System.Drawing.Size(119, 55);
+            this.btnProvincias.TabIndex = 1;
+            this.btnProvincias.Text = "Provincias";
+            this.btnProvincias.UseVisualStyleBackColor = true;
+            this.btnProvincias.Click += new System.EventHandler(this.btnProvincias_Click_1);
+            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnProvincias);
             this.Controls.Add(this.btngeneros);
             this.Name = "FrmMenuPrincipal";
             this.Text = "Form1";
@@ -58,6 +70,7 @@ namespace SistemaDeVideoClub.Windows
         #endregion
 
         private System.Windows.Forms.Button btngeneros;
+        private System.Windows.Forms.Button btnProvincias;
     }
 }
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SistemaDeVideoClub.Datos.Repositorios.Facades
 {
-    interface IRepositorioProvincia
+    public interface IRepositorioProvincia
     {
         List<ProvinciaListDto> GetLista();
         ProvinciaEditDto GetProvinciaPorId(int? id);

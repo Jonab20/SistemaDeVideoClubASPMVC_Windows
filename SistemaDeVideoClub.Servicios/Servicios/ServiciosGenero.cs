@@ -3,10 +3,10 @@ using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using System;
 using System.Collections.Generic;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
-using SistemaDeVideoClub.Datos.Repositorios;
 using SistemaDeVideoClub.Entidades.DTOs.Genero;
 using AutoMapper;
 using SistemaDeVideoClubMVC.Mapeador;
+using SistemaDeVideoClub.Datos;
 
 namespace SistemaDeVideoClub.Servicios.Servicios
 {
@@ -14,9 +14,11 @@ namespace SistemaDeVideoClub.Servicios.Servicios
     {
         private readonly IRepositorioGeneros _repositorio;
         private readonly IMapper _mapper;
-        public ServiciosGenero()
+        private readonly IUnitOfWork _unitOfWork;
+        public ServiciosGenero(IRepositorioGeneros repositorio,IUnitOfWork unitOfWork)
         {
-            _repositorio = new RepositorioGeneros();
+            _unitOfWork = unitOfWork;
+            _repositorio = repositorio;
             _mapper = Mapeador.CrearMapper();
         }
         public void Borrar(int? id)
@@ -24,10 +26,10 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             try
             {
                 _repositorio.Borrar(id);
+                _unitOfWork.Save();
             }
             catch (Exception e)
             {
-
                 throw new Exception (e.Message);
             }
         }
@@ -41,7 +43,6 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }
@@ -54,7 +55,6 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }
@@ -63,12 +63,10 @@ namespace SistemaDeVideoClub.Servicios.Servicios
         {
             try
             {
-
                 return _repositorio.GetLista();
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }
@@ -79,10 +77,11 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             {
                 Genero genero = _mapper.Map<Genero>(generoDto);
                 _repositorio.Guardar(genero);
+                _unitOfWork.Save();
+                generoDto.GeneroId = genero.GeneroId;
             }
             catch (Exception e)
             {
-
                 throw new Exception (e.Message);
             }
         }

@@ -20,9 +20,9 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         private readonly IMapper _mapper;
         // GET: Provincias
 
-        public ProvinciasController()
+        public ProvinciasController(IServiciosProvincia servicio)
         {
-            _Servicio = new ServicioProvincia();
+            _Servicio = servicio;
             _mapper = Mapeador.CrearMapper();
         }
         public ActionResult Index(int pagina=1)

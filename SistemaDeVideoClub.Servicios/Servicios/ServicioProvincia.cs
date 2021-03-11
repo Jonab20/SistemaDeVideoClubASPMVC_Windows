@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using SistemaDeVideoClub.Datos.Repositorios;
+using SistemaDeVideoClub.Datos;
+using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
@@ -11,12 +12,14 @@ namespace SistemaDeVideoClub.Servicios.Servicios
 {
     public class ServicioProvincia:IServiciosProvincia
     {
-        private readonly RepositorioProvincias _repositorio;
+        private readonly IRepositorioProvincia _repositorio;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWorks;
 
-        public ServicioProvincia()
+        public ServicioProvincia(IRepositorioProvincia repositorio ,IUnitOfWork unitOfWorks)
         {
-            _repositorio = new RepositorioProvincias();
+            _repositorio = repositorio;
+            _unitOfWorks = unitOfWorks;
             _mapper = Mapeador.CrearMapper();
         }
 
@@ -25,10 +28,10 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             try
             {
                 _repositorio.Borrar(id);
+                _unitOfWorks.Save();
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }
@@ -42,7 +45,6 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }
@@ -51,7 +53,6 @@ namespace SistemaDeVideoClub.Servicios.Servicios
         {
             try
             {
-
                 return _repositorio.GetLista();
             }
             catch (Exception e)
@@ -69,7 +70,6 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }
@@ -80,10 +80,11 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             {
                 Provincia provincia = _mapper.Map<Provincia>(provinciaDto);
                 _repositorio.Guardar(provincia);
+                _unitOfWorks.Save();
+                provinciaDto.ProvinciaId = provincia.ProvinciaId;
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }

@@ -45,6 +45,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -81,7 +84,21 @@
     <Compile Include="FrmMenuPrincipal.Designer.cs">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProvincias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProvincias.Designer.cs">
+      <DependentUpon>FrmProvincias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProvinciasAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProvinciasAE.Designer.cs">
+      <DependentUpon>FrmProvinciasAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mapeador\AutoMapperConfig.cs" />
+    <Compile Include="Ninject\Bindings.cs" />
+    <Compile Include="Ninject\DI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmGeneros.resx">
@@ -94,6 +111,12 @@
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmProvincias.resx">
+      <DependentUpon>FrmProvincias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProvinciasAE.resx">
+      <DependentUpon>FrmProvinciasAE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -102,6 +125,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -118,6 +142,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SistemaDeVideoClub.Datos\SistemaDeVideoClubMVC.Datos.csproj">
+      <Project>{18c10ed3-c725-49e0-bded-99b290d04dcf}</Project>
+      <Name>SistemaDeVideoClubMVC.Datos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SistemaDeVideoClub.Entidades\SistemaDeVideoClubMVC.Entidades.csproj">
       <Project>{7d78767e-58e7-487c-be7e-79bbb12bdcda}</Project>
       <Name>SistemaDeVideoClubMVC.Entidades</Name>
@@ -130,6 +158,27 @@
       <Project>{e2b8283e-eabb-48d4-9ee9-38d26eab7f9c}</Project>
       <Name>SistemaDeVideoClubMVC.Mapeador</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Borrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\actualizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Imprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Cerrar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

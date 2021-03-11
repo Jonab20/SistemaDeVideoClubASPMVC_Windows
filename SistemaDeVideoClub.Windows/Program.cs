@@ -1,4 +1,5 @@
 ﻿using SistemaDeVideoClub.Windows.Mapeador;
+using SistemaDeVideoClub.Windows.Ninject;
 using System;
 using System.Windows.Forms;
 
@@ -12,10 +13,11 @@ namespace SistemaDeVideoClub.Windows
         [STAThread]
         static void Main()
         {
+            DI.Inicialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AutoMapperConfig.Init();
-            Application.Run(new FrmMenuPrincipal());
+            Application.Run(DI.Create<FrmMenuPrincipal>());
         }
     }
 }
