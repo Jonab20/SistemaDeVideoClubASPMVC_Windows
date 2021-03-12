@@ -38,7 +38,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             {
                 return _DbContext.generos.Any(g => g.Descripcion == genero.Descripcion);
             }
-            return _DbContext.generos.Any(g => g.Descripcion == genero.Descripcion && g.GeneroId == genero.GeneroId);
+            return _DbContext.generos.Any(g => g.Descripcion == genero.Descripcion && g.GeneroId != genero.GeneroId);
         }
         public GeneroEditDto GetGeneroPorId(int? id)
         {

@@ -133,7 +133,7 @@ namespace SistemaDeVideoClub.Windows
             provinciaEditDto = frm.GetProvincia();
             if (_Servicio.Existe(provinciaEditDto))
             {
-                MessageBox.Show("Provincia Repetida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Provincia Repetida", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 SetearFila(r, generoDtoClon);
                 return;
             }

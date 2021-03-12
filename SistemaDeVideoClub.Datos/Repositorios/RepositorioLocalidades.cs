@@ -35,7 +35,6 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             }
             catch (Exception)
             {
-
                 throw new Exception("Error al cargar localidades");
             } 
         }

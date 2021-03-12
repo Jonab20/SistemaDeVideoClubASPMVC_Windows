@@ -150,7 +150,7 @@ namespace SistemaDeVideoClub.Windows
             generoEditDto = frm.GetGenero();
             if (_Servicio.Existe(generoEditDto))
             {
-                MessageBox.Show("Genero Repetido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Genero Repetido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 SetearFila(r, generoDtoClon);
                 return;
             }

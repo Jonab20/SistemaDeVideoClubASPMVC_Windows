@@ -29,7 +29,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             }
             catch (Exception)
             {
-                throw new Exception("Error al intentar borar la provincia");
+                throw new Exception("Error al intentar borrar la provincia");
             }
         }
         public bool Existe(Provincia provincia)
@@ -38,7 +38,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             {
                 return _DbContext.provincias.Any(g => g.NombreProvincia == provincia.NombreProvincia);
             }
-            return _DbContext.provincias.Any(p => p.NombreProvincia == provincia.NombreProvincia && p.ProvinciaId == provincia.ProvinciaId);
+            return _DbContext.provincias.Any(p => p.NombreProvincia == provincia.NombreProvincia && p.ProvinciaId != provincia.ProvinciaId);
         }
         public List<ProvinciaListDto> GetLista()
         {
