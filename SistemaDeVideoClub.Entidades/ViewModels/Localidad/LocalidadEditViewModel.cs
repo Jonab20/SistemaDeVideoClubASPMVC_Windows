@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SistemaDeVideoClub.Entidades.DTOs.Provincia;
+using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace SistemaDeVideoClubASPMVC.ViewModels.Localidad
 {
@@ -17,6 +16,7 @@ namespace SistemaDeVideoClubASPMVC.ViewModels.Localidad
 
         [Display(Name = @"Provincia")]
         [Required(ErrorMessage = "El campo {0} es requerido")]
-        public string Provincia { get; set; }
+        public int ProvinciaId { get; set; }
+        public List<ProvinciaListViewModel> Provincias { get; set; }
     }
 }

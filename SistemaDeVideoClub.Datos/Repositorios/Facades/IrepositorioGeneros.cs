@@ -1,5 +1,5 @@
 ﻿using SistemaDeVideoClub.Entidades.DTOs.Genero;
-using SistemaDeVideoClub.Entidades.Entidades;
+using SistemaDeVideoClubASPMVC.Entidades;
 using System.Collections.Generic;
 
 namespace SistemaDeVideoClub.Datos.Repositorios.Facades

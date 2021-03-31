@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SistemaDeVideoClubASPMVC.Models
 {
-    public class Socio
+    /*public*/ class Socio
     {
         public int SocioId { get; set; }
         public string Nombre { get; set; }

@@ -1,5 +1,4 @@
-﻿using SistemaDeVideoClub.Entidades.Entidades;
-using SistemaDeVideoClub.Servicios.Servicios.Facades;
+﻿using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using System;
 using System.Collections.Generic;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
@@ -7,6 +6,7 @@ using SistemaDeVideoClub.Entidades.DTOs.Genero;
 using AutoMapper;
 using SistemaDeVideoClubMVC.Mapeador;
 using SistemaDeVideoClub.Datos;
+using SistemaDeVideoClubASPMVC.Entidades;
 
 namespace SistemaDeVideoClub.Servicios.Servicios
 {

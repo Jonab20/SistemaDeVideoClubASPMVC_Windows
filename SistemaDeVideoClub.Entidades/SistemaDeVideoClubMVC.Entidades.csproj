@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DTOs\Genero\GeneroEditDto.cs" />
     <Compile Include="DTOs\Genero\GeneroListDto.cs" />
+    <Compile Include="DTOs\Localidad\LocalidadEditDto.cs" />
     <Compile Include="DTOs\Localidad\LocalidadListDto.cs" />
     <Compile Include="DTOs\Provincia\ProvinciaEditDto.cs" />
     <Compile Include="DTOs\Provincia\ProvinciaListDto.cs" />

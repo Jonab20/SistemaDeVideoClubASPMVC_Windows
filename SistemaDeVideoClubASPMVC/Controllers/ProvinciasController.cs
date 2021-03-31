@@ -132,6 +132,12 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult Delete(ProvinciaEditViewModel provinciaVm)
         {
+            ProvinciaEditDto provinciaDto = _mapper.Map<ProvinciaEditDto>(provinciaVm);
+            if (_Servicio.VerificarRelacion(provinciaDto))
+            {
+                ModelState.AddModelError(string.Empty, "Provincia relacionada con almenos una localidad, imposible borrar");
+                return View(provinciaVm);
+            }
             try
             {
                 provinciaVm = _mapper.Map<ProvinciaEditViewModel>(_Servicio.GetProvinciaPorId(provinciaVm.ProvinciaId));
@@ -139,9 +145,9 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 TempData["Msg"] = "Provincia eliminada.";
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                ModelState.AddModelError(string.Empty, "Error al intentar borrar la provincia");
+                ModelState.AddModelError(string.Empty, e.Message );
                 return View(provinciaVm);
             }
 

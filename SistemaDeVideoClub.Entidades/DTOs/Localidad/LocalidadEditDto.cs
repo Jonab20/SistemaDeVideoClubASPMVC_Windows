@@ -1,9 +1,10 @@
 ﻿namespace SistemaDeVideoClub.Entidades.DTOs.Localidad
 {
-    public class LocalidadListDto
+    public class LocalidadEditDto
     {
         public int LocalidadId { get; set; }
         public string NombreLocalidad { get; set; }
-        public string Provincia { get; set; }
+
+        public int  ProvinciaId { get; set; }
     }
 }

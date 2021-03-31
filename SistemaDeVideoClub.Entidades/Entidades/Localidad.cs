@@ -1,5 +1,4 @@
-﻿using SistemaDeVideoClub.Entidades.Entidades;
-
+﻿
 namespace SistemaDeVideoClubASPMVC.Entidades
 {
     public class Localidad

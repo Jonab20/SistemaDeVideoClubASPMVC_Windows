@@ -1,5 +1,4 @@
-﻿using SistemaDeVideoClub.Entidades.Entidades;
-using SistemaDeVideoClubASPMVC.Entidades;
+﻿using SistemaDeVideoClubASPMVC.Entidades;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Reflection;

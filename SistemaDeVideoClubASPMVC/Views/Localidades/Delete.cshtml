@@ -10,6 +10,7 @@
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model=>model.LocalidadId)
     <div class="form-group">
         @Html.LabelFor(m => m.NombreLocalidad)
         @Html.TextBoxFor(m => m.NombreLocalidad, new { @class = "form-control", disabled = "disable" })

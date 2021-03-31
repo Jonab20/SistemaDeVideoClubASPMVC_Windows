@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Genero;
-using SistemaDeVideoClub.Entidades.Entidades;
+using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;

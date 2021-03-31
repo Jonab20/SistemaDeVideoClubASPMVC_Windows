@@ -1,10 +1,5 @@
-﻿using SistemaDeVideoClub.Entidades.Entidades;
-using System;
-using System.Collections.Generic;
+﻿using SistemaDeVideoClubASPMVC.Entidades;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaDeVideoClub.Datos.EntityTypeConfigations
 {

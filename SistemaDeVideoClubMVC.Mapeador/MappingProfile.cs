@@ -2,7 +2,7 @@
 using SistemaDeVideoClub.Entidades.DTOs.Genero;
 using SistemaDeVideoClub.Entidades.DTOs.Localidad;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
-using SistemaDeVideoClub.Entidades.Entidades;
+using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
 using SistemaDeVideoClubASPMVC.ViewModels.Localidad;
 using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
@@ -54,7 +54,10 @@ namespace SistemaDeVideoClubASPMVC.App_Start
 
         private void loadLocalidadesMapping()
         {
-            CreateMap<LocalidadListDto, LocalidadListViewModel>();
+            CreateMap<LocalidadEditDto, LocalidadListDto>();
+            CreateMap<LocalidadEditDto, Localidad>().ReverseMap();
+            CreateMap<LocalidadListDto, LocalidadListViewModel>().ReverseMap();
+            CreateMap<LocalidadEditViewModel, LocalidadEditDto>().ReverseMap();
         }
 
         private void loadProvinciasMapping()

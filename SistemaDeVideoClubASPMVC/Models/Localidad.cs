@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SistemaDeVideoClubASPMVC.Models
 {
-    public class Localidad
+    /*public*/ class Localidad
     {
         public int LocalidadId { get; set; }
         public string NombreLocalidad { get; set; }

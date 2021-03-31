@@ -1,5 +1,5 @@
 ﻿using SistemaDeVideoClub.Entidades.DTOs.Provincia;
-using SistemaDeVideoClub.Entidades.Entidades;
+using SistemaDeVideoClubASPMVC.Entidades;
 using System.Collections.Generic;
 
 namespace SistemaDeVideoClub.Datos.Repositorios.Facades
@@ -14,5 +14,6 @@ namespace SistemaDeVideoClub.Datos.Repositorios.Facades
         bool Existe(Provincia provincia);
 
         void Borrar(int? id);
+        bool VerificarRelacion(Provincia provincia);
     }
 }

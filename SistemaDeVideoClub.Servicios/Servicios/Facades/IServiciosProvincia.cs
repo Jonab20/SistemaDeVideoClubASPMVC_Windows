@@ -8,9 +8,10 @@ namespace SistemaDeVideoClub.Servicios.Servicios.Facades
         List<ProvinciaListDto> GetLista();
         ProvinciaEditDto GetProvinciaPorId(int? id);
 
-        void Guardar(ProvinciaEditDto provincia);
+        void Guardar(ProvinciaEditDto provinciaDto);
         void Borrar(int? id);
 
-        bool Existe(ProvinciaEditDto provincia);
+        bool VerificarRelacion(ProvinciaEditDto provinciaDto);
+        bool Existe(ProvinciaEditDto provinciaDto);
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace SistemaDeVideoClubASPMVC.Entidades
+﻿namespace SistemaDeVideoClubASPMVC.Entidades
 {
     public class Calificacion
     {

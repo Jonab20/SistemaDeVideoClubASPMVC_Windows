@@ -2,8 +2,8 @@
 using SistemaDeVideoClub.Datos;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
-using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
+using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,12 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                if (e.Message.Contains("REFENCE"))
+                {
+                    throw new Exception("No se pude borrar, provincia relacionada");
+
+                }
+                throw new Exception("Error inesperado al borrar");
             }
         }
 
@@ -85,6 +90,20 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
             catch (Exception e)
             {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool VerificarRelacion(ProvinciaEditDto provinciaDto)
+        {
+            try
+            {
+               Provincia provincia = _mapper.Map<Provincia>(provinciaDto);
+               return _repositorio.VerificarRelacion(provincia);
+            }
+            catch (Exception e)
+            {
+
                 throw new Exception(e.Message);
             }
         }

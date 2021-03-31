@@ -10,7 +10,6 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
         <div>
             @Html.LabelFor(m => m.ProvinciaId)
             @Html.DropDownListFor(m => m.ProvinciaId, new SelectList(Model.Provincias, "ProvinciaId", "NombreProvincia"), "Seleccione Provincia", new { @class = "form-control", autofocus = "autofocus" })

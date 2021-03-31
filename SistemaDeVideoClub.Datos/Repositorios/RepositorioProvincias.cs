@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
-using SistemaDeVideoClub.Entidades.Entidades;
+using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
@@ -81,6 +81,18 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             catch (Exception)
             {
                 throw new Exception("Error inesperado al Guardar");
+            }
+        }
+
+        public bool VerificarRelacion(Provincia provincia)
+        {
+            try
+            {
+                return _DbContext.localidades.Any(p => p.ProvinciaId == provincia.ProvinciaId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al verificar la relacion de la provincia");
             }
         }
     }
