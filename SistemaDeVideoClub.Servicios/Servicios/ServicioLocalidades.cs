@@ -56,11 +56,11 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
         }
 
-        public List<LocalidadListDto> GetLista()
+        public List<LocalidadListDto> GetLista(string listaDto)
         {
             try
             {
-                return _repositorio.GetLista();
+                return _repositorio.GetLista(listaDto);
             }
             catch (Exception e)
             {
@@ -90,6 +90,7 @@ namespace SistemaDeVideoClub.Servicios.Servicios
                 Localidad localidad = _mapper.Map<Localidad>(localidadEditDto);
                 _repositorio.Guardar(localidad);
                 _unitOfWork.Save();
+                localidadEditDto.LocalidadId = localidad.LocalidadId;
             }
             catch (Exception e)
             {

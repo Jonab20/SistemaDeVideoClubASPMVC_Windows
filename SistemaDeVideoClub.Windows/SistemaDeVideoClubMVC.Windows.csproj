@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBuscarLocalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarLocalidad.Designer.cs">
+      <DependentUpon>FrmBuscarLocalidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGeneros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,18 @@
     </Compile>
     <Compile Include="FrmGenerosAE.Designer.cs">
       <DependentUpon>FrmGenerosAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLocalidadAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLocalidadAE.Designer.cs">
+      <DependentUpon>FrmLocalidadAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLocalidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLocalidades.Designer.cs">
+      <DependentUpon>FrmLocalidades.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -96,17 +114,27 @@
     <Compile Include="FrmProvinciasAE.Designer.cs">
       <DependentUpon>FrmProvinciasAE.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Helper.cs" />
     <Compile Include="Mapeador\AutoMapperConfig.cs" />
     <Compile Include="Ninject\Bindings.cs" />
     <Compile Include="Ninject\DI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBuscarLocalidad.resx">
+      <DependentUpon>FrmBuscarLocalidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmGeneros.resx">
       <DependentUpon>FrmGeneros.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGenerosAE.resx">
       <DependentUpon>FrmGenerosAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLocalidadAE.resx">
+      <DependentUpon>FrmLocalidadAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLocalidades.resx">
+      <DependentUpon>FrmLocalidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>

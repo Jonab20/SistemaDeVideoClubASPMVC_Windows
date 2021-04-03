@@ -58,17 +58,32 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             }
         }
 
-        public List<LocalidadListDto> GetLista()
+        public List<LocalidadListDto> GetLista(string provincia)
         {
             try
             {
-                var listaDto = _DbContext.localidades.Include(l => l.Provincia).Select(p => new LocalidadListDto
+                if (provincia == null)
                 {
-                    LocalidadId = p.LocalidadId,
-                    NombreLocalidad = p.NombreLocalidad,
-                    Provincia = p.Provincia.NombreProvincia
-                }).ToList();
-                return listaDto;
+                    var listaDto = _DbContext.localidades.Include(l => l.Provincia).Select(p => new LocalidadListDto
+                    {
+                        LocalidadId = p.LocalidadId,
+                        NombreLocalidad = p.NombreLocalidad,
+                        Provincia = p.Provincia.NombreProvincia
+                    }).ToList();
+                    return listaDto;
+
+                }
+                else
+                {
+                    var listaDto = _DbContext.localidades.Include(l => l.Provincia).Where(p=>p.Provincia.NombreProvincia==provincia).Select(p => new LocalidadListDto
+                    {
+                        LocalidadId = p.LocalidadId,
+                        NombreLocalidad = p.NombreLocalidad,
+                        Provincia = p.Provincia.NombreProvincia
+                    }).ToList();
+                    return listaDto;
+                }
+
             }
             catch (Exception)
             {

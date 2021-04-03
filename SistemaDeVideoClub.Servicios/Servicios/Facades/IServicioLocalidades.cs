@@ -5,7 +5,7 @@ namespace SistemaDeVideoClub.Servicios.Servicios.Facades
 {
     public interface IServicioLocalidades
     {
-        List<LocalidadListDto> GetLista();
+        List<LocalidadListDto> GetLista(string listaDto);
         bool Existe(LocalidadEditDto localidadEditDto);
         void Guardar(LocalidadEditDto localidadEditDto);
 

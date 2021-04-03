@@ -25,6 +25,8 @@ namespace SistemaDeVideoClub.Windows.Ninject
             Bind<IRepositorioProvincia>().To<RepositorioProvincias>();
             Bind<IServiciosProvincia>().To<ServicioProvincia>();
 
+            Bind<IRepositorioLocalidad>().To<RepositorioLocalidades>();
+            Bind<IServicioLocalidades>().To<ServicioLocalidades>();
         }
     }
 }

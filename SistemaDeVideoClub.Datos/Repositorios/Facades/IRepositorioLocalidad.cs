@@ -10,7 +10,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios.Facades
 {
     public interface IRepositorioLocalidad
     {
-        List<LocalidadListDto> GetLista();
+        List<LocalidadListDto> GetLista(string provincia);
 
         bool Existe(Localidad localidad);
 

@@ -83,10 +83,13 @@ namespace SistemaDeVideoClub.Windows
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 158);
+            this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.TxtDescripcion);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(366, 197);
+            this.MinimumSize = new System.Drawing.Size(366, 197);
             this.Name = "FrmGenerosAE";
             this.Text = "FrmGenerosAE";
             this.Load += new System.EventHandler(this.FrmGenerosAE_Load);
