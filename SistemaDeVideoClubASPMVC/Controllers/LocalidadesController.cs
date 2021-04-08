@@ -32,7 +32,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         }
         public ActionResult Index(int pagina = 1)
         {
-            var listaDto = _servicio.GetLista();
+            var listaDto = _servicio.GetLista(null);
             var listaVm = _mapper.Map<List<LocalidadListViewModel>>(listaDto);
             return View(listaVm);
         }
