@@ -1,7 +1,8 @@
-﻿@model IEnumerable<SistemaDeVideoClubASPMVC.ViewModels.Genero.GeneroListViewModel>
+﻿
+@model  IEnumerable<SistemaDeVideoClub.Entidades.ViewModels.Estado.EstadoListViewModel>
 
 @{
-    ViewBag.Title = "Generos";
+    ViewBag.Title = "Estados";
 }
 
 
@@ -13,11 +14,11 @@
         <strong>Éxito!</strong> @msg.
     </div>}
 <div>
-    <a href="@Url.Action("Create", "Generos")" class="btn btn-primary" style="float: right">
+    <a href="@Url.Action("Create", "Estados")" class="btn btn-primary" style="float: right">
         <i class="far fa-file-alt"></i>
         Nuevo
     </a>
-    <h2>Lista de Generos</h2>
+    <h2>Lista de Estados</h2>
     <hr />
 </div>
 <table class="table">
@@ -36,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                <a href="@Url.Action("Edit","Generos",new{id=item.GeneroId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+                <a href="@Url.Action("Edit","Estados",new{id=item.EstadoId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
                 @*<a href="@Url.Action("Details","Generos",new{id=item.GeneroId})" class="btn btn-info"><i class="fas fa-edit"></i> Detalles</a>*@
-                <a href="@Url.Action("Delete","Generos",new{id=item.GeneroId})" class="btn btn-danger"><i class="fas fa-edit"></i> Borrar</a>
+                <a href="@Url.Action("Delete","Estados",new{id=item.EstadoId})" class="btn btn-danger"><i class="fas fa-edit"></i> Borrar</a>
             </td>
         </tr>
     }

@@ -21,7 +21,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         private readonly IServiciosProvincia _serviciosProvincia;
         private readonly IMapper _mapper;
         //private readonly int _registrosPorPagina = 10;
-        private Listador<LocalidadListViewModel> _listador;
+        //private Listador<LocalidadListViewModel> _listador;
 
         // GET: Localidades
         public LocalidadesController(IServicioLocalidades servicio, IServiciosProvincia serviciosProvincia)

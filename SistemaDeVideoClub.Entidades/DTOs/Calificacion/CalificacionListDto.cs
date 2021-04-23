@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace SistemaDeVideoClub.Entidades.DTOs.Calificacion
+{
+    public class CalificacionListDto:ICloneable
+    {
+        public int EstadoId { get; set; }
+        public string Descripcion { get; set; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+}

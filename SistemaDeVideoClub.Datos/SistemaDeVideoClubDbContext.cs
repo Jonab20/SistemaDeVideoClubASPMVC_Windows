@@ -1,4 +1,5 @@
-﻿using SistemaDeVideoClubASPMVC.Entidades;
+﻿using SistemaDeVideoClub.Entidades.Entidades;
+using SistemaDeVideoClubASPMVC.Entidades;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Reflection;
@@ -23,5 +24,9 @@ namespace SistemaDeVideoClub.Datos
         public DbSet<Genero> generos { get; set; }
         public DbSet<Provincia> provincias { get; set; }
         public DbSet<Localidad> localidades { get; set; }
+        public DbSet <Estado> estados { get; set; }
+        public DbSet<Calificacion> calificacion { get; set; }
+        public DbSet<TiposDeDocumentos> tiposDeDocumento { get; set; }
+        public DbSet<TipoDeSoporte> tipoDeSoporte { get; set; }
     }
 }

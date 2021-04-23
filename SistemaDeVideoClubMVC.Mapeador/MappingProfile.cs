@@ -1,7 +1,16 @@
 ﻿using AutoMapper;
+using SistemaDeVideoClub.Entidades.DTOs.Calificacion;
+using SistemaDeVideoClub.Entidades.DTOs.Estado;
 using SistemaDeVideoClub.Entidades.DTOs.Genero;
 using SistemaDeVideoClub.Entidades.DTOs.Localidad;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
+using SistemaDeVideoClub.Entidades.DTOs.TipoDeDocumento;
+using SistemaDeVideoClub.Entidades.DTOs.TipoDeSoporte;
+using SistemaDeVideoClub.Entidades.Entidades;
+using SistemaDeVideoClub.Entidades.ViewModels.Calificacion;
+using SistemaDeVideoClub.Entidades.ViewModels.Estado;
+using SistemaDeVideoClub.Entidades.ViewModels.TipoDeDocumento;
+using SistemaDeVideoClub.Entidades.ViewModels.TipoDeSoporte;
 using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
 using SistemaDeVideoClubASPMVC.ViewModels.Localidad;
@@ -19,6 +28,14 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             loadProvinciasMapping();
 
             loadLocalidadesMapping();
+
+            loadEstadosMapping();
+
+            loadCalificacionesMapping();
+
+            loadTipoDeDocumentoMapping();
+
+            loadTipoDeSoporteMapping();
             //CreateMap<Pelicula, PeliculaEditViewModel>();
             //CreateMap<Pelicula, PeliculaListViewModel>()
             //    .ForMember(dest => dest.Genero, (g => g.MapFrom(ge => ge.Genero.Descripcion)))
@@ -50,6 +67,42 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             //CreateMap<Localidad, LocalidadDetailViewModel>()
             //    .ForMember(dest => dest.NombreProvincia, (p => p.MapFrom(pr => pr.Provincia.NombreProvincia)));
             //CreateMap<LocalidadEditViewModel, Localidad>();
+        }
+
+        private void loadTipoDeSoporteMapping()
+        {
+            CreateMap<TipoDeSoporte, TipoDeSoporteListDto>();
+            CreateMap<TipoDeSoporte, TipoDeSoporteEditDto>().ReverseMap();
+            CreateMap<TipoDeSoporteListDto, TipoDeSoporteListViewModel>().ReverseMap();
+            CreateMap<TipoDeSoporteEditDto, TipoDeSoporteEditViewModel>().ReverseMap();
+            CreateMap<TipoDeSoporteEditDto, TipoDeSoporteListDto>().ReverseMap();
+        }
+
+        private void loadTipoDeDocumentoMapping()
+        {
+            CreateMap<Calificacion, CalificacionListDto>();
+            CreateMap<Calificacion, CalificacionEditDto>().ReverseMap();
+            CreateMap<CalificacionListDto, CalificacionListViewModel>().ReverseMap();
+            CreateMap<CalificacionEditDto, CalificacionEditViewModel>().ReverseMap();
+            CreateMap<CalificacionEditDto, CalificacionListDto>().ReverseMap();
+        }
+
+        private void loadCalificacionesMapping()
+        {
+            CreateMap<TiposDeDocumentos, TipoDeDocumentoListDto>();
+            CreateMap<TiposDeDocumentos, TipoDeDocumentoEditDto>().ReverseMap();
+            CreateMap<TipoDeDocumentoListDto, TipoDeDocumentoListViewModel>().ReverseMap();
+            CreateMap<TipoDeDocumentoEditDto, TipoDeDocumentoEditViewModel>().ReverseMap();
+            CreateMap<TipoDeDocumentoEditDto, TipoDeDocumentoListDto>().ReverseMap();
+        }
+
+        private void loadEstadosMapping()
+        {
+            CreateMap<Estado, EstadoListDto>();
+            CreateMap<Estado, EstadoEditDto>().ReverseMap();
+            CreateMap<EstadoListDto, EstadoListViewModel>().ReverseMap();
+            CreateMap<EstadoEditDto, EstadoEditViewModel>().ReverseMap();
+            CreateMap<EstadoEditDto, EstadoListDto>().ReverseMap();
         }
 
         private void loadLocalidadesMapping()

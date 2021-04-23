@@ -58,17 +58,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityTypeConfigations\CalificacionEntityTypeConfigurations.cs" />
+    <Compile Include="EntityTypeConfigations\EstadoEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\GeneroEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\LocalidadesEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\ProvinciaEntityTypeConfigurations.cs" />
+    <Compile Include="EntityTypeConfigations\TipoDeDocumentoEntityTypeConfigurations.cs" />
+    <Compile Include="EntityTypeConfigations\TipoDeSoporteEntityTypeConfigurations.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioCalificacion.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioEstado.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioGeneros.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioLocalidad.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioProvincia.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioTipoDeDocumento.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioTiposDeSoporte.cs" />
+    <Compile Include="Repositorios\RepositorioTipoDeDocumento.cs" />
+    <Compile Include="Repositorios\RepositorioCalificacion.cs" />
+    <Compile Include="Repositorios\RepositorioEstados.cs" />
     <Compile Include="Repositorios\RepositorioGeneros.cs" />
     <Compile Include="Repositorios\RepositorioLocalidades.cs" />
     <Compile Include="Repositorios\RepositorioProvincias.cs" />
+    <Compile Include="Repositorios\RepositorioTiposDeSoporte.cs" />
     <Compile Include="SistemaDeVideoClubDbContext.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>

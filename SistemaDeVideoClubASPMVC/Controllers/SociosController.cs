@@ -14,8 +14,8 @@ namespace SistemaDeVideoClubASPMVC.Controllers
     public class SociosController : Controller
     {
         //private readonly VideoClubDbContext _DbContext;
-        private readonly int _registrosPorPagina = 10;
-        private Listador<SocioListViewModel> _listador;
+        //private readonly int _registrosPorPagina = 10;
+        //private Listador<SocioListViewModel> _listador;
         // GET: Socios
 
         public SociosController()

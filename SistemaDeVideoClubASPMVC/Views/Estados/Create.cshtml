@@ -1,0 +1,26 @@
+﻿@model SistemaDeVideoClub.Entidades.ViewModels.Estado.EstadoListViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+    <h2>Nuevo Estado</h2>
+    <hr />
+
+    @using (Html.BeginForm("Create", "Estados", FormMethod.Post))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Descripcion)
+            @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Descripcion, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <a href="@Url.Action("Index", "Estados")" class="btn btn-success">Volver</a>
+
+        </div>
+    }
+</div>
