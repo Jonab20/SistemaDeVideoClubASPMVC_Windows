@@ -1,4 +1,5 @@
 ﻿using Ninject.Modules;
+using System.Threading.Tasks;
 using SistemaDeVideoClub.Datos;
 using SistemaDeVideoClub.Datos.Repositorios;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
@@ -17,23 +18,23 @@ namespace SistemaDeVideoClub.Windows.Ninject
             Bind<IRepositorioGeneros>().To<RepositorioGeneros>();
             Bind<IServiciosGenero>().To<ServiciosGenero>();
 
-            Bind<IRepositorioProvincia>().To<RepositorioProvincias>();
+            Bind<IRepositorioProvincias>().To<RepositorioProvincias>();
             Bind<IServiciosProvincia>().To<ServicioProvincia>();
 
-            Bind<IRepositorioLocalidad>().To<RepositorioLocalidades>();
+            Bind<IRepositorioLocalidades>().To<RepositorioLocalidades>();
             Bind<IServicioLocalidades>().To<ServicioLocalidades>();
 
-            Bind<IRepositorioEstado>().To<RepositorioEstados>();
-            Bind<IServicioEstados>().To<ServicioEstado>();
+            //Bind<IRepositorioEstados>().To<RepositorioEstados>();
+            //Bind<IServicioEstados>().To<ServicioEstado>();
 
-            Bind<IRepositorioCalificacion>().To<RepositorioCalificacion>();
-            Bind<IServicioCalificaciones>().To<ServicioCalificacion>();
+            //Bind<IRepositorioCalificaciones>().To<RepositorioCalificaciones>();
+            //Bind<IServicioCalificaciones>().To<ServicioCalificacion>();
 
-            Bind<IRepositorioTiposDeSoporte>().To<RepositorioTiposDeSoporte>();
-            Bind<IServicioTiposDeSoporte>().To<ServicioTipoDeSoporte>();
+            //Bind<IRepositorioTiposDeSoporte>().To<RepositorioTiposDeSoporte>();
+            //Bind<IServicioTiposDeSoporte>().To<ServicioTipoDeSoporte>();
 
-            Bind<IRepositorioTipoDeDocumento>().To<RepositorioTipoDeDocumento>();
-            Bind<IServicioTipoDeDocumento>().To<ServicioTipoDeDocumento>();
+            //Bind<IRepositorioTiposDeDocumentos>().To<RepositorioTiposDeDocumentos>();
+            //Bind<IServicioTipoDeDocumento>().To<ServicioTipoDeDocumento>();
         }
     }
 }

@@ -3,11 +3,11 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace SistemaDeVideoClub.Datos.EntityTypeConfigations
 {
-    public class TipoDeSoporteEntityTypeConfigurations:EntityTypeConfiguration<TipoDeSoporte>
+    /*public */class TipoDeSoporteEntityTypeConfigurations/*:EntityTypeConfiguration<TipoDeSoporte>*/
     {
-        public TipoDeSoporteEntityTypeConfigurations()
-        {
-            ToTable("TiposDeSoporte");
-        }
+        //public TipoDeSoporteEntityTypeConfigurations()
+        //{
+        //    ToTable("TiposDeSoporte");
+        //}
     }
 }

@@ -1,5 +1,7 @@
 ﻿
-namespace SistemaDeVideoClubASPMVC.Entidades
+//namespace SistemaDeVideoClubASPMVC.Entidades
+namespace SistemaDeVideoClub.Entidades.Entidades
+
 {
     public class Provincia
     {

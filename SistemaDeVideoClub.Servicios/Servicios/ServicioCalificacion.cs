@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos;
+using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Calificacion;
+using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
-using SistemaDeVideoClubASPMVC.Entidades;
+//using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
@@ -11,11 +13,11 @@ namespace SistemaDeVideoClub.Servicios.Servicios
 {
     public class ServicioCalificacion : IServicioCalificaciones
     {
-        private readonly IRepositorioEstado _repositorio;
+        private readonly IRepositorioCalificaciones _repositorio;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ServicioCalificacion(IUnitOfWork unitOfWork, IRepositorioEstado repositorio)
+        public ServicioCalificacion(IUnitOfWork unitOfWork, IRepositorioCalificaciones repositorio)
         {
             _unitOfWork = unitOfWork;
             _repositorio = repositorio;

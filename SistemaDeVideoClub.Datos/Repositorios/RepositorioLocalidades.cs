@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Localidad;
-using SistemaDeVideoClubASPMVC.Entidades;
+using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace SistemaDeVideoClub.Datos.Repositorios
 {
-    public class RepositorioLocalidades : IRepositorioLocalidad
+    public class RepositorioLocalidades : IRepositorioLocalidades
     {
         private readonly SistemaDeVideoClubDbContext _DbContext;
         private readonly IMapper _mapper;
@@ -25,7 +25,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
         {
             try
             {
-                var localidadInDb = _DbContext.localidades.SingleOrDefault(l => l.LocalidadId == localidadvmId);
+                var localidadInDb = _DbContext.Localidades.SingleOrDefault(l => l.LocalidadId == localidadvmId);
                 if (localidadInDb == null)
                 {
                     throw new Exception("Localidad inexistente");
@@ -47,9 +47,9 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             {
                 if (localidad.LocalidadId == 0)
                 {
-                    return _DbContext.localidades.Any(l => l.NombreLocalidad == localidad.NombreLocalidad);
+                    return _DbContext.Localidades.Any(l => l.NombreLocalidad == localidad.NombreLocalidad);
                 }
-                return _DbContext.localidades.Any(l => l.NombreLocalidad == localidad.NombreLocalidad && l.LocalidadId != localidad.LocalidadId);
+                return _DbContext.Localidades.Any(l => l.NombreLocalidad == localidad.NombreLocalidad && l.LocalidadId != localidad.LocalidadId);
             }
             catch (Exception)
             {
@@ -64,7 +64,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             {
                 if (provincia == null)
                 {
-                    var listaDto = _DbContext.localidades.Include(l => l.Provincia).Select(p => new LocalidadListDto
+                    var listaDto = _DbContext.Localidades.Include(l => l.Provincia).Select(p => new LocalidadListDto
                     {
                         LocalidadId = p.LocalidadId,
                         NombreLocalidad = p.NombreLocalidad,
@@ -75,7 +75,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
                 }
                 else
                 {
-                    var listaDto = _DbContext.localidades.Include(l => l.Provincia).Where(p=>p.Provincia.NombreProvincia==provincia).Select(p => new LocalidadListDto
+                    var listaDto = _DbContext.Localidades.Include(l => l.Provincia).Where(p=>p.Provincia.NombreProvincia==provincia).Select(p => new LocalidadListDto
                     {
                         LocalidadId = p.LocalidadId,
                         NombreLocalidad = p.NombreLocalidad,
@@ -95,7 +95,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
         {
             try
             {
-                return _mapper.Map<LocalidadEditDto>(_DbContext.localidades.SingleOrDefault(l => l.LocalidadId == id));
+                return _mapper.Map<LocalidadEditDto>(_DbContext.Localidades.SingleOrDefault(l => l.LocalidadId == id));
 
             }
             catch (Exception)
@@ -110,11 +110,11 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             {
                 if (localidad.LocalidadId == 0)
                 {
-                    _DbContext.localidades.Add(localidad);
+                    _DbContext.Localidades.Add(localidad);
                 }
                 else
                 {
-                    var localidadInDb = _DbContext.localidades.SingleOrDefault(l => l.LocalidadId == localidad.LocalidadId);
+                    var localidadInDb = _DbContext.Localidades.SingleOrDefault(l => l.LocalidadId == localidad.LocalidadId);
                     localidadInDb.ProvinciaId = localidad.ProvinciaId;
                     localidadInDb.NombreLocalidad = localidad.NombreLocalidad;
                     _DbContext.Entry(localidadInDb).State = EntityState.Modified;

@@ -2,8 +2,9 @@
 using SistemaDeVideoClub.Datos;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Localidad;
+using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
-using SistemaDeVideoClubASPMVC.Entidades;
+//using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
@@ -12,20 +13,15 @@ namespace SistemaDeVideoClub.Servicios.Servicios
 {
     public class ServicioLocalidades : IServicioLocalidades
     {
-        private readonly IRepositorioLocalidad _repositorio;
+        private readonly IRepositorioLocalidades _repositorio;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ServicioLocalidades(IRepositorioLocalidad repositorio,IUnitOfWork unitOfWork)
+        public ServicioLocalidades(IRepositorioLocalidades repositorio,IUnitOfWork unitOfWork)
         {
             _repositorio = repositorio;
             _unitOfWork = unitOfWork;
             _mapper = Mapeador.CrearMapper();
-        }
-
-        public void Borrar(LocalidadEditDto localidadEditDto)
-        {
-            throw new NotImplementedException();
         }
 
         public void Borrar(int localidadvmId)

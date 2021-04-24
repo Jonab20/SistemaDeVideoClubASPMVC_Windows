@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace SistemaDeVideoClub.Datos.Repositorios.Facades
 {
-    public interface IRepositorioTipoDeDocumento
+    public interface IRepositorioTiposDeDocumentos
     {
         List<TipoDeDocumentoListDto> GetLista();
         TipoDeDocumentoEditDto GetTipoPorId(int? id);
 
-        void Guardar(TiposDeDocumentos tipo);
+        void Guardar(TipoDeDocumento tipo);
 
-        bool Existe(TiposDeDocumentos tipo);
+        bool Existe(TipoDeDocumento tipo);
 
         void Borrar(int? id);
 

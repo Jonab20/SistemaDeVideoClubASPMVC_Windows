@@ -2,8 +2,9 @@
 using SistemaDeVideoClub.Datos;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
+using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
-using SistemaDeVideoClubASPMVC.Entidades;
+//using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,11 @@ namespace SistemaDeVideoClub.Servicios.Servicios
 {
     public class ServicioProvincia:IServiciosProvincia
     {
-        private readonly IRepositorioProvincia _repositorio;
+        private readonly IRepositorioProvincias _repositorio;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWorks;
 
-        public ServicioProvincia(IRepositorioProvincia repositorio ,IUnitOfWork unitOfWorks)
+        public ServicioProvincia(IRepositorioProvincias repositorio ,IUnitOfWork unitOfWorks)
         {
             _repositorio = repositorio;
             _unitOfWorks = unitOfWorks;

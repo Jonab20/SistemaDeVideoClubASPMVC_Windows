@@ -11,11 +11,9 @@ using SistemaDeVideoClub.Entidades.ViewModels.Calificacion;
 using SistemaDeVideoClub.Entidades.ViewModels.Estado;
 using SistemaDeVideoClub.Entidades.ViewModels.TipoDeDocumento;
 using SistemaDeVideoClub.Entidades.ViewModels.TipoDeSoporte;
-using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
 using SistemaDeVideoClubASPMVC.ViewModels.Localidad;
 using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
-using System;
 
 namespace SistemaDeVideoClubASPMVC.App_Start
 {
@@ -36,37 +34,7 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             loadTipoDeDocumentoMapping();
 
             loadTipoDeSoporteMapping();
-            //CreateMap<Pelicula, PeliculaEditViewModel>();
-            //CreateMap<Pelicula, PeliculaListViewModel>()
-            //    .ForMember(dest => dest.Genero, (g => g.MapFrom(ge => ge.Genero.Descripcion)))
-            //    .ForMember(dest => dest.Estado, (e => e.MapFrom(es => es.Estado.Descripcion)))
-            //    .ForMember(dest => dest.Calificacion, (c => c.MapFrom(ca => ca.Calificacion.Descripcion)));
-            //CreateMap<PeliculaEditViewModel, Pelicula>();
 
-            //CreateMap<Pelicula, PeliculasDetailsViewModel>()
-            //    .ForMember(dest => dest.Genero, (g => g.MapFrom(ge => ge.Genero.Descripcion)))
-            //    .ForMember(dest => dest.Estado, (e => e.MapFrom(es => es.Estado.Descripcion)))
-            //    .ForMember(dest => dest.Calificacion, (c => c.MapFrom(ca => ca.Calificacion.Descripcion)));
-
-
-
-            //CreateMap<Socio, SocioEditViewModel>();
-            //CreateMap<Socio, SocioListViewModel>()
-            //    .ForMember(dest => dest.NombreLocalidad, (l => l.MapFrom(lo => lo.Localidad.NombreLocalidad)))
-            //    .ForMember(dest => dest.NombreProvincia, (p => p.MapFrom(pr => pr.Provincia.NombreProvincia)))
-            //    .ForMember(dest => dest.DescripcionTipoDeDocumento, (t => t.MapFrom(td => td.TipoDeDocumento.Descripcion)));
-            //CreateMap<Socio, SocioDetailViewMode>()
-            //    .ForMember(dest => dest.NombreLocalidad, (l => l.MapFrom(lo => lo.Localidad.NombreLocalidad)))
-            //    .ForMember(dest => dest.NombreProvincia, (p => p.MapFrom(pr => pr.Provincia.NombreProvincia)))
-            //    .ForMember(dest => dest.DescripcionTipoDeDocumento, (t => t.MapFrom(td => td.TipoDeDocumento.Descripcion)));
-            //CreateMap<SocioEditViewModel, Socio>();
-
-            //CreateMap<Localidad, LocalidadEditViewModel>();
-            //CreateMap<Localidad, LocalidadListViewModel>()
-            //    .ForMember(dest => dest.NombreProvincia, (p => p.MapFrom(pr => pr.Provincia.NombreProvincia)));
-            //CreateMap<Localidad, LocalidadDetailViewModel>()
-            //    .ForMember(dest => dest.NombreProvincia, (p => p.MapFrom(pr => pr.Provincia.NombreProvincia)));
-            //CreateMap<LocalidadEditViewModel, Localidad>();
         }
 
         private void loadTipoDeSoporteMapping()
@@ -89,8 +57,8 @@ namespace SistemaDeVideoClubASPMVC.App_Start
 
         private void loadCalificacionesMapping()
         {
-            CreateMap<TiposDeDocumentos, TipoDeDocumentoListDto>();
-            CreateMap<TiposDeDocumentos, TipoDeDocumentoEditDto>().ReverseMap();
+            CreateMap<TipoDeDocumento, TipoDeDocumentoListDto>();
+            CreateMap<TipoDeDocumento, TipoDeDocumentoEditDto>().ReverseMap();
             CreateMap<TipoDeDocumentoListDto, TipoDeDocumentoListViewModel>().ReverseMap();
             CreateMap<TipoDeDocumentoEditDto, TipoDeDocumentoEditViewModel>().ReverseMap();
             CreateMap<TipoDeDocumentoEditDto, TipoDeDocumentoListDto>().ReverseMap();

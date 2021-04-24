@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
-using SistemaDeVideoClubASPMVC.Entidades;
+using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace SistemaDeVideoClub.Datos.Repositorios
 {
-    public class RepositorioProvincias : IRepositorioProvincia
+    public class RepositorioProvincias : IRepositorioProvincias
     {
         private readonly SistemaDeVideoClubDbContext _DbContext;
         private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
         {
             try
             {
-                var provinciaInDb = _DbContext.provincias.SingleOrDefault(p=>p.ProvinciaId==id);
+                var provinciaInDb = _DbContext.Provincias.SingleOrDefault(p=>p.ProvinciaId==id);
                 _DbContext.Entry(provinciaInDb).State = EntityState.Deleted;
             }
             catch (Exception)
@@ -36,15 +36,15 @@ namespace SistemaDeVideoClub.Datos.Repositorios
         {
             if (provincia.ProvinciaId == 0)
             {
-                return _DbContext.provincias.Any(g => g.NombreProvincia == provincia.NombreProvincia);
+                return _DbContext.Provincias.Any(g => g.NombreProvincia == provincia.NombreProvincia);
             }
-            return _DbContext.provincias.Any(p => p.NombreProvincia == provincia.NombreProvincia && p.ProvinciaId != provincia.ProvinciaId);
+            return _DbContext.Provincias.Any(p => p.NombreProvincia == provincia.NombreProvincia && p.ProvinciaId != provincia.ProvinciaId);
         }
         public List<ProvinciaListDto> GetLista()
         {
             try
             {
-                var lista = _DbContext.provincias.ToList();
+                var lista = _DbContext.Provincias.ToList();
                 return _mapper.Map<List<ProvinciaListDto>>(lista);
             }
             catch (Exception)
@@ -56,7 +56,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
         {
             try
             {
-                return _mapper.Map<ProvinciaEditDto>(_DbContext.provincias.SingleOrDefault(p => p.ProvinciaId == id));
+                return _mapper.Map<ProvinciaEditDto>(_DbContext.Provincias.SingleOrDefault(p => p.ProvinciaId == id));
             }
             catch (Exception)
             {
@@ -69,11 +69,11 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             {
                 if (provincia.ProvinciaId == 0)
                 {
-                    _DbContext.provincias.Add(provincia);
+                    _DbContext.Provincias.Add(provincia);
                 }
                 else
                 {
-                    var provinciaInDb = _DbContext.provincias.SingleOrDefault(p => p.ProvinciaId == provincia.ProvinciaId);
+                    var provinciaInDb = _DbContext.Provincias.SingleOrDefault(p => p.ProvinciaId == provincia.ProvinciaId);
                     provinciaInDb.NombreProvincia = provincia.NombreProvincia;
                     _DbContext.Entry(provinciaInDb).State = EntityState.Modified;
                 }
@@ -88,7 +88,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios
         {
             try
             {
-                return _DbContext.localidades.Any(p => p.ProvinciaId == provincia.ProvinciaId);
+                return _DbContext.Localidades.Any(p => p.ProvinciaId == provincia.ProvinciaId);
             }
             catch (Exception e)
             {

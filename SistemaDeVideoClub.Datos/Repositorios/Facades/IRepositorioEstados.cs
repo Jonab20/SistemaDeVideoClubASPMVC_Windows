@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SistemaDeVideoClub.Datos.Repositorios.Facades
 {
-    public interface IRepositorioEstado
+    public interface IRepositorioEstados
     {
         List<EstadoListDto> GetLista();
         EstadoEditDto GetEstadoPorId(int? id);

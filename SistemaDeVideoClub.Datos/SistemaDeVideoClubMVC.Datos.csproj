@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -62,20 +62,23 @@
     <Compile Include="EntityTypeConfigations\EstadoEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\GeneroEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\LocalidadesEntityTypeConfigurations.cs" />
+    <Compile Include="EntityTypeConfigations\PeliculaEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\ProvinciaEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\TipoDeDocumentoEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\TipoDeSoporteEntityTypeConfigurations.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorios\Facades\IRepositorioCalificacion.cs" />
-    <Compile Include="Repositorios\Facades\IRepositorioEstado.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioCalificaciones.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioEstados.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioGeneros.cs" />
-    <Compile Include="Repositorios\Facades\IRepositorioLocalidad.cs" />
-    <Compile Include="Repositorios\Facades\IRepositorioProvincia.cs" />
-    <Compile Include="Repositorios\Facades\IRepositorioTipoDeDocumento.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioLocalidades.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioPeliculas.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioProvincias.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioTiposDeDocumentos.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioTiposDeSoporte.cs" />
-    <Compile Include="Repositorios\RepositorioTipoDeDocumento.cs" />
-    <Compile Include="Repositorios\RepositorioCalificacion.cs" />
+    <Compile Include="Repositorios\RepositorioPeliculas.cs" />
+    <Compile Include="Repositorios\RepositorioTiposDeDocumentos.cs" />
+    <Compile Include="Repositorios\RepositorioCalificaciones.cs" />
     <Compile Include="Repositorios\RepositorioEstados.cs" />
     <Compile Include="Repositorios\RepositorioGeneros.cs" />
     <Compile Include="Repositorios\RepositorioLocalidades.cs" />

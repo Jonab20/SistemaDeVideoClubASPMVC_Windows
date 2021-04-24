@@ -59,7 +59,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
                 return View(localidadVm);
             }
 
-            LocalidadEditDto  localidadDto = Mapper.Map<LocalidadEditDto>(localidadVm);
+            LocalidadEditDto  localidadDto = _mapper.Map<LocalidadEditDto>(localidadVm);
 
             if (_servicio.Existe(localidadDto))
             {

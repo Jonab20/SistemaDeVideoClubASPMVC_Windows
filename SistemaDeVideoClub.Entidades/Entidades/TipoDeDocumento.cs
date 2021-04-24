@@ -1,6 +1,6 @@
 ﻿namespace SistemaDeVideoClub.Entidades.Entidades
 {
-    public class TiposDeDocumentos
+    public class TipoDeDocumento
     {
         public int TipoDeDocumentoId { get; set; }
         public string Descripcion { get; set; }

@@ -1,5 +1,6 @@
 ﻿using SistemaDeVideoClub.Entidades.DTOs.Localidad;
-using SistemaDeVideoClubASPMVC.Entidades;
+using SistemaDeVideoClub.Entidades.Entidades;
+//using SistemaDeVideoClubASPMVC.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SistemaDeVideoClub.Datos.Repositorios.Facades
 {
-    public interface IRepositorioLocalidad
+    public interface IRepositorioLocalidades
     {
         List<LocalidadListDto> GetLista(string provincia);
 

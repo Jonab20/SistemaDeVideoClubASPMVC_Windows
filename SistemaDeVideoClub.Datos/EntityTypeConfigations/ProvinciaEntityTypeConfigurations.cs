@@ -1,9 +1,10 @@
-﻿using SistemaDeVideoClubASPMVC.Entidades;
+﻿using SistemaDeVideoClub.Entidades.Entidades;
+//using SistemaDeVideoClubASPMVC.Entidades;
 using System.Data.Entity.ModelConfiguration;
 
 namespace SistemaDeVideoClub.Datos.EntityTypeConfigations
 {
-    class ProvinciaEntityTypeConfigurations:EntityTypeConfiguration<Provincia>
+    public class ProvinciaEntityTypeConfigurations:EntityTypeConfiguration<Provincia>
     {
         public ProvinciaEntityTypeConfigurations()
         {

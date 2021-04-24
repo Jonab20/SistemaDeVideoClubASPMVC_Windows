@@ -70,21 +70,22 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             kernel.Bind<IRepositorioGeneros>().To<RepositorioGeneros>().InRequestScope();
 
             kernel.Bind<IServiciosProvincia>().To<ServicioProvincia>().InRequestScope();
-            kernel.Bind<IRepositorioProvincia>().To<RepositorioProvincias>().InRequestScope();
+            kernel.Bind<IRepositorioProvincias>().To<RepositorioProvincias>().InRequestScope();
 
             kernel.Bind<IServicioLocalidades>().To<ServicioLocalidades>().InRequestScope();
-            kernel.Bind<IRepositorioLocalidad>().To<RepositorioLocalidades>().InRequestScope();
+            kernel.Bind<IRepositorioLocalidades>().To<RepositorioLocalidades>().InRequestScope();
 
-            kernel.Bind<IServicioEstados>().To<ServicioEstado>().InRequestScope();
-            kernel.Bind<IRepositorioEstado>().To<RepositorioEstados>().InRequestScope();
+            //kernel.Bind<IServicioEstados>().To<ServicioEstado>().InRequestScope();
+            //kernel.Bind<IRepositorioEstados>().To<RepositorioEstados>().InRequestScope();
 
-            kernel.Bind<IServicioCalificaciones>().To<ServicioCalificacion>().InRequestScope();
-            kernel.Bind<IRepositorioCalificacion>().To<RepositorioCalificacion>().InRequestScope();
+            //kernel.Bind<IServicioCalificaciones>().To<ServicioCalificacion>().InRequestScope();
+            //kernel.Bind<IRepositorioCalificaciones>().To<RepositorioCalificaciones>().InRequestScope();
 
-            kernel.Bind<IServicioTipoDeDocumento>().To<ServicioTipoDeDocumento>().InRequestScope();
-            kernel.Bind<IRepositorioTipoDeDocumento>().To<RepositorioTipoDeDocumento>().InRequestScope();
-            kernel.Bind<IServicioTiposDeSoporte>().To<ServicioTipoDeSoporte>().InRequestScope();
-            kernel.Bind<IRepositorioTiposDeSoporte>().To<RepositorioTiposDeSoporte>().InRequestScope();
+            //kernel.Bind<IServicioTipoDeDocumento>().To<ServicioTipoDeDocumento>().InRequestScope();
+            //kernel.Bind<IRepositorioTiposDeDocumentos>().To<RepositorioTiposDeDocumentos>().InRequestScope();
+
+            //kernel.Bind<IServicioTiposDeSoporte>().To<ServicioTipoDeSoporte>().InRequestScope();
+            //kernel.Bind<IRepositorioTiposDeSoporte>().To<RepositorioTiposDeSoporte>().InRequestScope();
 
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind(typeof(SistemaDeVideoClubDbContext)).ToSelf().InSingletonScope();

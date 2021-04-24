@@ -1,10 +1,11 @@
 ﻿using SistemaDeVideoClub.Entidades.DTOs.Provincia;
-using SistemaDeVideoClubASPMVC.Entidades;
+using SistemaDeVideoClub.Entidades.Entidades;
+//using SistemaDeVideoClubASPMVC.Entidades;
 using System.Collections.Generic;
 
 namespace SistemaDeVideoClub.Datos.Repositorios.Facades
 {
-    public interface IRepositorioProvincia
+    public interface IRepositorioProvincias
     {
         List<ProvinciaListDto> GetLista();
         ProvinciaEditDto GetProvinciaPorId(int? id);

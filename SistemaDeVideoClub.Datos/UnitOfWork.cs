@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SistemaDeVideoClub.Datos
+﻿namespace SistemaDeVideoClub.Datos
 {
     public class UnitOfWork : IUnitOfWork
     {

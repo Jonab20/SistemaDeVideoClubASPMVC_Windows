@@ -6,7 +6,8 @@ using SistemaDeVideoClub.Entidades.DTOs.Genero;
 using AutoMapper;
 using SistemaDeVideoClubMVC.Mapeador;
 using SistemaDeVideoClub.Datos;
-using SistemaDeVideoClubASPMVC.Entidades;
+using SistemaDeVideoClub.Entidades.Entidades;
+//using SistemaDeVideoClubASPMVC.Entidades;
 
 namespace SistemaDeVideoClub.Servicios.Servicios
 {

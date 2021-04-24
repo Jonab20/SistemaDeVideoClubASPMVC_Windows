@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
 using SistemaDeVideoClub.Entidades.DTOs.Genero;
-using SistemaDeVideoClubASPMVC.Entidades;
+using SistemaDeVideoClub.Entidades.Entidades;
+//using SistemaDeVideoClubASPMVC.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
@@ -24,43 +25,43 @@ namespace SistemaDeVideoClub.Datos.Repositorios
         {
             try
             {
-                var generoInDb = _DbContext.generos.SingleOrDefault(g=>g.GeneroId==id);
+                var generoInDb = _DbContext.Generos.SingleOrDefault(g=>g.GeneroId==id);
                 _DbContext.Entry(generoInDb).State = EntityState.Deleted;
             }
             catch (Exception)
             {
-                throw new Exception("Error al intentar borar el genero");
+                throw new Exception(/*"Error al intentar borar el genero"*/);
             }
         }
         public bool Existe(Genero genero)
         {
             if (genero.GeneroId == 0)
             {
-                return _DbContext.generos.Any(g => g.Descripcion == genero.Descripcion);
+                return _DbContext.Generos.Any(g => g.Descripcion == genero.Descripcion);
             }
-            return _DbContext.generos.Any(g => g.Descripcion == genero.Descripcion && g.GeneroId != genero.GeneroId);
+            return _DbContext.Generos.Any(g => g.Descripcion == genero.Descripcion && g.GeneroId != genero.GeneroId);
         }
         public GeneroEditDto GetGeneroPorId(int? id)
         {
             try
             {
-                return _mapper.Map<GeneroEditDto>( _DbContext.generos.SingleOrDefault(g => g.GeneroId == id));
+                return _mapper.Map<GeneroEditDto>( _DbContext.Generos.SingleOrDefault(g => g.GeneroId == id));
             }
             catch (Exception)
             {
-                throw new Exception("Error al intentar obtener genero");
+                throw new Exception(/*"Error al intentar obtener genero"*/);
             }
         }
         public List<GeneroListDto> GetLista()
         {
             try
             {
-                var lista = _DbContext.generos.ToList();
+                var lista = _DbContext.Generos.ToList();
                 return _mapper.Map<List<GeneroListDto>>(lista);
             }
             catch (Exception)
             {
-                throw new Exception("Error al leer los generos");
+                throw new Exception(/*"Error al leer los generos"*/);
             }
         }
         public void Guardar(Genero genero)
@@ -69,11 +70,11 @@ namespace SistemaDeVideoClub.Datos.Repositorios
             {
                 if (genero.GeneroId == 0)
                 {
-                    _DbContext.generos.Add(genero);
+                    _DbContext.Generos.Add(genero);
                 }
                 else
                 {
-                    var generoInDb = _DbContext.generos.SingleOrDefault(g => g.GeneroId == genero.GeneroId);
+                    var generoInDb = _DbContext.Generos.SingleOrDefault(g => g.GeneroId == genero.GeneroId);
                     generoInDb.Descripcion = genero.Descripcion;
                     _DbContext.Entry(generoInDb).State = EntityState.Modified;
                 }

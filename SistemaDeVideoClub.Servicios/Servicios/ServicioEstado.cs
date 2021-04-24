@@ -12,11 +12,11 @@ namespace SistemaDeVideoClub.Servicios.Servicios
 {
     public class ServicioEstado : IServicioEstados
     {
-        private readonly IRepositorioEstado _repositorio;
+        private readonly IRepositorioEstados _repositorio;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ServicioEstado(IUnitOfWork unitOfWork, IRepositorioEstado repositorio)
+        public ServicioEstado(IUnitOfWork unitOfWork, IRepositorioEstados repositorio)
         {
             _unitOfWork = unitOfWork;
             _repositorio = repositorio;
