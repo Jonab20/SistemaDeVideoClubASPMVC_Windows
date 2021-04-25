@@ -64,6 +64,7 @@
     <Compile Include="EntityTypeConfigations\LocalidadesEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\PeliculaEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\ProvinciaEntityTypeConfigurations.cs" />
+    <Compile Include="EntityTypeConfigations\SocioEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\TipoDeDocumentoEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\TipoDeSoporteEntityTypeConfigurations.cs" />
     <Compile Include="IUnitOfWork.cs" />
@@ -74,9 +75,11 @@
     <Compile Include="Repositorios\Facades\IRepositorioLocalidades.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioPeliculas.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioProvincias.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioSocios.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioTiposDeDocumentos.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioTiposDeSoporte.cs" />
     <Compile Include="Repositorios\RepositorioPeliculas.cs" />
+    <Compile Include="Repositorios\RepositorioSocios.cs" />
     <Compile Include="Repositorios\RepositorioTiposDeDocumentos.cs" />
     <Compile Include="Repositorios\RepositorioCalificaciones.cs" />
     <Compile Include="Repositorios\RepositorioEstados.cs" />

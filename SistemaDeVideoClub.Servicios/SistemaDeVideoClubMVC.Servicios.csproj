@@ -57,6 +57,7 @@
     <Compile Include="Servicios\Facades\IServicioPelicula.cs" />
     <Compile Include="Servicios\Facades\IServiciosGenero.cs" />
     <Compile Include="Servicios\Facades\IServiciosProvincia.cs" />
+    <Compile Include="Servicios\Facades\IServiciosSocios.cs" />
     <Compile Include="Servicios\Facades\IServicioTipoDeDocumento.cs" />
     <Compile Include="Servicios\Facades\IServicioTiposDeSoporte.cs" />
     <Compile Include="Servicios\ServicioCalificacion.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Servicios\ServicioPeliculas.cs" />
     <Compile Include="Servicios\ServicioProvincia.cs" />
     <Compile Include="Servicios\ServiciosGenero.cs" />
+    <Compile Include="Servicios\ServicioSocio.cs" />
     <Compile Include="Servicios\ServicioTipoDeDocumento.cs" />
     <Compile Include="Servicios\ServicioTipoDeSoporte.cs" />
   </ItemGroup>

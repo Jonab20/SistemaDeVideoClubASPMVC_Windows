@@ -1,32 +1,35 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
-using SistemaDeVideoClub.Entidades.DTOs.Pelicula;
+using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SistemaDeVideoClub.Servicios.Servicios
 {
-    public class ServicioPeliculas : IServicioPelicula
+    public class ServicioSocio:IServiciosSocios
     {
-        private readonly IRepositorioPeliculas _repositorio;
+        private readonly IRepositorioSocios _repositorio;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ServicioPeliculas(IRepositorioPeliculas repositorio, IUnitOfWork unitOfWork)
+        public ServicioSocio(IRepositorioSocios repositorio, IUnitOfWork unitOfWork)
         {
             _repositorio = repositorio;
             _unitOfWork = unitOfWork;
             _mapper = Mapeador.CrearMapper();
         }
-        public void Borrar(int peliculaEditDto)
+        public void Borrar(int socioEditDto)
         {
             try
             {
-                _repositorio.Borrar(peliculaEditDto);
+                _repositorio.Borrar(socioEditDto);
                 _unitOfWork.Save();
             }
             catch (Exception e)
@@ -36,12 +39,12 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
         }
 
-        public bool Existe(PeliculaEditDto peliculaEditDto)
+        public bool Existe(SocioEditDto socioEditDto)
         {
             try
             {
-                Pelicula pelicula = _mapper.Map<Pelicula>(peliculaEditDto);
-                return _repositorio.Existe(pelicula);
+                Socio socio = _mapper.Map<Socio>(socioEditDto);
+                return _repositorio.Existe(socio);
             }
             catch (Exception e)
             {
@@ -50,7 +53,7 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
         }
 
-        public List<PeliculaListDto> GetLista(string listaDto)
+        public List<SocioListDto> GetLista(string listaDto)
         {
             try
             {
@@ -61,13 +64,14 @@ namespace SistemaDeVideoClub.Servicios.Servicios
 
                 throw new Exception(e.Message);
             }
+
         }
 
-        public PeliculaEditDto GetLocalidadPorId(int? id)//TODO : CAMBIAR NOMBRE DEL METODO
+        public SocioEditDto GetSocioPorId(int? id)
         {
             try
             {
-                return _repositorio.GetPeliculaPorId(id);
+                return _repositorio.GetSocioPorId(id);
             }
             catch (Exception e)
             {
@@ -75,16 +79,17 @@ namespace SistemaDeVideoClub.Servicios.Servicios
                 throw new Exception(e.Message);
 
             }
+
         }
 
-        public void Guardar(PeliculaEditDto peliculaEditDto)
+        public void Guardar(SocioEditDto socioEditDto)
         {
             try
             {
-                Pelicula pelicula = _mapper.Map<Pelicula>(peliculaEditDto);
-                _repositorio.Guardar(pelicula);
+                Socio socio = _mapper.Map<Socio>(socioEditDto);
+                _repositorio.Guardar(socio);
                 _unitOfWork.Save();
-                peliculaEditDto.PeliculaId = pelicula.PeliculaId;
+                socioEditDto.SocioId = socio.SocioId;
             }
             catch (Exception e)
             {
@@ -92,6 +97,7 @@ namespace SistemaDeVideoClub.Servicios.Servicios
                 throw new Exception(e.Message);
 
             }
+
         }
     }
 }

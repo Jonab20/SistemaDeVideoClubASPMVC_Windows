@@ -24,10 +24,14 @@ namespace SistemaDeVideoClub.Datos
         public DbSet<Genero> Generos { get; set; }
         public DbSet<Provincia> Provincias { get; set; }
         public DbSet<Localidad> Localidades { get; set; }
-        //public DbSet<Estado> Estados { get; set; }
-        //public DbSet<Calificacion> Calificacion { get; set; }
-        //public DbSet<TipoDeDocumento> TiposDeDocumento { get; set; }
-        //public DbSet<TipoDeSoporte> TipoDeSoporte { get; set; }
+        public DbSet<Estado> Estados { get; set; }
+        public DbSet<Calificacion> Calificacion { get; set; }
+        public DbSet<TipoDeDocumento> TiposDeDocumento { get; set; }
+        public DbSet<Socio> Socios { get; set; }
+
+
+
         //public DbSet<Pelicula> Pelicula { get; set; }
-    }
+    }   //public DbSet<TipoDeSoporte> TipoDeSoporte { get; set; } //TODO : ROMPE EL PROGRAMA REVISAR 
+
 }

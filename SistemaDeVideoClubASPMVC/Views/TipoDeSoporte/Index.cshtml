@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SistemaDeVideoClub.Entidades.ViewModels.TipoDeDocumento.TipoDeDocumentoListViewModel>
+﻿@model IEnumerable<SistemaDeVideoClub.Entidades.ViewModels.TipoDeSoporte.TipoDeSoporteListViewModel>
 
 @{
     ViewBag.Title = "Tipos de Soportes";
@@ -36,9 +36,9 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                <a href="@Url.Action("Edit","TipoDeSoporte",new{id=item.GeneroId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+                <a href="@Url.Action("Edit","TipoDeSoporte",new{id=item.SoporteId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
                 @*<a href="@Url.Action("Details","Generos",new{id=item.GeneroId})" class="btn btn-info"><i class="fas fa-edit"></i> Detalles</a>*@
-                <a href="@Url.Action("Delete","TipoDeSoporte",new{id=item.GeneroId})" class="btn btn-danger"><i class="fas fa-edit"></i> Borrar</a>
+                <a href="@Url.Action("Delete","TipoDeSoporte",new{id=item.SoporteId})" class="btn btn-danger"><i class="fas fa-edit"></i> Borrar</a>
             </td>
         </tr>
     }

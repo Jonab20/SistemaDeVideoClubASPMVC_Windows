@@ -112,7 +112,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios.Facades
     //        catch (Exception)
     //        {
     //            throw new Exception("Error al cargar peliculas");
-    //        }
+
 
     //    }
 

@@ -1,5 +1,5 @@
 ﻿
-@model  SistemaDeVideoClubASPMVC.ViewModels.Listador<SistemaDeVideoClubASPMVC.ViewModels.Socio.SocioListViewModel>
+@model  IEnumerable<SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel.SocioListViewModel>
 @{
     ViewBag.Title = "Index";
 }
@@ -24,23 +24,23 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(m => m.Registros.First().Nombre)
+                @Html.DisplayNameFor(m => m.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(m => m.Registros.First().Apellido)
+                @Html.DisplayNameFor(m => m.Apellido)
             </th>
 
             <th>
-                @Html.DisplayNameFor(m => m.Registros.First().NroDocumento)
+                @Html.DisplayNameFor(m => m.NroDocumento)
             </th>
             <th>
-                @Html.DisplayNameFor(m => m.Registros.First().TelefonoMovil)
+                @Html.DisplayNameFor(m => m.TelefonoMovil)
             </th>
             <th>
-                @Html.DisplayNameFor(m => m.Registros.First().Activo)
+                @Html.DisplayNameFor(m => m.Activo)
             </th>
             <th>
-                @Html.DisplayNameFor(m => m.Registros.First().Sancionado)
+                @Html.DisplayNameFor(m => m.Sancionado)
             </th>
             <th>
 
@@ -48,9 +48,9 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Registros.Any())
+        @if (Model.Any())
         {
-            foreach (var item in Model.Registros)
+            foreach (var item in Model)
             {
         <tr>
             <td>
@@ -92,7 +92,7 @@
 
     </tbody>
 </table>
-@if (Model.Registros.Any())
+@*@if (Model.Registros.Any())
 {
     <span>
         <strong>@Model.TotalRegistros</strong> registros encontrados
@@ -136,5 +136,5 @@ else
     <span></span>
     @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
         new { @class = "btn btn-sm btn-secondary disabled" })
-}
+}*@
 

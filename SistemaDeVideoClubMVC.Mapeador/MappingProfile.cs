@@ -4,16 +4,20 @@ using SistemaDeVideoClub.Entidades.DTOs.Estado;
 using SistemaDeVideoClub.Entidades.DTOs.Genero;
 using SistemaDeVideoClub.Entidades.DTOs.Localidad;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
+using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Entidades.DTOs.TipoDeDocumento;
 using SistemaDeVideoClub.Entidades.DTOs.TipoDeSoporte;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Entidades.ViewModels.Calificacion;
 using SistemaDeVideoClub.Entidades.ViewModels.Estado;
+using SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel;
 using SistemaDeVideoClub.Entidades.ViewModels.TipoDeDocumento;
 using SistemaDeVideoClub.Entidades.ViewModels.TipoDeSoporte;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
 using SistemaDeVideoClubASPMVC.ViewModels.Localidad;
 using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
+using SistemaDeVideoClubASPMVC.ViewModels.Socio;
+using System;
 
 namespace SistemaDeVideoClubASPMVC.App_Start
 {
@@ -35,6 +39,16 @@ namespace SistemaDeVideoClubASPMVC.App_Start
 
             loadTipoDeSoporteMapping();
 
+            loadSocioMapping();
+
+        }
+
+        private void loadSocioMapping()
+        {
+            CreateMap<SocioEditDto, SocioListDto>();
+            CreateMap<SocioEditDto, Socio>().ReverseMap();
+            CreateMap<SocioListDto, SocioListViewModel>().ReverseMap();
+            CreateMap<SocioEditViewModel, SocioEditDto>().ReverseMap();
         }
 
         private void loadTipoDeSoporteMapping()
