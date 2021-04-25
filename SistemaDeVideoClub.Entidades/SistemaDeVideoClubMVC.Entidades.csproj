@@ -54,6 +54,8 @@
     <Compile Include="DTOs\Pelicula\PeliculaListDto.cs" />
     <Compile Include="DTOs\Provincia\ProvinciaEditDto.cs" />
     <Compile Include="DTOs\Provincia\ProvinciaListDto.cs" />
+    <Compile Include="DTOs\Socio\SocioEditDto.cs" />
+    <Compile Include="DTOs\Socio\SocioListDto.cs" />
     <Compile Include="DTOs\TipoDeDocumento\TipoDeDocumentoEditDto.cs" />
     <Compile Include="DTOs\TipoDeDocumento\TipoDeDocumentoListDto.cs" />
     <Compile Include="DTOs\TipoDeSoporte\TipoDeSoporteEditDto.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Entidades\Localidad.cs" />
     <Compile Include="Entidades\Pelicula.cs" />
     <Compile Include="Entidades\Provincia.cs" />
+    <Compile Include="Entidades\Socio.cs" />
     <Compile Include="Entidades\TipoDeSoporte.cs" />
     <Compile Include="Entidades\TipoDeDocumento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

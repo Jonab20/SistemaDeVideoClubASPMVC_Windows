@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel;
+using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClubASPMVC.Models;
 using SistemaDeVideoClubASPMVC.ViewModels;
 using SistemaDeVideoClubASPMVC.ViewModels.Socio;
+using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,41 +16,28 @@ namespace SistemaDeVideoClubASPMVC.Controllers
 {
     public class SociosController : Controller
     {
-        //private readonly VideoClubDbContext _DbContext;
-        //private readonly int _registrosPorPagina = 10;
-        //private Listador<SocioListViewModel> _listador;
+        private readonly IServiciosSocios _servicio;
+        private readonly IServicioTipoDeDocumento _serviciosTipo;
+        private readonly IServicioLocalidades _serviciosLocalidad;
+        private readonly IServiciosProvincia _serviciosProvincia;
+
+        private readonly IMapper _mapper;
         // GET: Socios
 
-        public SociosController()
+        public SociosController(IServiciosSocios servicio, IServicioTipoDeDocumento serviciosTipo, IServicioLocalidades serviciosLocalidad, IServiciosProvincia serviciosProvincia)
         {
-            //_DbContext = new VideoClubDbContext();
+            _serviciosTipo = serviciosTipo;
+            _serviciosLocalidad = serviciosLocalidad;
+            _serviciosProvincia = serviciosProvincia;
+            _servicio = servicio;
+            _mapper = Mapeador.CrearMapper();
         }
-        //public ActionResult Index(int pagina = 1)
-        //{
-        //    int totalRegistros = _DbContext.Socios.Count();
-
-        //    var socio = _DbContext.Socios
-        //        .Include(s => s.TipoDeDocumento)
-        //        .Include(s => s.Localidad)
-        //        .Include(s => s.Provincia)
-        //        .OrderBy(s => s.Nombre)
-        //        .Skip((pagina - 1) * _registrosPorPagina)
-        //        .Take(_registrosPorPagina)
-        //        .ToList();
-
-        //    var socioVm = Mapper.Map<List<Socio>, List<SocioListViewModel>>(socio);
-        //    var totalPaginas = (int)Math.Ceiling((double)totalRegistros / _registrosPorPagina);
-        //    _listador = new Listador<SocioListViewModel>()
-        //    {
-        //        RegistrosPorPagina = _registrosPorPagina,
-        //        TotalPaginas = totalPaginas,
-        //        TotalRegistros = totalRegistros,
-        //        PaginaActual = pagina,
-        //        Registros = socioVm
-        //    };
-
-        //    return View(_listador);
-        //}
+        public ActionResult Index(int pagina = 1)
+        {
+            var listaDto = _servicio.GetLista(null);
+            var listaVm = _mapper.Map<List<SocioListViewModel>>(listaDto);
+            return View(listaVm);
+        }
 
         //// GET: Socios/Crear
         //public ActionResult Create()
