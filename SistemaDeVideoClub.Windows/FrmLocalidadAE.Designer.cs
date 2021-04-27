@@ -46,6 +46,7 @@ namespace SistemaDeVideoClub.Windows
             this.LocalidadTxt.Name = "LocalidadTxt";
             this.LocalidadTxt.Size = new System.Drawing.Size(183, 20);
             this.LocalidadTxt.TabIndex = 0;
+            this.LocalidadTxt.TextChanged += new System.EventHandler(this.LocalidadTxt_TextChanged);
             // 
             // label1
             // 
@@ -55,6 +56,7 @@ namespace SistemaDeVideoClub.Windows
             this.label1.Size = new System.Drawing.Size(122, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nombre de la Localidad:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cboProvincias
             // 
@@ -64,6 +66,7 @@ namespace SistemaDeVideoClub.Windows
             this.cboProvincias.Name = "cboProvincias";
             this.cboProvincias.Size = new System.Drawing.Size(183, 21);
             this.cboProvincias.TabIndex = 2;
+            this.cboProvincias.SelectedIndexChanged += new System.EventHandler(this.cboProvincias_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -73,6 +76,7 @@ namespace SistemaDeVideoClub.Windows
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Provincia:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnCancelar
             // 

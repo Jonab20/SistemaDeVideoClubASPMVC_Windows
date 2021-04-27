@@ -153,7 +153,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             LocalidadEditDto localidadEditDto = _servicio.GetLocalidadPorId(id);
             if (localidadEditDto== null)
             {
-                return HttpNotFound("Codigo de loacalidad no encontrado");
+                return HttpNotFound("Codigo de localidad no encontrado");
             }
             LocalidadEditViewModel localidadVm = _mapper.Map<LocalidadEditViewModel>(localidadEditDto);
             localidadVm.Provincias = _mapper.Map<List<ProvinciaListViewModel>>(_serviciosProvincia.GetLista());

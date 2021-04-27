@@ -7,7 +7,7 @@ namespace SistemaDeVideoClub.Datos.EntityTypeConfigations
     {
         public TipoDeDocumentoEntityTypeConfigurations()
         {
-            ToTable("TiposDeDocumento");
+            ToTable("TiposdeDocumento");
         }
     }
 }

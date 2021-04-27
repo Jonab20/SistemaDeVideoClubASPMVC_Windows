@@ -24,17 +24,23 @@ namespace SistemaDeVideoClub.Windows.Ninject
             Bind<IRepositorioLocalidades>().To<RepositorioLocalidades>();
             Bind<IServicioLocalidades>().To<ServicioLocalidades>();
 
-            //Bind<IRepositorioEstados>().To<RepositorioEstados>();
-            //Bind<IServicioEstados>().To<ServicioEstado>();
+            Bind<IRepositorioPeliculas>().To<RepositorioPeliculas>();
+            Bind<IServicioPelicula>().To<ServicioPeliculas>();
 
-            //Bind<IRepositorioCalificaciones>().To<RepositorioCalificaciones>();
-            //Bind<IServicioCalificaciones>().To<ServicioCalificacion>();
+            Bind<IRepositorioEstados>().To<RepositorioEstados>();
+            Bind<IServicioEstados>().To<ServicioEstado>();
 
-            //Bind<IRepositorioTiposDeSoporte>().To<RepositorioTiposDeSoporte>();
-            //Bind<IServicioTiposDeSoporte>().To<ServicioTipoDeSoporte>();
+            Bind<IRepositorioCalificaciones>().To<RepositorioCalificaciones>();
+            Bind<IServicioCalificaciones>().To<ServicioCalificacion>();
 
-            //Bind<IRepositorioTiposDeDocumentos>().To<RepositorioTiposDeDocumentos>();
-            //Bind<IServicioTipoDeDocumento>().To<ServicioTipoDeDocumento>();
+            Bind<IRepositorioSoporte>().To<RepositorioSoporte>();
+            Bind<IServicioSoporte>().To<ServicioSoporte>();
+
+            Bind<IRepositorioTiposDeDocumentos>().To<RepositorioTiposDeDocumentos>();
+            Bind<IServicioTipoDeDocumento>().To<ServicioTipoDeDocumento>();
+
+            Bind<IRepositorioSocios>().To<RepositorioSocios>();
+            Bind<IServiciosSocios>().To<ServicioSocio>();
         }
     }
 }

@@ -6,22 +6,25 @@ using SistemaDeVideoClub.Entidades.DTOs.Localidad;
 using SistemaDeVideoClub.Entidades.DTOs.Provincia;
 using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Entidades.DTOs.TipoDeDocumento;
-using SistemaDeVideoClub.Entidades.DTOs.TipoDeSoporte;
+using SistemaDeVideoClub.Entidades.DTOs.Soporte;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Entidades.ViewModels.Calificacion;
 using SistemaDeVideoClub.Entidades.ViewModels.Estado;
 using SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel;
 using SistemaDeVideoClub.Entidades.ViewModels.TipoDeDocumento;
-using SistemaDeVideoClub.Entidades.ViewModels.TipoDeSoporte;
+using SistemaDeVideoClub.Entidades.ViewModels.Soporte;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
 using SistemaDeVideoClubASPMVC.ViewModels.Localidad;
 using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
 using SistemaDeVideoClubASPMVC.ViewModels.Socio;
 using System;
+using SistemaDeVideoClub.Entidades.DTOs.Pelicula;
+using SistemaDeVideoClub.Entidades.ViewModels.Pelicula;
+using SistemaDeVideoClub.Entidades.ViewModels.Carrito;
 
 namespace SistemaDeVideoClubASPMVC.App_Start
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
@@ -37,27 +40,53 @@ namespace SistemaDeVideoClubASPMVC.App_Start
 
             loadTipoDeDocumentoMapping();
 
-            loadTipoDeSoporteMapping();
+            loadSoporteMapping();
 
             loadSocioMapping();
 
+            loadPeliculaMapping();
+
+            loadCarritoMapping();
+
+        }
+
+        private void loadCarritoMapping()
+        {
+            CreateMap<ItemCarrito, ItemCarritoListViewModel>().ForMember(dest => dest.PeliculaListViewModel, act => act.MapFrom(src =>src.pelicula));
+
+
+            CreateMap<Pelicula, PeliculaListViewModel>();
+            //.ForMember(dest => dest.TipoProducto, act => act.MapFrom(src => src.TipoProducto.Descripcion));
+
+            CreateMap<Carrito, CarritoListViewModel>();
+                //.ForMember(dest => dest.Items, act => act.MapFrom(src => src.listaItems));
+
+        }
+
+        private void loadPeliculaMapping()
+        {
+            CreateMap<PeliculaListViewModel, PeliculaListDto>().ReverseMap();
+            CreateMap<PeliculaEditDto, PeliculaListDto>();
+            CreateMap<PeliculaEditDto, Pelicula>().ReverseMap();
+            CreateMap<PeliculaListDto, PeliculaListViewModel>().ReverseMap();
+            CreateMap<PeliculaEditViewModel, PeliculaEditDto>().ReverseMap();
         }
 
         private void loadSocioMapping()
         {
-            CreateMap<SocioEditDto, SocioListDto>();
+            CreateMap<SocioEditDto, SocioListDto>().ReverseMap();
             CreateMap<SocioEditDto, Socio>().ReverseMap();
             CreateMap<SocioListDto, SocioListViewModel>().ReverseMap();
             CreateMap<SocioEditViewModel, SocioEditDto>().ReverseMap();
         }
 
-        private void loadTipoDeSoporteMapping()
+        private void loadSoporteMapping()
         {
-            CreateMap<TipoDeSoporte, TipoDeSoporteListDto>();
-            CreateMap<TipoDeSoporte, TipoDeSoporteEditDto>().ReverseMap();
-            CreateMap<TipoDeSoporteListDto, TipoDeSoporteListViewModel>().ReverseMap();
-            CreateMap<TipoDeSoporteEditDto, TipoDeSoporteEditViewModel>().ReverseMap();
-            CreateMap<TipoDeSoporteEditDto, TipoDeSoporteListDto>().ReverseMap();
+            CreateMap<Soporte, SoporteListDto>();
+            CreateMap<Soporte, SoporteEditDto>().ReverseMap();
+            CreateMap<SoporteListDto, SoporteListViewModel>().ReverseMap();
+            CreateMap<SoporteEditDto, SoporteEditViewModel>().ReverseMap();
+            CreateMap<SoporteEditDto, SoporteListDto>().ReverseMap();
         }
 
         private void loadTipoDeDocumentoMapping()
@@ -100,6 +129,7 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             CreateMap<Provincia, ProvinciaListDto>();
             CreateMap<Provincia, ProvinciaEditDto>().ReverseMap();
             CreateMap<ProvinciaListDto, ProvinciaListViewModel>().ReverseMap();
+            CreateMap<ProvinciaEditDto, ProvinciaEditViewModel>().ReverseMap();
             CreateMap<ProvinciaEditDto, ProvinciaEditDto>().ReverseMap();
             CreateMap<ProvinciaEditDto, ProvinciaListDto>().ReverseMap();
         }
@@ -110,7 +140,7 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             CreateMap<Genero, GeneroEditDto>().ReverseMap();
             CreateMap<GeneroListDto, GeneroListViewModel>().ReverseMap();
             CreateMap<GeneroEditDto, GeneroEditViewModel>().ReverseMap();
-            CreateMap<GeneroEditDto, GeneroListDto>().ReverseMap();         
+            CreateMap<GeneroEditDto, GeneroListDto>().ReverseMap();
         }
     }
 }

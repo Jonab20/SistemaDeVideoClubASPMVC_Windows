@@ -48,7 +48,12 @@ namespace SistemaDeVideoClub.Windows
             {
                 errorProvider1.SetError(LocalidadTxt, "Campo obligatorio");
                 valido = false;
-            } 
+            }
+            if (cboProvincias.SelectedIndex == 0)
+            {
+                errorProvider1.SetError(cboProvincias, "Debe seleccionar una provincia");
+                valido = false;
+            }
             return valido;
         }
 
@@ -73,6 +78,26 @@ namespace SistemaDeVideoClub.Windows
         internal void SetGenero(LocalidadEditDto localidadEditDto)
         {
             localidadDto = localidadEditDto;
+        }
+
+        private void cboProvincias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LocalidadTxt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

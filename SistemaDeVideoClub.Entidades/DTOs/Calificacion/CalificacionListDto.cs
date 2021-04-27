@@ -4,7 +4,7 @@ namespace SistemaDeVideoClub.Entidades.DTOs.Calificacion
 {
     public class CalificacionListDto:ICloneable
     {
-        public int EstadoId { get; set; }
+        public int CalificacionId { get; set; }
         public string Descripcion { get; set; }
 
         public object Clone()

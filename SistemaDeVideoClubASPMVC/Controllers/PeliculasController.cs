@@ -1,8 +1,15 @@
 ﻿using AutoMapper;
+using SistemaDeVideoClub.Entidades.DTOs.Pelicula;
+using SistemaDeVideoClub.Entidades.ViewModels.Calificacion;
+using SistemaDeVideoClub.Entidades.ViewModels.Estado;
+using SistemaDeVideoClub.Entidades.ViewModels.Pelicula;
+using SistemaDeVideoClub.Servicios.Servicios;
+using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClubASPMVC.Classes;
 using SistemaDeVideoClubASPMVC.Models;
 using SistemaDeVideoClubASPMVC.ViewModels;
-using SistemaDeVideoClubASPMVC.ViewModels.Pelicula;
+using SistemaDeVideoClubASPMVC.ViewModels.Genero;
+using SistemaDeVideoClubMVC.Mapeador;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -14,233 +21,217 @@ namespace SistemaDeVideoClubASPMVC.Controllers
 {
     public class PeliculasController : Controller
     {
-        //private readonly VideoClubDbContext _DbContext;
-        //private readonly int _registrosPorPagina = 10;
-        //private Listador<PeliculaListViewModel> _listador;
 
-        //// GET: Peliculas
-        //public PeliculasController()
-        //{
-        //    _DbContext = new VideoClubDbContext();
-        //}
-        //public ActionResult Index(int pagina = 1)
-        //{
-        //    int totalRegistros = _DbContext.Peliculas.Count();
+        private readonly IServicioPelicula _servicio;
+        private readonly IServiciosGenero _serviciosGenero;
+        private readonly IServicioEstados _serviciosEstado;
+        private readonly IServicioCalificaciones _servicioCalificaciones;
+        private readonly IMapper _mapper;
+        private readonly string folder = "~/Content/Imagenes/Peliculas/";
+        public PeliculasController(IServicioPelicula servicio, IServiciosGenero serviciosGenero, IServicioEstados serviciosEstado, IServicioCalificaciones servicioCalificaciones)
+        {
+            _servicio = servicio;
+            _serviciosGenero = serviciosGenero;
+            _serviciosEstado = serviciosEstado;
+            _servicioCalificaciones = servicioCalificaciones;
+            _mapper = Mapeador.CrearMapper();
+        }
+        // GET: Peliculas
 
-        //    var peliculas = _DbContext.Peliculas
-        //        .Include(g => g.Genero)
-        //        .Include(g => g.Estado)
-        //        .Include(p => p.Calificacion)
-        //        .OrderBy(p => p.Titulo)                      
-        //        .Skip((pagina - 1) * _registrosPorPagina)
-        //        .Take(_registrosPorPagina)
-        //        .ToList();
+        public ActionResult Index(int pagina = 1)
+        {
+            var listaDto = _servicio.GetLista(null);
+            var listaVm = _mapper.Map<List<PeliculaListViewModel>>(listaDto);
+            return View(listaVm);
 
-        //    var peliculasVm = Mapper.Map<List<Pelicula>, List<PeliculaListViewModel>>(peliculas);
+        }
 
-        //    var totalPaginas = (int)Math.Ceiling((double)totalRegistros / _registrosPorPagina);
-        //    _listador = new Listador<PeliculaListViewModel>()
-        //    {
-        //        RegistrosPorPagina = _registrosPorPagina,
-        //        TotalPaginas = totalPaginas,
-        //        TotalRegistros = totalRegistros,
-        //        PaginaActual = pagina,
-        //        Registros = peliculasVm
-        //    };
+        // GET: Peliculas/Create
+        [HttpGet]
+        public ActionResult Create()
+        {
+            PeliculaEditViewModel peliculaVm = new PeliculaEditViewModel
+            {
+                Imagen = $"{folder}SinImagen.jpg",
+                Generos = _mapper.Map<List<GeneroListViewModel>>(_serviciosGenero.GetLista()),
+                Estados = _mapper.Map<List<EstadoListViewModel>>(_serviciosEstado.GetLista()),
+                Calificaciones = _mapper.Map<List<CalificacionListViewModel>>(_servicioCalificaciones.GetLista())
+            };
+            return View(peliculaVm);
+        }
 
-        //    return View(_listador);
-        //}
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Create(PeliculaEditViewModel peliculaVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                peliculaVm.Generos = _mapper.Map<List<GeneroListViewModel>>(_serviciosGenero.GetLista());
+                peliculaVm.Estados = _mapper.Map<List<EstadoListViewModel>>(_serviciosEstado.GetLista());
+                peliculaVm.Calificaciones = _mapper.Map<List<CalificacionListViewModel>>(_servicioCalificaciones.GetLista());
 
-        //// GET: Peliculas/Create
-        //public ActionResult Create()
-        //{
-        //    var peliculaVm = new PeliculaEditViewModel
-        //    {
-        //        Calificaciones = CombosHelper.GetCalificaciones(),
-        //        Estados = CombosHelper.GetEstados(),
-        //        Generos = CombosHelper.GetGeneros(),
-        //    };
-        //    return View(peliculaVm);
-        //}
+                return View(peliculaVm);
+            }
 
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //public ActionResult Create(PeliculaEditViewModel peliculaVm)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        peliculaVm.Calificaciones = CombosHelper.GetCalificaciones();
-        //        peliculaVm.Estados = CombosHelper.GetEstados();
-        //        peliculaVm.Generos = CombosHelper.GetGeneros();
-                
-        //        return View(peliculaVm);
-        //    }
+            PeliculaEditDto peliculaDto = _mapper.Map<PeliculaEditDto>(peliculaVm);
 
-        //    var pelicula = Mapper.Map<PeliculaEditViewModel, Pelicula>(peliculaVm);
+            if (_servicio.Existe(peliculaDto))
+            {
+                ModelState.AddModelError(string.Empty, "Pelicula existente");
 
-        //    if (!_DbContext.Peliculas.Any(p => p.Titulo == pelicula.Titulo /*&& p.CalificacionId == pelicula.CalificacionId*/))
-        //    {
-        //            try
-        //            {
-        //                _DbContext.Peliculas.Add(pelicula);
-        //                _DbContext.SaveChanges();
-        //                TempData["Msg"] = "Pelicula Agregada con exito";
-        //                return RedirectToAction("Index");
-        //            }
-        //            catch (Exception e)
-        //            {
-        //                peliculaVm.Calificaciones = CombosHelper.GetCalificaciones();
-        //                peliculaVm.Estados = CombosHelper.GetEstados();
-        //                peliculaVm.Generos = CombosHelper.GetGeneros();
-        //                ModelState.AddModelError(string.Empty, e.Message);
+                peliculaVm.Generos = _mapper.Map<List<GeneroListViewModel>>(_serviciosGenero.GetLista());
+                peliculaVm.Estados = _mapper.Map<List<EstadoListViewModel>>(_serviciosEstado.GetLista());
+                peliculaVm.Calificaciones = _mapper.Map<List<CalificacionListViewModel>>(_servicioCalificaciones.GetLista());
+                return View(peliculaVm);
+            }
+            try
+            {
+                _servicio.Guardar(peliculaDto);
+                TempData["Msg"] = "Pelicula guardada";
 
-        //                return View(peliculaVm);
-        //            }
-        //    }
-        //    peliculaVm.Calificaciones = CombosHelper.GetCalificaciones();
-        //    peliculaVm.Estados = CombosHelper.GetEstados();
-        //    peliculaVm.Generos = CombosHelper.GetGeneros();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
 
-        //    ModelState.AddModelError(string.Empty, "Pelicula Repetida");
-        //    return View(peliculaVm);
-        //}
+                ModelState.AddModelError(string.Empty, e.Message);
 
-        //// GET: Pelicula/Details/
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    //Pelicula pelicula = _DbContext.Peliculas.Find(id);
+                peliculaVm.Generos = _mapper.Map<List<GeneroListViewModel>>(_serviciosGenero.GetLista());
+                peliculaVm.Estados = _mapper.Map<List<EstadoListViewModel>>(_serviciosEstado.GetLista());
+                peliculaVm.Calificaciones = _mapper.Map<List<CalificacionListViewModel>>(_servicioCalificaciones.GetLista());
 
-        //    Pelicula pelicula = _DbContext.Peliculas
-        //        .Include(p => p.Calificacion)
-        //        .Include(p => p.Genero)
-        //        .Include(p => p.Estado)
-        //        .SingleOrDefault(p => p.PeliculaId == id);
+                return View(peliculaVm);
+            }
 
-        //    if (pelicula == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+        }
 
-        //    PeliculasDetailsViewModel peliculaVm = Mapper.Map<Pelicula, PeliculasDetailsViewModel>(pelicula);
-        //    return View(peliculaVm);
-        //}
+        // GET: Pelicula/Details/
+        public ActionResult Details(int? id)
+        {
 
-        //[HttpGet]
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        //    var pelicula = _DbContext.Peliculas
-        //        .Include(p => p.Estado)
-        //        .Include(p => p.Calificacion)
-        //        .Include(p => p.Genero)
-        //        .SingleOrDefault(pe => pe.PeliculaId == id);
-        //    if (pelicula == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+            PeliculaListDto peliculaEditDto = _mapper.Map<PeliculaListDto>(_servicio.GetPeliculaPorId(id));
+            if (peliculaEditDto == null)
+            {
+                return HttpNotFound("Codigo de Pelicula no encontrado");
+            }
+            PeliculaListViewModel PeliculaVm = _mapper.Map<PeliculaListViewModel>(peliculaEditDto);
 
-        //    var peliculaVm = Mapper.Map<Pelicula, PeliculaListViewModel>(pelicula);
-        //    return View(peliculaVm);
-        //}
+            PeliculaVm.Genero = peliculaEditDto.Genero;
+            PeliculaVm.Estado = peliculaEditDto.Estado;
+            PeliculaVm.Calificacion = peliculaEditDto.Calificacion;
 
-        //[ValidateAntiForgeryToken]
-        //[HttpPost, ActionName("Delete")]
-        //public ActionResult DeleteConfirm(int id)
-        //{
-        //    var pelicula = _DbContext.Peliculas
-        //        .SingleOrDefault(pe => pe.PeliculaId == id);
-        //    try
-        //    {
-        //        _DbContext.Peliculas.Remove(pelicula);
-        //        _DbContext.SaveChanges();
-        //        TempData["Msg"] = "Pelicula elimindad con exito";
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        pelicula = _DbContext.Peliculas
-        //        .Include(p => p.Estado)
-        //        .Include(p => p.Calificacion)
-        //        .Include(p => p.Genero)
-        //            .SingleOrDefault(pe => pe.PeliculaId == id);
+            return View(PeliculaVm);
 
-        //        var peliculaVm = Mapper.Map<Pelicula, PeliculaListViewModel>(pelicula);
+        }
 
-        //        ModelState.AddModelError(string.Empty, "Error al intentar borrar la pelicula");
-        //        return View(peliculaVm);
-        //    }
-        //}
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        //[HttpGet]
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+            PeliculaListDto peliculaDto = _mapper.Map<PeliculaListDto>(_servicio.GetPeliculaPorId(id));
+            if (peliculaDto == null)
+            {
+                return HttpNotFound("Codigo de pelicula inexistente");
+            }
 
-        //    var pelicula = _DbContext.Peliculas.SingleOrDefault(pe => pe.PeliculaId == id);
-        //    if (pelicula == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+            PeliculaListViewModel peliculaVm = _mapper.Map<PeliculaListViewModel>(peliculaDto);
+            return View(peliculaVm);
 
-        //    PeliculaEditViewModel peliculaVm = Mapper.Map<Pelicula, PeliculaEditViewModel>(pelicula);
-        //    peliculaVm.Calificaciones = CombosHelper.GetCalificaciones();
-        //    peliculaVm.Estados = CombosHelper.GetEstados();
-        //    peliculaVm.Generos = CombosHelper.GetGeneros();
+        }
 
-        //    return View(peliculaVm);
-        //}
+        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirm(PeliculaListViewModel peliculavm)
+        {
+            try
+            {
+                PeliculaListDto peliculaDto = _mapper.Map<PeliculaListDto>(_servicio.GetPeliculaPorId(peliculavm.PeliculaId));
 
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //public ActionResult Edit(PeliculaEditViewModel peliculaVm)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(peliculaVm);
-        //    }
+                peliculavm = _mapper.Map<PeliculaListViewModel>(peliculaDto);
+                _servicio.Borrar(peliculavm.PeliculaId);
+                TempData["Msg"] = "Pelicula eliminada";
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Error al intentar eliminar la pelicula");
+                return View(peliculavm);
+            }
 
-        //    var pelicula = Mapper.Map<PeliculaEditViewModel, Pelicula>(peliculaVm);
-        //    peliculaVm.Calificaciones = CombosHelper.GetCalificaciones();
-        //    peliculaVm.Estados = CombosHelper.GetEstados();
-        //    peliculaVm.Generos = CombosHelper.GetGeneros();
+        }
 
-        //    try
-        //    {
-        //        if (_DbContext.Peliculas.Any(pe => pe.Titulo == pelicula.Titulo && pe.PeliculaId != pelicula.PeliculaId))
-        //        {
-        //            peliculaVm.Calificaciones = CombosHelper.GetCalificaciones();
-        //            peliculaVm.Estados = CombosHelper.GetEstados();
-        //            peliculaVm.Generos = CombosHelper.GetGeneros();
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        //            ModelState.AddModelError(string.Empty, "Pelicula repetida");
-        //            return View(peliculaVm);
-        //        }
-        //        _DbContext.Entry(pelicula).State = EntityState.Modified;
-        //        _DbContext.SaveChanges();
-        //        TempData["Msg"] = "Pelicula editada";
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        peliculaVm.Calificaciones = CombosHelper.GetCalificaciones();
-        //        peliculaVm.Estados = CombosHelper.GetEstados();
-        //        peliculaVm.Generos = CombosHelper.GetGeneros();
+            PeliculaEditDto peliculaEditDto = _servicio.GetPeliculaPorId(id);
+            if (peliculaEditDto == null)
+            {
+                return HttpNotFound("Codigo de Pelicula no encontrado");
+            }
+            PeliculaEditViewModel peliculaVm = _mapper.Map<PeliculaEditViewModel>(peliculaEditDto);
 
-        //        ModelState.AddModelError(string.Empty, "Error al intentar editar la pelicula");
-        //        return View(peliculaVm);
-        //    }
-        //}
+            peliculaVm.Generos = _mapper.Map<List<GeneroListViewModel>>(_serviciosGenero.GetLista());
+            peliculaVm.Estados = _mapper.Map<List<EstadoListViewModel>>(_serviciosEstado.GetLista());
+            peliculaVm.Calificaciones = _mapper.Map<List<CalificacionListViewModel>>(_servicioCalificaciones.GetLista());
+
+
+            return View(peliculaVm);
+
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Edit(PeliculaEditViewModel peliculaVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                peliculaVm.Generos = _mapper.Map<List<GeneroListViewModel>>(_serviciosGenero.GetLista());
+                peliculaVm.Estados = _mapper.Map<List<EstadoListViewModel>>(_serviciosEstado.GetLista());
+                peliculaVm.Calificaciones = _mapper.Map<List<CalificacionListViewModel>>(_servicioCalificaciones.GetLista());
+
+                return View(peliculaVm);
+            }
+
+            PeliculaEditDto peliculaDto = _mapper.Map<PeliculaEditDto>(peliculaVm);
+            if (_servicio.Existe(peliculaDto))
+            {
+                ModelState.AddModelError(string.Empty, "Pelicula existente");
+                peliculaVm.Generos = _mapper.Map<List<GeneroListViewModel>>(_serviciosGenero.GetLista());
+                peliculaVm.Estados = _mapper.Map<List<EstadoListViewModel>>(_serviciosEstado.GetLista());
+                peliculaVm.Calificaciones = _mapper.Map<List<CalificacionListViewModel>>(_servicioCalificaciones.GetLista());
+
+                return View(peliculaVm);
+            }
+            try
+            {
+                _servicio.Guardar(peliculaDto);
+                TempData["Msg"] = "Pelicula editada";
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                peliculaVm.Generos = _mapper.Map<List<GeneroListViewModel>>(_serviciosGenero.GetLista());
+                peliculaVm.Estados = _mapper.Map<List<EstadoListViewModel>>(_serviciosEstado.GetLista());
+                peliculaVm.Calificaciones = _mapper.Map<List<CalificacionListViewModel>>(_servicioCalificaciones.GetLista());
+                ModelState.AddModelError(string.Empty, "Error inesperado al intentar editar la pelicula");
+                return View(peliculaVm);
+            }
+
+        }
 
     }
 }

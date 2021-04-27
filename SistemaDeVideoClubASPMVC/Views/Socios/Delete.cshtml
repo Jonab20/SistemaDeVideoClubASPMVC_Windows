@@ -1,17 +1,21 @@
-﻿@model  SistemaDeVideoClubASPMVC.ViewModels.Socio.SocioListViewModel
+﻿@model  SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel.SocioListViewModel
 
 @{
     ViewBag.Title = "Delete";
 }
 
 <h2>Borrar Socio</h2>
-
+<div></div>
+<h2>¿Desea borrar este socio?</h2>
 @using (Html.BeginForm("Delete", "Socios", FormMethod.Post))
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model=>model.SocioId)
+
 <div class="form-group">
     @Html.LabelFor(m => m.Nombre)
+    <div></div>
     @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", disabled = "disable" })
     @Html.TextBoxFor(m => m.Apellido, new { @class = "form-control", disabled = "disable" })
 </div>

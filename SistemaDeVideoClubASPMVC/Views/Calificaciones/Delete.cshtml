@@ -1,0 +1,28 @@
+﻿@model  SistemaDeVideoClub.Entidades.ViewModels.Calificacion.CalificacionEditViewModel
+
+
+@{ ViewBag.Title = "Delete"; }
+
+<h2>Borrar Calificacion</h2>
+<hr />
+@using (Html.BeginForm("Delete", "Calificaciones", FormMethod.Post))
+{
+@Html.ValidationSummary()
+                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => model.CalificacionId)
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.Descripcion)
+                                                    @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control", disabled = "disable" })
+                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <button class="btn btn-danger">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                        Borrar
+                                                                    </button>
+                                                                    <a href="@Url.Action("Index", "Calificaciones")" class="btn btn-success">
+                                                                        <i class="fas fa-backspace"></i>
+                                                                        Volver
+                                                                    </a>
+                                                                </div>}
+

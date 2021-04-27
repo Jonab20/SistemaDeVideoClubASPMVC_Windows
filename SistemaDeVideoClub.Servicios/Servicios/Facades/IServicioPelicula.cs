@@ -10,6 +10,6 @@ namespace SistemaDeVideoClub.Servicios.Servicios.Facades
         void Guardar(PeliculaEditDto peliculaEditDto);
 
         void Borrar(int peliculaEditDto);
-        PeliculaEditDto GetLocalidadPorId(int? id);
+        PeliculaEditDto GetPeliculaPorId(int? id);
     }
 }

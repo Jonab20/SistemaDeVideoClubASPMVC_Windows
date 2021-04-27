@@ -1,5 +1,4 @@
 ﻿using SistemaDeVideoClub.Entidades.Entidades;
-//using SistemaDeVideoClubASPMVC.Entidades;
 using System.Data.Entity.ModelConfiguration;
 
 namespace SistemaDeVideoClub.Datos.EntityTypeConfigations

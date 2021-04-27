@@ -26,6 +26,10 @@ namespace SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel
         [Display(Name = "E-mail")]
         public string CorreoElectronico { get; set; }
 
+        [Display(Name = "Fecha de Nacimiento")]
+        public string FechaDeNacimiento { get; set; }
+
+
         [Display(Name = "Tipo De Documento")]
         public string DescripcionTipoDeDocumento { get; set; }
 

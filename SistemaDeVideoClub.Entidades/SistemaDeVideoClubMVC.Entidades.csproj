@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\Alquiler\AlquilerEditDto.cs" />
+    <Compile Include="DTOs\Alquiler\AlquilerListDto.cs" />
     <Compile Include="DTOs\Calificacion\CalificacionEditDto.cs" />
     <Compile Include="DTOs\Calificacion\CalificacionListDto.cs" />
     <Compile Include="DTOs\Estado\EstadoEditDto.cs" />
@@ -58,20 +61,25 @@
     <Compile Include="DTOs\Socio\SocioListDto.cs" />
     <Compile Include="DTOs\TipoDeDocumento\TipoDeDocumentoEditDto.cs" />
     <Compile Include="DTOs\TipoDeDocumento\TipoDeDocumentoListDto.cs" />
-    <Compile Include="DTOs\TipoDeSoporte\TipoDeSoporteEditDto.cs" />
-    <Compile Include="DTOs\TipoDeSoporte\TipoDeSoporteListDto.cs" />
+    <Compile Include="DTOs\Soporte\SoporteEditDto.cs" />
+    <Compile Include="DTOs\Soporte\SoporteListDto.cs" />
+    <Compile Include="Entidades\Alquiler.cs" />
+    <Compile Include="Entidades\Carrito.cs" />
+    <Compile Include="Entidades\ItemCarrito.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Genero.cs" />
     <Compile Include="Entidades\Localidad.cs" />
     <Compile Include="Entidades\Pelicula.cs" />
     <Compile Include="Entidades\Provincia.cs" />
     <Compile Include="Entidades\Socio.cs" />
-    <Compile Include="Entidades\TipoDeSoporte.cs" />
+    <Compile Include="Entidades\Soporte.cs" />
     <Compile Include="Entidades\TipoDeDocumento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entidades\Calificacion.cs" />
     <Compile Include="ViewModels\Calificacion\CalificacionEditViewModel.cs" />
     <Compile Include="ViewModels\Calificacion\CalificacionListViewModel.cs" />
+    <Compile Include="ViewModels\Carrito\CarritoListViewModel.cs" />
+    <Compile Include="ViewModels\Carrito\ItemCarritoListViewModel.cs" />
     <Compile Include="ViewModels\Estado\EstadoEditViewModel.cs" />
     <Compile Include="ViewModels\Estado\EstadoListViewModel.cs" />
     <Compile Include="ViewModels\Genero\GeneroEditViewModel.cs" />
@@ -89,8 +97,8 @@
     <Compile Include="ViewModels\Socio\SocioListViewModel.cs" />
     <Compile Include="ViewModels\TipoDeDocumento\TipoDeDocumentoEditViewModel.cs" />
     <Compile Include="ViewModels\TipoDeDocumento\TipoDeDocumentoListViewModel.cs" />
-    <Compile Include="ViewModels\TipoDeSoporte\TipoDeSoporteEditViewModel.cs" />
-    <Compile Include="ViewModels\TipoDeSoporte\TipoDeSoporteListViewModel.cs" />
+    <Compile Include="ViewModels\Soporte\SoporteEditViewModel.cs" />
+    <Compile Include="ViewModels\Soporte\SoporteListViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

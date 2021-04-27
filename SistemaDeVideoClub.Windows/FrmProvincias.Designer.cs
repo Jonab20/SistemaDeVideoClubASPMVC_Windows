@@ -42,7 +42,6 @@ namespace SistemaDeVideoClub.Windows
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
@@ -116,7 +115,6 @@ namespace SistemaDeVideoClub.Windows
             this.tsbBorrar,
             this.tsbEditar,
             this.toolStripSeparator1,
-            this.tsbBuscar,
             this.tsbActualizar,
             this.toolStripSeparator2,
             this.tsbImprimir,
@@ -168,17 +166,6 @@ namespace SistemaDeVideoClub.Windows
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 74);
-            // 
-            // tsbBuscar
-            // 
-            this.tsbBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbBuscar.Image = global::SistemaDeVideoClub.Windows.Properties.Resources.buscar;
-            this.tsbBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(54, 71);
-            this.tsbBuscar.Text = "Buscar";
-            this.tsbBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // tsbActualizar
             // 
@@ -254,7 +241,6 @@ namespace SistemaDeVideoClub.Windows
         private System.Windows.Forms.ToolStripButton tsbBorrar;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbBuscar;
         private System.Windows.Forms.ToolStripButton tsbActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbImprimir;

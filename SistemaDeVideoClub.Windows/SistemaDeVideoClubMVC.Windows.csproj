@@ -66,11 +66,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAlquileres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAlquileres.Designer.cs">
+      <DependentUpon>FrmAlquileres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAlquileresAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAlquileresAE.Designer.cs">
+      <DependentUpon>FrmAlquileresAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBuscarLocalidad.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmBuscarLocalidad.Designer.cs">
       <DependentUpon>FrmBuscarLocalidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCalificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalificaciones.Designer.cs">
+      <DependentUpon>FrmCalificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCalificacionesAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalificacionesAE.Designer.cs">
+      <DependentUpon>FrmCalificacionesAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEstados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEstados.Designer.cs">
+      <DependentUpon>FrmEstados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEstadosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEstadosAE.Designer.cs">
+      <DependentUpon>FrmEstadosAE.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGeneros.cs">
       <SubType>Form</SubType>
@@ -102,6 +138,24 @@
     <Compile Include="FrmMenuPrincipal.Designer.cs">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPeliculas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeliculas.Designer.cs">
+      <DependentUpon>FrmPeliculas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPeliculasAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeliculasAE.Designer.cs">
+      <DependentUpon>FrmPeliculasAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPeliculasDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeliculasDetalle.Designer.cs">
+      <DependentUpon>FrmPeliculasDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProvincias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,14 +168,68 @@
     <Compile Include="FrmProvinciasAE.Designer.cs">
       <DependentUpon>FrmProvinciasAE.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSocios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSocios.Designer.cs">
+      <DependentUpon>FrmSocios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSociosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSociosAE.Designer.cs">
+      <DependentUpon>FrmSociosAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSoportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSoportes.Designer.cs">
+      <DependentUpon>FrmSoportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSoportesAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSoportesAE.Designer.cs">
+      <DependentUpon>FrmSoportesAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTiposDeDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTiposDeDocumento.Designer.cs">
+      <DependentUpon>FrmTiposDeDocumento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTiposDeDocumentoAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTiposDeDocumentoAE.Designer.cs">
+      <DependentUpon>FrmTiposDeDocumentoAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="Mapeador\AutoMapperConfig.cs" />
     <Compile Include="Ninject\Bindings.cs" />
     <Compile Include="Ninject\DI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAlquileres.resx">
+      <DependentUpon>FrmAlquileres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAlquileresAE.resx">
+      <DependentUpon>FrmAlquileresAE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBuscarLocalidad.resx">
       <DependentUpon>FrmBuscarLocalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCalificaciones.resx">
+      <DependentUpon>FrmCalificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCalificacionesAE.resx">
+      <DependentUpon>FrmCalificacionesAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEstados.resx">
+      <DependentUpon>FrmEstados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEstadosAE.resx">
+      <DependentUpon>FrmEstadosAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGeneros.resx">
       <DependentUpon>FrmGeneros.cs</DependentUpon>
@@ -139,11 +247,38 @@
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeliculas.resx">
+      <DependentUpon>FrmPeliculas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeliculasAE.resx">
+      <DependentUpon>FrmPeliculasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeliculasDetalle.resx">
+      <DependentUpon>FrmPeliculasDetalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmProvincias.resx">
       <DependentUpon>FrmProvincias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProvinciasAE.resx">
       <DependentUpon>FrmProvinciasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSocios.resx">
+      <DependentUpon>FrmSocios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSociosAE.resx">
+      <DependentUpon>FrmSociosAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSoportes.resx">
+      <DependentUpon>FrmSoportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSoportesAE.resx">
+      <DependentUpon>FrmSoportesAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTiposDeDocumento.resx">
+      <DependentUpon>FrmTiposDeDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTiposDeDocumentoAE.resx">
+      <DependentUpon>FrmTiposDeDocumentoAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -207,6 +342,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon\Cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\TipoDocumento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Peliculas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Socios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Generos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Estado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Localidades.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Soportes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\Provincias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\calificaciones.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\salir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

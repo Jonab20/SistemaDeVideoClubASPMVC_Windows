@@ -1,0 +1,26 @@
+﻿@model  SistemaDeVideoClub.Entidades.ViewModels.Soporte.SoporteEditViewModel
+
+@{ ViewBag.Title = "Delete"; }
+
+<h2>Borrar Genero</h2>
+<hr />
+ @using (Html.BeginForm("Delete", "Soporte", FormMethod.Post))
+  {
+   @Html.ValidationSummary()
+   @Html.AntiForgeryToken()
+   @Html.HiddenFor(model => model.SoporteId)
+     <div class="form-group">
+         @Html.LabelFor(m => m.Descripcion)
+         @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control", disabled = "disable" })
+     </div>
+
+      <div class="form-group">
+          <button class="btn btn-danger">
+              <i class="fas fa-trash-alt"></i>
+              Borrar
+          </button>
+          <a href="@Url.Action("Index", "Soporte")" class="btn btn-success">
+              <i class="fas fa-backspace"></i>
+              Volver
+          </a>
+      </div>}

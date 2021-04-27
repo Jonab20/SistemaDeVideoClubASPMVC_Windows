@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace SistemaDeVideoClubASPMVC.ViewModels.Pelicula
+namespace SistemaDeVideoClub.Entidades.ViewModels.Pelicula
 {
     public class PeliculaListViewModel
     {
@@ -36,5 +36,12 @@ namespace SistemaDeVideoClubASPMVC.ViewModels.Pelicula
 
         [Display(Name = @"Calificacion")]
         public string Calificacion { get; set; }
+
+        [Display(Name = @"Fecha incorporacion")]
+        public string FechaIncorporacion { get; set; }
+
+
+        [Display(Name = @"Observaciones")]
+        public string Observaciones { get; set; }
     }
 }

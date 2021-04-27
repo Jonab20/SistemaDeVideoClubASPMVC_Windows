@@ -1,5 +1,4 @@
 ﻿namespace SistemaDeVideoClub.Entidades.Entidades
-
 {
     public class Provincia
     {

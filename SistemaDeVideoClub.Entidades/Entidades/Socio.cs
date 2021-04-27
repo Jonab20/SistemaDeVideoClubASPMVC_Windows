@@ -1,8 +1,4 @@
-﻿using SistemaDeVideoClub.Entidades.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 
 namespace SistemaDeVideoClub.Entidades.Entidades
 {

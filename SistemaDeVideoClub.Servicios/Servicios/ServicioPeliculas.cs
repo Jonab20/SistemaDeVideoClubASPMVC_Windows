@@ -63,7 +63,7 @@ namespace SistemaDeVideoClub.Servicios.Servicios
             }
         }
 
-        public PeliculaEditDto GetLocalidadPorId(int? id)//TODO : CAMBIAR NOMBRE DEL METODO
+        public PeliculaEditDto GetPeliculaPorId(int? id)//TODO : CAMBIAR NOMBRE DEL METODO
         {
             try
             {

@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
+using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel;
+using SistemaDeVideoClub.Entidades.ViewModels.TipoDeDocumento;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClubASPMVC.Models;
 using SistemaDeVideoClubASPMVC.ViewModels;
+using SistemaDeVideoClubASPMVC.ViewModels.Localidad;
+using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
 using SistemaDeVideoClubASPMVC.ViewModels.Socio;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
@@ -20,10 +24,9 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         private readonly IServicioTipoDeDocumento _serviciosTipo;
         private readonly IServicioLocalidades _serviciosLocalidad;
         private readonly IServiciosProvincia _serviciosProvincia;
-
         private readonly IMapper _mapper;
         // GET: Socios
-
+        //private string provincia;
         public SociosController(IServiciosSocios servicio, IServicioTipoDeDocumento serviciosTipo, IServicioLocalidades serviciosLocalidad, IServiciosProvincia serviciosProvincia)
         {
             _serviciosTipo = serviciosTipo;
@@ -39,180 +42,195 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             return View(listaVm);
         }
 
-        //// GET: Socios/Crear
-        //public ActionResult Create()
-        //{
-        //    var socioVm = new SocioEditViewModel
-        //    {
-        //        Provincias = _DbContext.Provincias.OrderBy(p => p.NombreProvincia).ToList(),
-        //        Localidades = _DbContext.Localidades.OrderBy(l=> l.NombreLocalidad).ToList(),
-        //        TipoDeDocumentos = _DbContext.TiposDeDocumento.OrderBy(t=>t.Descripcion).ToList()
-        //    };
-        //    return View(socioVm);
-        //}
+        // GET: Socios/Crear
+        public ActionResult Create()
+        {
+            
+            SocioEditViewModel socioVm = new SocioEditViewModel
+            {            
 
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //public ActionResult Create(SocioEditViewModel socioVm)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        socioVm.Provincias = _DbContext.Provincias.OrderBy(p => p.NombreProvincia).ToList();
-        //        socioVm.Localidades = _DbContext.Localidades.OrderBy(p => p.NombreLocalidad).ToList();
-        //        socioVm.TipoDeDocumentos = _DbContext.TiposDeDocumento.OrderBy(p => p.TipoDeDocumentoId).ToList();
+                TipoDeDocumentos = _mapper.Map<List<TipoDeDocumentoListViewModel>>(_serviciosTipo.GetLista()),
+                Localidades = _mapper.Map<List<LocalidadListViewModel>>(_serviciosLocalidad.GetLista(null)),
+                Provincias = _mapper.Map<List<ProvinciaListViewModel>>(_serviciosProvincia.GetLista())
+            };
+            return View(socioVm);
+        }
 
-        //        return View(socioVm);
-        //    }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Create(SocioEditViewModel socioVm)
+        {
+            if (!ModelState.IsValid)
+            {
 
-        //    var socio = Mapper.Map<SocioEditViewModel, Socio>(socioVm);
+                socioVm.TipoDeDocumentos = _mapper.Map<List<TipoDeDocumentoListViewModel>>(_serviciosTipo.GetLista());
+                socioVm.Localidades = _mapper.Map<List<LocalidadListViewModel>>(_serviciosLocalidad.GetLista(null));
+                socioVm.Provincias = _mapper.Map<List<ProvinciaListViewModel>>(_serviciosProvincia.GetLista());
+                return View(socioVm);
+            }
 
-        //    if (!_DbContext.Socios.Any(l =>/* l.Nombre == socioVm.Nombre && */l.NroDocumento == socioVm.NroDocumento ))
-        //    {
-        //        _DbContext.Socios.Add(socio);
-        //        _DbContext.SaveChanges();
-        //        TempData["Msg"] = "Socio guardado";
+            SocioEditDto socioDto = _mapper.Map<SocioEditDto>(socioVm);
 
-        //        return RedirectToAction("Index");
+            if (_servicio.Existe(socioDto))
+            {
+                ModelState.AddModelError(string.Empty, "Socio existente");
 
-        //    }
+                socioVm.TipoDeDocumentos = _mapper.Map<List<TipoDeDocumentoListViewModel>>(_serviciosTipo.GetLista());
+                socioVm.Localidades = _mapper.Map<List<LocalidadListViewModel>>(_serviciosLocalidad.GetLista(null));
+                socioVm.Provincias = _mapper.Map<List<ProvinciaListViewModel>>(_serviciosProvincia.GetLista());
 
-        //    socioVm.Provincias = _DbContext.Provincias.OrderBy(p => p.NombreProvincia).ToList();
-        //    socioVm.Localidades = _DbContext.Localidades.OrderBy(p => p.NombreLocalidad).ToList();
-        //    socioVm.TipoDeDocumentos = _DbContext.TiposDeDocumento.OrderBy(p => p.Descripcion).ToList();
+                return View(socioVm);
+            }
+            try
+            {
+                _servicio.Guardar(socioDto);
+                TempData["Msg"] = "Socio guardado";
 
-        //    ModelState.AddModelError(string.Empty, "Socio repetido");
-        //    return View(socioVm);
-        //}
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
 
-        //// GET: Socios/Detalles
+                ModelState.AddModelError(string.Empty, e.Message);
 
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Socio socio = _DbContext.Socios
-        //     .Include(s => s.Localidad)
-        //     .Include(s => s.Provincia)
-        //     .Include(s => s.TipoDeDocumento)
-        //     .SingleOrDefault(s => s.SocioId == id);
-        //    if (socio == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    SocioDetailViewMode socioVm = Mapper.Map<Socio, SocioDetailViewMode>(socio);
+                socioVm.TipoDeDocumentos = _mapper.Map<List<TipoDeDocumentoListViewModel>>(_serviciosTipo.GetLista());
+                socioVm.Localidades = _mapper.Map<List<LocalidadListViewModel>>(_serviciosLocalidad.GetLista(null));
+                socioVm.Provincias = _mapper.Map<List<ProvinciaListViewModel>>(_serviciosProvincia.GetLista());
 
-        //    return View(socioVm);
-        //}
+                return View(socioVm);
+            }
+        }
 
-        //// GET: Socios/Editar
+        // GET: Socios/Detalles
 
+        public ActionResult Details(int? id)
+        {
 
-        //[HttpGet]
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        //    var socio = _DbContext.Socios.SingleOrDefault(s => s.SocioId == id);
-        //    if (socio == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+            SocioListDto socioEditDto =_mapper.Map<SocioListDto>(_servicio.GetSocioPorId(id));
+            if (socioEditDto == null)
+            {
+                return HttpNotFound("Codigo de Socio no encontrado");
+            }
+            SocioListViewModel socioVm = _mapper.Map<SocioListViewModel>(socioEditDto);
 
-        //    SocioEditViewModel socioVm = Mapper.Map<Socio, SocioEditViewModel>(socio);
-        //    socioVm.TipoDeDocumentos = _DbContext.TiposDeDocumento.OrderBy(t => t.Descripcion).ToList();
-        //    socioVm.Localidades = _DbContext.Localidades.OrderBy(l => l.NombreLocalidad).ToList();
-        //    socioVm.Provincias = _DbContext.Provincias.OrderBy(p => p.NombreProvincia).ToList();
-        //    return View(socioVm);
-        //}
+            socioVm.DescripcionTipoDeDocumento = socioEditDto.TipoDeDocumento;
+            socioVm.NombreProvincia = socioEditDto.Provincia;
+            socioVm.NombreLocalidad = socioEditDto.Localidad;
 
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //public ActionResult Edit(SocioEditViewModel socioVm)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        socioVm.TipoDeDocumentos = _DbContext.TiposDeDocumento.OrderBy(t => t.Descripcion).ToList();
-        //        socioVm.Localidades = _DbContext.Localidades.OrderBy(l => l.NombreLocalidad).ToList();
-        //        socioVm.Provincias = _DbContext.Provincias.OrderBy(p => p.NombreProvincia).ToList();
+            return View(socioVm);
+        }
 
-        //        return View(socioVm);
-        //    }
-
-        //    var socio = Mapper.Map<SocioEditViewModel, Socio>(socioVm);
-        //    try
-        //    {
-        //        if (_DbContext.Socios.Any(s => s.Nombre == socioVm.Nombre && s.ProvinciaId != socioVm.ProvinciaId))
-        //        {
-        //            socioVm.Provincias = _DbContext.Provincias.OrderBy(p => p.NombreProvincia).ToList();
-        //            socioVm.TipoDeDocumentos = _DbContext.TiposDeDocumento.OrderBy(t => t.Descripcion).ToList();
-        //            socioVm.Localidades = _DbContext.Localidades.OrderBy(l => l.NombreLocalidad).ToList();
-
-        //            ModelState.AddModelError(string.Empty, "Socio repetido");
-        //            return View(socioVm);
-        //        }
-
-        //        _DbContext.Entry(socio).State = EntityState.Modified;
-        //        _DbContext.SaveChanges();
-        //        TempData["Msg"] = "Socio editado";
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        socioVm.Provincias = _DbContext.Provincias.OrderBy(p => p.NombreProvincia).ToList();
-        //        socioVm.TipoDeDocumentos = _DbContext.TiposDeDocumento.OrderBy(t => t.Descripcion).ToList();
-        //        socioVm.Localidades = _DbContext.Localidades.OrderBy(l => l.NombreLocalidad).ToList();
-
-        //        ModelState.AddModelError(string.Empty, "Error inesperado al intentar editar socio");
-        //        return View(socioVm);
-        //    }
-        //}
-
-        //// GET: Socios/Borrar
+        // GET: Socios/Editar
 
 
-        //[HttpGet]
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        //    var socio = _DbContext.Socios.SingleOrDefault(s => s.SocioId == id);
-        //    if (socio == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+            SocioEditDto socioEditDto = _servicio.GetSocioPorId(id);
+            if (socioEditDto == null)
+            {
+                return HttpNotFound("Codigo de Socio no encontrado");
+            }
+            SocioEditViewModel socioVm = _mapper.Map<SocioEditViewModel>(socioEditDto);
+            socioVm.TipoDeDocumentos = _mapper.Map<List<TipoDeDocumentoListViewModel>>(_serviciosTipo.GetLista());
+            socioVm.Localidades = _mapper.Map<List<LocalidadListViewModel>>(_serviciosLocalidad.GetLista(null));
+            socioVm.Provincias = _mapper.Map<List<ProvinciaListViewModel>>(_serviciosProvincia.GetLista());
 
-        //    var SocioVm = Mapper.Map<Socio, SocioListViewModel>(socio);
-        //    return View(SocioVm);
-        //}
+            return View(socioVm);
 
-        //[ValidateAntiForgeryToken]
-        //[HttpPost, ActionName("Delete")]
-        //public ActionResult DeleteConfirm(int id)
-        //{
-        //    var socio = _DbContext.Socios.SingleOrDefault(s => s.SocioId == id);
-        //    try
-        //    {
-        //        _DbContext.Socios.Remove(socio);
-        //        _DbContext.SaveChanges();
-        //        TempData["Msg"] = "Socio eliminado con exito";
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        var SocioVm = Mapper.Map<Socio, SocioListViewModel>(socio);
+        }
 
-        //        ModelState.AddModelError(string.Empty, "Error al intentar eliminar socio");
-        //        return View(SocioVm);
-        //    }
-        //}
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Edit(SocioEditViewModel socioVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                socioVm.TipoDeDocumentos = _mapper.Map<List<TipoDeDocumentoListViewModel>>(_serviciosTipo.GetLista());
+                socioVm.Localidades = _mapper.Map<List<LocalidadListViewModel>>(_serviciosLocalidad.GetLista(null));
+                socioVm.Provincias = _mapper.Map<List<ProvinciaListViewModel>>(_serviciosProvincia.GetLista());
+                return View(socioVm);
+            }
+
+            SocioEditDto socioDto = _mapper.Map<SocioEditDto>(socioVm);
+            if (_servicio.Existe(socioDto))
+            {
+                ModelState.AddModelError(string.Empty, "Socio existente");
+                socioVm.TipoDeDocumentos = _mapper.Map<List<TipoDeDocumentoListViewModel>>(_serviciosTipo.GetLista());
+                socioVm.Localidades = _mapper.Map<List<LocalidadListViewModel>>(_serviciosLocalidad.GetLista(null));
+                socioVm.Provincias = _mapper.Map<List<ProvinciaListViewModel>>(_serviciosProvincia.GetLista());
+                return View(socioVm);
+
+            }
+            try
+            {
+                _servicio.Guardar(socioDto);
+                TempData["Msg"] = "Socio editado";
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                socioVm.TipoDeDocumentos = _mapper.Map<List<TipoDeDocumentoListViewModel>>(_serviciosTipo.GetLista());
+                socioVm.Localidades = _mapper.Map<List<LocalidadListViewModel>>(_serviciosLocalidad.GetLista(null));
+                socioVm.Provincias = _mapper.Map<List<ProvinciaListViewModel>>(_serviciosProvincia.GetLista());
+                ModelState.AddModelError(string.Empty, "Error inesperado al intentar editar el socio");
+                return View(socioVm);
+            }
+
+        }
+
+        // GET: Socios/Borrar
+
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            SocioListDto socioDto = _mapper.Map<SocioListDto>(_servicio.GetSocioPorId(id));
+            if (socioDto == null)
+            {
+                return HttpNotFound("Codigo de socio inexistente");
+            }
+
+            SocioListViewModel socioVm = _mapper.Map<SocioListViewModel>(socioDto);
+            return View(socioVm);
+
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirm(SocioListViewModel socioVm)
+        {
+            try
+            {
+                SocioListDto socioDto = _mapper.Map<SocioListDto>(_servicio.GetSocioPorId(socioVm.SocioId));
+
+                socioVm = _mapper.Map<SocioListViewModel>(socioDto);
+                _servicio.Borrar(socioVm.SocioId);
+                TempData["Msg"] = "Socio eliminado";
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Error al intentar eliminar socio");
+                return View(socioVm);
+            }
+
+        }
 
 
     }

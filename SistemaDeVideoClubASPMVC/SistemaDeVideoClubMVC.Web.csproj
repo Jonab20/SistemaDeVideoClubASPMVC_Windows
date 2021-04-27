@@ -194,9 +194,12 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Binders\CarritoModelBinder.cs" />
     <Compile Include="Classes\CombosHelper.cs" />
+    <Compile Include="Classes\FileHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalificacionesController.cs" />
+    <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\GenerosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -205,8 +208,8 @@
     <Compile Include="Controllers\PeliculasController.cs" />
     <Compile Include="Controllers\ProvinciasController.cs" />
     <Compile Include="Controllers\SociosController.cs" />
+    <Compile Include="Controllers\SoporteController.cs" />
     <Compile Include="Controllers\TipoDeDocumentoController.cs" />
-    <Compile Include="Controllers\TipoDeSoporteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,6 +237,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Imagenes\Peliculas\SinImagen.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -415,9 +419,19 @@
     <Content Include="Views\Estados\Create.cshtml" />
     <Content Include="Views\Estados\Edit.cshtml" />
     <Content Include="Views\Estados\Delete.cshtml" />
-    <Content Include="Views\TipoDeSoporte\Index.cshtml" />
     <Content Include="Views\Calificaciones\Index.cshtml" />
     <Content Include="Views\TipoDeDocumento\Index.cshtml" />
+    <Content Include="Views\Soporte\Index.cshtml" />
+    <Content Include="Views\Carrito\Index.cshtml" />
+    <Content Include="Views\Soporte\Create.cshtml" />
+    <Content Include="Views\Soporte\Edit.cshtml" />
+    <Content Include="Views\Soporte\Delete.cshtml" />
+    <Content Include="Views\Calificaciones\Create.cshtml" />
+    <Content Include="Views\Calificaciones\Edit.cshtml" />
+    <Content Include="Views\Calificaciones\Delete.cshtml" />
+    <Content Include="Views\TipoDeDocumento\Create.cshtml" />
+    <Content Include="Views\TipoDeDocumento\Edit.cshtml" />
+    <Content Include="Views\TipoDeDocumento\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

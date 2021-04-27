@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SistemaDeVideoClubASPMVC.ViewModels.Pelicula
-{
+namespace SistemaDeVideoClub.Entidades.ViewModels.Pelicula
+{ 
     public class PeliculasDetailsViewModel
     {
         public int PeliculaId { get; set; }

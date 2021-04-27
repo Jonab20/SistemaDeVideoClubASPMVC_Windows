@@ -10,15 +10,15 @@ namespace SistemaDeVideoClub.Windows
 {
     public partial class FrmGeneros : Form
     {
-
+        private IServiciosGenero _Servicio;
+        private List<GeneroListDto> _listaG;
+        private IMapper _mapper;
         public FrmGeneros(IServiciosGenero servicio)
         {
             InitializeComponent();
             _Servicio = servicio;
         }
-        private IServiciosGenero _Servicio;
-        private List<GeneroListDto> _listaG;
-        private IMapper _mapper;
+
         private void FrmGeneros_Load(object sender, EventArgs e)
         {
             try
@@ -175,6 +175,21 @@ namespace SistemaDeVideoClub.Windows
         {
             _listaG = _Servicio.GetLista();
             MostrarDatosEnGrilla();
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void toolStripSeparator1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

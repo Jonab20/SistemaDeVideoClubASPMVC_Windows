@@ -1,5 +1,4 @@
-﻿//using SistemaDeVideoClubASPMVC.Entidades;
-using System;
+﻿using System;
 
 namespace SistemaDeVideoClub.Entidades.Entidades
 {
@@ -17,6 +16,7 @@ namespace SistemaDeVideoClub.Entidades.Entidades
         public Calificacion Calificacion { get; set; }
         public bool Alquilado { get; set; }
         public bool Activa { get; set; }
+        public string Imagen { get; set; }
         public string Observaciones { get; set; }
 
     }

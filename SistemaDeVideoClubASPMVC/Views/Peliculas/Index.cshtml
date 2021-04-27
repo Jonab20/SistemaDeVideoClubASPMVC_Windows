@@ -1,5 +1,4 @@
-﻿
-@model  SistemaDeVideoClubASPMVC.ViewModels.Listador<SistemaDeVideoClubASPMVC.ViewModels.Pelicula.PeliculaListViewModel>
+﻿@model  IEnumerable<SistemaDeVideoClub.Entidades.ViewModels.Pelicula.PeliculaListViewModel>
 @{
     ViewBag.Title = "Index";
 }
@@ -24,88 +23,68 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(m => m.Registros.First().Titulo)
-            </th>
-            <th>
-            </th>
-            <th>
-
-            </th>
-            <th>
-                @Html.DisplayNameFor(m => m.Registros.First().Activa)
-            </th>
-            <th>
-
-            </th>
-            <th>
-
-            </th>
-            <th>
-                @Html.DisplayNameFor(m => m.Registros.First().Alquilado)
-            </th>
-            <th>
-
-            </th>
-            <th>
-                @Html.DisplayNameFor(m => m.Registros.First().Genero)
-            </th>
-            <th>
-
+                @Html.DisplayNameFor(m => m.Titulo)
             </th>
 
+            <th>
+                @Html.DisplayNameFor(m => m.Activa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Alquilado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Genero)
+            </th>
         </tr>
     </thead>
     <tbody>
-        @if (Model.Registros.Any())
+        @if (Model.Any())
         {
-            foreach (var item in Model.Registros)
+            foreach (var item in Model)
             {
         <tr>
             <td>
                 @Html.DisplayFor(m => item.Titulo)
             </td>
-            <th>
 
-            </th>
-            <th>
-
-            </th>
 
             <td>
                 @Html.DisplayFor(m => item.Activa)
             </td>
 
-            <th>
-
-            </th>
-            <th>
-
-            </th>
             <td>
                 @Html.DisplayFor(m => item.Alquilado)
             </td>
-            <th>
 
-            </th>
             <td>
                 @Html.DisplayFor(m => item.Genero)
             </td>
-            <th>
 
-            </th>
             <td>
-                <a href="@Url.Action("Edit","Peliculas",new{id=item.PeliculaId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
-                <a href="@Url.Action("Details","Peliculas",new{id=item.PeliculaId})" class="btn btn-info"><i class="fas fa-list"></i> Detalle</a>
-                <a href="@Url.Action("Delete","Peliculas",new{id=item.PeliculaId})" class="btn btn-danger">
-                    <i class="fas fa-trash-alt"></i> Borrar
-                </a>
+
+                 @using (Html.BeginForm("AgregarAlCarro", "Carrito"))
+                 {
+
+                      <div class="btn-group">
+                          <a href="@Url.Action("Edit","Peliculas",new{id=item.PeliculaId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+                          <a href="@Url.Action("Details","Peliculas",new{id=item.PeliculaId})" class="btn btn-info"><i class="fas fa-list"></i> Detalle</a>
+                          <a href="@Url.Action("Delete","Peliculas",new{id=item.PeliculaId})" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Borrar </a>
+                    
+                    
+                          @Html.HiddenFor(modelitem => item.PeliculaId)
+                          @Html.Hidden("productoId", item.PeliculaId)
+                          @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                          <input type="submit" class="btn btn-default" value="Agregar" />
+                      </div>
+                  
+                  }
 
             </td>
         </tr>
             }
-        }
+                }
         else
-        {
+                {
             <tr>
                 <td>AUN NO SE AGREGARON PELICULAS </td>
             </tr>
@@ -113,7 +92,7 @@
 
     </tbody>
 </table>
-@if (Model.Registros.Any())
+@*@if (Model.Any())
 {
     <span>
         <strong>@Model.TotalRegistros</strong> registros encontrados
@@ -159,4 +138,4 @@ else
     <span></span>
     @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
         new { @class = "btn btn-sm btn-secondary disabled" })
-}
+}*@
