@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SistemaDeVideoClub.Entidades.DTOs;
 using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel;
 using SistemaDeVideoClub.Entidades.ViewModels.TipoDeDocumento;

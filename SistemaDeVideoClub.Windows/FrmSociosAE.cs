@@ -89,12 +89,12 @@ namespace SistemaDeVideoClub.Windows
                 errorProvider1.SetError(cboTipoDocumento, "Campo obligatorio");
                 valido = false;
             }
-            if (dateTimeFechaNac.Value.AddYears(18)> DateTime.Today)
-            {
-                errorProvider1.SetError(dateTimeFechaNac, "Debe ser mayor de edad para ser socio");
-                //dateTimeFechaNac.Value = DateTime.Today.AddYears(-18);
-                valido = false;
-            }
+            //if (dateTimeFechaNac.Value.AddYears(18)> DateTime.Today)
+            //{
+            //    errorProvider1.SetError(dateTimeFechaNac, "Debe ser mayor de edad para ser socio");
+            //    //dateTimeFechaNac.Value = DateTime.Today.AddYears(-18);
+            //    valido = false;
+            //}
             return valido;
         }
         internal void SetPelicula(SocioEditDto socioEditDto)
@@ -134,6 +134,7 @@ namespace SistemaDeVideoClub.Windows
             cboLocalidad.SelectedValue = socioDto.LocalidadId;
             cboProvincia.SelectedValue = socioDto.ProvinciaId;
             cboTipoDocumento.SelectedValue = socioDto.TipoDeDocumentoId;
+            dateTimeFechaNac.Value = socioDto.FechaDeNacimiento;
         }
 
 

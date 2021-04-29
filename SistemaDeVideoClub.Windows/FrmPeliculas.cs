@@ -71,7 +71,7 @@ namespace SistemaDeVideoClub.Windows
         private void SetearFila(DataGridViewRow r, PeliculaListDto pelicula)
         {
             r.Cells[cmnTitulo.Index].Value = pelicula.Titulo;
-            r.Cells[CmnGenero.Index].Value = pelicula.Genero;
+            r.Cells[CmnCodigoPelicula.Index].Value = pelicula.CodigoPelicula;
             r.Cells[CmnCalificacion.Index].Value = pelicula.Calificacion;
             r.Cells[CmnEstado.Index].Value = pelicula.Estado;
             r.Cells[CmnFechaIncorporacion.Index].Value = pelicula.FechaIncorporacion;
@@ -107,17 +107,21 @@ namespace SistemaDeVideoClub.Windows
                         MessageBox.Show("Pelicula Repetida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
-                    _Servicio.Guardar(peliculaEditDto);
+                    else
+                    {
+                        _Servicio.Guardar(peliculaEditDto);
+                        DataGridViewRow r = ConstruirFila();
+                        var peliculaListDto = _mapper.Map<PeliculaListDto>(peliculaEditDto);
+                        peliculaListDto.Calificacion = (_ServicioCalificacion.GetCalificacionPorId(peliculaEditDto.CalificacionId)).Descripcion;
+                        peliculaListDto.Estado = (_ServicioEstado.GetEstadoPorId(peliculaEditDto.EstadoId)).Descripcion;
+                        peliculaListDto.Genero = (_ServicioGenero.GetGeneroPorId(peliculaEditDto.GeneroId)).Descripcion;
 
-                    DataGridViewRow r = ConstruirFila();
-                    var peliculaListDto = _mapper.Map<PeliculaListDto>(peliculaEditDto);
-                    peliculaListDto.Calificacion = (_ServicioCalificacion.GetCalificacionPorId(peliculaEditDto.CalificacionId)).Descripcion;
-                    peliculaListDto.Estado = (_ServicioEstado.GetEstadoPorId(peliculaEditDto.EstadoId)).Descripcion;
-                    peliculaListDto.Genero = (_ServicioGenero.GetGeneroPorId(peliculaEditDto.GeneroId)).Descripcion;
+                        SetearFila(r, peliculaListDto);
+                        AgregarFila(r);
+                        MessageBox.Show("Pelicula Agregada con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    SetearFila(r, peliculaListDto);
-                    AgregarFila(r);
-                    MessageBox.Show("Pelicula Agregada con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                 }
                 catch (Exception exepcion)
                 {

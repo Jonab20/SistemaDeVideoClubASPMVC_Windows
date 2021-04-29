@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
+using SistemaDeVideoClub.Entidades.DTOs;
 using SistemaDeVideoClub.Entidades.DTOs.Alquiler;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
@@ -15,73 +16,87 @@ namespace SistemaDeVideoClub.Servicios.Servicios
 {
     public class ServicioAlquiler : IServicioAlquiler
     {
-        private readonly IRepositorioAlquiler _repositorio;
-        private readonly IMapper _mapper;
+        private readonly SistemaDeVideoClubDbContext _context;
+        private readonly IRepositorioAlquileres _repositorio;
+        private readonly IRepositorioItemAlquiler _repositorioItems;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public ServicioAlquiler(IRepositorioAlquiler repositorio, IUnitOfWork unitOfWork)
+        public ServicioAlquiler(SistemaDeVideoClubDbContext context,IRepositorioAlquileres repositorio, IRepositorioItemAlquiler repositorioItems, IUnitOfWork unitOfWork)
         {
             _repositorio = repositorio;
+            _repositorioItems = repositorioItems;
             _unitOfWork = unitOfWork;
             _mapper = Mapeador.CrearMapper();
-
+            _context = context;
         }
-        public void Borrar(int alquilerEditDto)
+        public AlquilerListDto GetAlquilerPorId(int id)
         {
             try
             {
-                _repositorio.Borrar(alquilerEditDto);
-                _unitOfWork.Save();
+                var alquiler = _repositorio.GetAlquilerPorId(id);
+                alquiler.ItemsAlquileres = _repositorioItems.GetLista(id);
+                return alquiler;
             }
             catch (Exception e)
             {
-
-                throw new Exception(e.Message);
+                Console.WriteLine(e);
+                throw;
             }
 
         }
 
-        public AlquilerEditDto GetAlquilerPorId(int? id)
+        public List<AlquilerListDto> GetLista()
         {
             try
             {
-                return _repositorio.GetAlquilerPorId(id);
+                var alquileres = _repositorio.GetLista();
+                return alquileres;
             }
             catch (Exception e)
             {
-
-                throw new Exception(e.Message);
-
-            }
-        }
-
-        public List<AlquilerListDto> GetLista(string listaDto)
-        {
-            try
-            {
-                return _repositorio.GetLista(listaDto);
-            }
-            catch (Exception e)
-            {
-
                 throw new Exception(e.Message);
             }
         }
 
         public void Guardar(AlquilerEditDto alquilerEditDto)
         {
-            try
+            Alquiler alquiler = _mapper.Map<Alquiler>(alquilerEditDto);
+            using (var tran = _context.Database.BeginTransaction())
             {
-                Alquiler alquiler = _mapper.Map<Alquiler>(alquilerEditDto);
-                _repositorio.Guardar(alquiler);
-                _unitOfWork.Save();
-                alquilerEditDto.AlquilerId = alquiler.AlquilerId;
-            }
-            catch (Exception e)
-            {
+                try
+                {
+                    var alquiler1 = new Alquiler()
+                    {
+                        AlquilerId = alquiler.AlquilerId,
+                        SocioId = alquiler.SocioId,
+                        FechaAlquiler = alquiler.FechaAlquiler,
 
-                throw new Exception(e.Message);
+                    };
+                    _repositorio.Guardar(alquiler1);
+                    _unitOfWork.Save();
+                    foreach (var item in alquiler.ItemsAlquiler)
+                    {
+                        var item1 = new ItemAlquiler()
+                        {
+                            ItemAlquilerId = item.ItemAlquilerId,
+                            AlquilerId = alquiler1.AlquilerId,
+                            PeliculaId = item.Pelicula.PeliculaId,
+                            PrecioAlquiler = item.PrecioAlquiler
+ 
+                        };
+                        _repositorioItems.Guardar(item1);
+                    }
+                    _unitOfWork.Save();
+                    tran.Commit();
+                    alquilerEditDto.AlquilerId = alquiler1.AlquilerId;
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    throw new Exception(e.Message);
 
+                }
             }
         }
     }

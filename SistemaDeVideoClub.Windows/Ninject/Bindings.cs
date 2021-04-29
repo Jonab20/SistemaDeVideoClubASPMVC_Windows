@@ -41,6 +41,10 @@ namespace SistemaDeVideoClub.Windows.Ninject
 
             Bind<IRepositorioSocios>().To<RepositorioSocios>();
             Bind<IServiciosSocios>().To<ServicioSocio>();
+
+            Bind<IRepositorioAlquileres>().To<RepositorioAlquileres>();
+            Bind<IRepositorioItemAlquiler>().To<RepositorioItemAlquileres>();
+            Bind<IServicioAlquiler>().To<ServicioAlquiler>();
         }
     }
 }

@@ -40,27 +40,33 @@ namespace SistemaDeVideoClub.Windows
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(246, 79);
+            this.button1.Image = global::SistemaDeVideoClub.Windows.Properties.Resources.cancelar;
+            this.button1.Location = new System.Drawing.Point(167, 78);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 39);
+            this.button1.Size = new System.Drawing.Size(68, 83);
             this.button1.TabIndex = 9;
             this.button1.Text = "Cancelar";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(12, 79);
+            this.btnGuardar.Image = global::SistemaDeVideoClub.Windows.Properties.Resources.guardar;
+            this.btnGuardar.Location = new System.Drawing.Point(77, 78);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(92, 39);
+            this.btnGuardar.Size = new System.Drawing.Size(68, 83);
             this.btnGuardar.TabIndex = 10;
             this.btnGuardar.Text = "Aceptar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // TxtDescripcion
             // 
-            this.TxtDescripcion.Location = new System.Drawing.Point(117, 26);
+            this.TxtDescripcion.Location = new System.Drawing.Point(77, 27);
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(158, 20);
             this.TxtDescripcion.TabIndex = 8;
@@ -68,7 +74,7 @@ namespace SistemaDeVideoClub.Windows
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 29);
+            this.label1.Location = new System.Drawing.Point(12, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 7;
@@ -82,13 +88,14 @@ namespace SistemaDeVideoClub.Windows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 138);
+            this.ClientSize = new System.Drawing.Size(261, 173);
+            this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.TxtDescripcion);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(379, 177);
-            this.MinimumSize = new System.Drawing.Size(379, 177);
+            this.MaximumSize = new System.Drawing.Size(277, 212);
+            this.MinimumSize = new System.Drawing.Size(277, 212);
             this.Name = "FrmTiposDeDocumentoAE";
             this.Text = "FrmTiposDeDocumentoAE";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

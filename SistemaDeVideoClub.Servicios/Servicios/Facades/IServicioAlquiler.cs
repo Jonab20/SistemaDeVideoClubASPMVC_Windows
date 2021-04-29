@@ -1,4 +1,5 @@
-﻿using SistemaDeVideoClub.Entidades.DTOs.Alquiler;
+﻿using SistemaDeVideoClub.Entidades.DTOs;
+using SistemaDeVideoClub.Entidades.DTOs.Alquiler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,11 @@ namespace SistemaDeVideoClub.Servicios.Servicios.Facades
 {
     public interface IServicioAlquiler
     {
-        List<AlquilerListDto> GetLista(string listaDto);
+        List<AlquilerListDto> GetLista();
         //bool Existe(PeliculaEditDto peliculaEditDto);
         void Guardar(AlquilerEditDto alquilerEditDto);
 
-        void Borrar(int alquilerEditDto);
-        AlquilerEditDto GetAlquilerPorId(int? id);
+        AlquilerListDto GetAlquilerPorId(int id);
 
     }
 }

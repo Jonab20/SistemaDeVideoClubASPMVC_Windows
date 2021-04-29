@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaDeVideoClub.Entidades.DTOs.Socio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,8 +8,12 @@ namespace SistemaDeVideoClub.Entidades.Entidades
     public class Carrito
     {
         public List<ItemCarrito> listaPeliculaAlquiler { get; set; } = new List<ItemCarrito>();
-
-        public void AgregarAlquiler(Pelicula pelicula, int cantidad)
+        public SocioEditDto socio;
+        public List<ItemCarrito> GetItems()
+        {
+            return listaPeliculaAlquiler;
+        }
+        public void AgregarAlquiler(Pelicula pelicula/*, Socio socio*/,decimal PrecioAlquiler)
         {
             var item = listaPeliculaAlquiler.SingleOrDefault(li => li.pelicula.PeliculaId == pelicula.PeliculaId);
             if (item == null)
@@ -16,13 +21,14 @@ namespace SistemaDeVideoClub.Entidades.Entidades
                 listaPeliculaAlquiler.Add(new ItemCarrito
                 {
                     pelicula = pelicula,
-                    Cantidad = cantidad
+                    PrecioAlquiler = PrecioAlquiler,
+                    //Socio =socio
                     //FechaAlquiler = DateTime.Now
                 }) ;
             }
             else
             {
-                item.Cantidad++;
+                item.PrecioAlquiler++;
                 //peli.FechaAlquiler.AddDays(7);
             }
         }
@@ -31,18 +37,18 @@ namespace SistemaDeVideoClub.Entidades.Entidades
             listaPeliculaAlquiler.RemoveAll(li => li.pelicula.PeliculaId == pelicula.PeliculaId );
         }
 
-        public List<ItemCarrito> GetItems()
-        {
-            return listaPeliculaAlquiler;
-        }
+        //public void SetSocio(SocioEditDto sociodto)
+        //{
+        //    socio = sociodto;
+        //}
 
         public void VaciarCarrito()
         {
             listaPeliculaAlquiler.Clear();
         }
-        //public decimal TotalCarrito()
-        //{
-        //    return listaPeliculaAlquiler.Sum(i => i.Cantidad * i.Producto.Precio);
-        //}
+        public decimal TotalCarrito()
+        {
+            return listaPeliculaAlquiler.Count();
+        }
     }
 }

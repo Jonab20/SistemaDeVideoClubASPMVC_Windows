@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
+using SistemaDeVideoClub.Entidades.DTOs;
 using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;

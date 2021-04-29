@@ -198,6 +198,7 @@
     <Compile Include="Classes\CombosHelper.cs" />
     <Compile Include="Classes\FileHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlquileresController.cs" />
     <Compile Include="Controllers\CalificacionesController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
@@ -432,6 +433,12 @@
     <Content Include="Views\TipoDeDocumento\Create.cshtml" />
     <Content Include="Views\TipoDeDocumento\Edit.cshtml" />
     <Content Include="Views\TipoDeDocumento\Delete.cshtml" />
+    <Content Include="Views\Carrito\Summary.cshtml" />
+    <Content Include="Views\Carrito\AlquilerGuardado.cshtml" />
+    <Content Include="Views\Carrito\CheckOut.cshtml" />
+    <Content Include="Views\Carrito\ErrorAlProcesarPedido.cshtml" />
+    <Content Include="Views\Carrito\GeneratePdfPreview.cshtml" />
+    <Content Include="Views\Alquileres\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

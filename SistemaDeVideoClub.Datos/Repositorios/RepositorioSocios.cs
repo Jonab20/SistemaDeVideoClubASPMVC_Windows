@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SistemaDeVideoClub.Datos.Repositorios.Facades;
+using SistemaDeVideoClub.Entidades.DTOs;
 using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClubMVC.Mapeador;

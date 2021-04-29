@@ -93,6 +93,10 @@ namespace SistemaDeVideoClubASPMVC.App_Start
             kernel.Bind<IServicioSoporte>().To<ServicioSoporte>().InRequestScope();
             kernel.Bind<IRepositorioSoporte>().To<RepositorioSoporte>().InRequestScope();
 
+            kernel.Bind<IServicioAlquiler>().To<ServicioAlquiler>().InRequestScope();
+            kernel.Bind<IRepositorioAlquileres>().To<RepositorioAlquileres>().InRequestScope();
+            kernel.Bind<IRepositorioItemAlquiler>().To<RepositorioItemAlquileres>().InRequestScope();
+
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind(typeof(SistemaDeVideoClubDbContext)).ToSelf().InSingletonScope();
 

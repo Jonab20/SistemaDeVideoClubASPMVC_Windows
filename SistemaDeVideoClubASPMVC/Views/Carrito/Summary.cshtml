@@ -1,0 +1,10 @@
+﻿@model SistemaDeVideoClub.Entidades.Entidades.Carrito
+<div class="navbar-right">
+    @Html.ActionLink("CheckOut", "CheckOut", "Carrito",new { returnUrl = Request.Url.PathAndQuery }, new { @class = "btn btn - light" })
+</div>
+<div class="navbar-text navbar-right">
+    <b>Tu carrito:</b>
+    @*@Model.GetItems().Sum(i => i.Cantidad) item(s),*@
+    @Model.GetItems().Count(@*i => i.pelicula*@) item(s)
+    @*$@Model.GetItems().Sum(i => i.Producto.Precio * i.Cantidad)*@
+</div>

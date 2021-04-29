@@ -66,6 +66,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBuscarPelicula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarPelicula.Designer.cs">
+      <DependentUpon>FrmBuscarPelicula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscarSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarSocio.Designer.cs">
+      <DependentUpon>FrmBuscarSocio.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAlquileres.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +107,12 @@
     </Compile>
     <Compile Include="FrmCalificacionesAE.Designer.cs">
       <DependentUpon>FrmCalificacionesAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDetalleAlquiler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetalleAlquiler.Designer.cs">
+      <DependentUpon>FrmDetalleAlquiler.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEstados.cs">
       <SubType>Form</SubType>
@@ -219,11 +237,20 @@
     <EmbeddedResource Include="FrmBuscarLocalidad.resx">
       <DependentUpon>FrmBuscarLocalidad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarPelicula.resx">
+      <DependentUpon>FrmBuscarPelicula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarSocio.resx">
+      <DependentUpon>FrmBuscarSocio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCalificaciones.resx">
       <DependentUpon>FrmCalificaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCalificacionesAE.resx">
       <DependentUpon>FrmCalificacionesAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetalleAlquiler.resx">
+      <DependentUpon>FrmDetalleAlquiler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEstados.resx">
       <DependentUpon>FrmEstados.cs</DependentUpon>
@@ -372,6 +399,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon\salir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\cancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\alquileres.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\buscarSocio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\buscar pelicula.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\agregarpedido.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\cancelarpedido.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\detalle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\buscandopelicula.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\movie_beginning_80px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\buscandoSocio.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

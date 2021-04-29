@@ -86,17 +86,20 @@ namespace SistemaDeVideoClub.Windows
                         MessageBox.Show("Calificacion Repetida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
-                    _Servicio.Guardar(calificacionEditDto);
+                    else
+                    {
+                        _Servicio.Guardar(calificacionEditDto);
 
-                    DataGridViewRow r = ConstruirFila();
-                    var calificacionListDto = _mapper.Map<CalificacionListDto>(calificacionEditDto);
-                    SetearFila(r, calificacionListDto);
-                    AgregarFila(r);
-                    MessageBox.Show("Calificacion Agregada con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DataGridViewRow r = ConstruirFila();
+                        var calificacionListDto = _mapper.Map<CalificacionListDto>(calificacionEditDto);
+                        SetearFila(r, calificacionListDto);
+                        AgregarFila(r);
+                        MessageBox.Show("Calificacion Agregada con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
                 catch (Exception exepcion)
                 {
-
                     MessageBox.Show(exepcion.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

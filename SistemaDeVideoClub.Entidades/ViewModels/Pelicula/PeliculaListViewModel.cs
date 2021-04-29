@@ -10,9 +10,12 @@ namespace SistemaDeVideoClub.Entidades.ViewModels.Pelicula
     {
         public int PeliculaId { get; set; }
 
+        [Display(Name = @"Codigo de pelicula")]
+
+        public string CodigoPelicula { get; set; }
+
         [Display(Name = @"Titulo")]
         public string Titulo { get; set; }
-
 
         [Display(Name = @"Duracion en minutos")]
         public int Duracion { get; set; }

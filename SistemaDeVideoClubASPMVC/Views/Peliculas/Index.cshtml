@@ -65,17 +65,17 @@
                  @using (Html.BeginForm("AgregarAlCarro", "Carrito"))
                  {
 
-                      <div class="btn-group">
-                          <a href="@Url.Action("Edit","Peliculas",new{id=item.PeliculaId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
-                          <a href="@Url.Action("Details","Peliculas",new{id=item.PeliculaId})" class="btn btn-info"><i class="fas fa-list"></i> Detalle</a>
-                          <a href="@Url.Action("Delete","Peliculas",new{id=item.PeliculaId})" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Borrar </a>
-                    
-                    
-                          @Html.HiddenFor(modelitem => item.PeliculaId)
-                          @Html.Hidden("productoId", item.PeliculaId)
-                          @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                          <input type="submit" class="btn btn-default" value="Agregar" />
-                      </div>
+                <div class="btn-group">
+                    <a href="@Url.Action("Edit","Peliculas",new{id=item.PeliculaId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+                    <a href="@Url.Action("Details","Peliculas",new{id=item.PeliculaId})" class="btn btn-info"><i class="fas fa-list"></i> Detalle</a>
+                    <a href="@Url.Action("Delete","Peliculas",new{id=item.PeliculaId})" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Borrar </a>
+
+
+                    @Html.HiddenFor(modelitem => item.PeliculaId)
+                    @Html.Hidden("PeliculaId", item.PeliculaId)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" class="btn btn-default" value="Agregar" />
+                </div>
                   
                   }
 

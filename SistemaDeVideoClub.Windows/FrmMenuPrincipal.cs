@@ -75,5 +75,11 @@ namespace SistemaDeVideoClub.Windows
             FrmTiposDeDocumento frm = DI.Create<FrmTiposDeDocumento>();
             frm.ShowDialog(this);
         }
+
+        private void btnAlquiler_Click(object sender, EventArgs e)
+        {
+            FrmAlquileres frm = DI.Create<FrmAlquileres>();
+            frm.ShowDialog(this);
+        }
     }
 }

@@ -25,19 +25,6 @@ namespace SistemaDeVideoClub.Windows
             return soporteDto;
         }
 
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (ValidarDatos())
-            {
-                if (soporteDto == null)
-                {
-                    soporteDto = new SoporteEditDto();
-                }
-                soporteDto.Descripcion = TxtDescripcion.Text;
-                DialogResult = DialogResult.OK;
-            }
-        }
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -64,7 +51,20 @@ namespace SistemaDeVideoClub.Windows
             soporteDto = SoporteEditDto; ;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGuardar_Click_1(object sender, EventArgs e)
+        {
+            if (ValidarDatos())
+            {
+                if (soporteDto == null)
+                {
+                    soporteDto = new SoporteEditDto();
+                }
+                soporteDto.Descripcion = TxtDescripcion.Text;
+                DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }

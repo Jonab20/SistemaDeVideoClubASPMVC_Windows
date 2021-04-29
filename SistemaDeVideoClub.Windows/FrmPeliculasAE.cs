@@ -37,6 +37,7 @@ namespace SistemaDeVideoClub.Windows
                     peliculaDto = new PeliculaEditDto();
                 }
                 peliculaDto.Titulo = txtTitulo.Text;
+                peliculaDto.CodigoPelicula = txtCodigo.Text;
                 peliculaDto.CalificacionId = ((CalificacionListDto)cboCalificacion.SelectedItem).CalificacionId;
                 peliculaDto.GeneroId = ((GeneroListDto)cboGenero.SelectedItem).GeneroId;
                 peliculaDto.EstadoId = ((EstadoListDto)cboEstado.SelectedItem).EstadoId;
@@ -59,10 +60,27 @@ namespace SistemaDeVideoClub.Windows
                 valido = false;
             }
             if (string.IsNullOrEmpty(txtDuracion.Text))
-            {     
+            {
                 errorProvider1.SetError(txtDuracion, "Campo obligatorio");
                 valido = false;
             }
+            if (string.IsNullOrEmpty(txtDuracion.Text))
+            {
+                errorProvider1.SetError(txtDuracion, "Campo obligatorio");
+                valido = false;
+            }
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+            {
+                errorProvider1.SetError(txtDuracion, "Campo obligatorio");
+                valido = false;
+
+            }
+            else if (txtCodigo.TextLength > 4)
+            {
+                errorProvider1.SetError(txtDuracion, "El codigo debe contener maximo 4 caracteres");
+                valido = false;
+            }
+
             if (cboCalificacion.SelectedIndex == 0)
             {
                 errorProvider1.SetError(cboCalificacion, "Debe seleccionar una calificacion");
@@ -94,6 +112,7 @@ namespace SistemaDeVideoClub.Windows
                 return;
             }
             txtTitulo.Text = peliculaDto.Titulo;
+            txtCodigo.Text = peliculaDto.CodigoPelicula;
             txtDuracion.Text = peliculaDto.DuracionEnMinutos.ToString();
             cboCalificacion.SelectedValue = peliculaDto.CalificacionId;
             cboEstado.SelectedValue = peliculaDto.EstadoId;
@@ -112,7 +131,7 @@ namespace SistemaDeVideoClub.Windows
 
         private void FrmPeliculasAE_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         internal void SetPelicula(PeliculaEditDto peliculaEditDto)

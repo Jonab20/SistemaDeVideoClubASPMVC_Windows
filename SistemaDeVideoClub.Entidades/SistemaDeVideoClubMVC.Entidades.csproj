@@ -51,6 +51,8 @@
     <Compile Include="DTOs\Estado\EstadoListDto.cs" />
     <Compile Include="DTOs\Genero\GeneroEditDto.cs" />
     <Compile Include="DTOs\Genero\GeneroListDto.cs" />
+    <Compile Include="DTOs\ItemAlquiler\ItemAlquilerEditDto.cs" />
+    <Compile Include="DTOs\ItemAlquiler\ItemAlquilerListDto.cs" />
     <Compile Include="DTOs\Localidad\LocalidadEditDto.cs" />
     <Compile Include="DTOs\Localidad\LocalidadListDto.cs" />
     <Compile Include="DTOs\Pelicula\PeliculaEditDto.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="DTOs\Soporte\SoporteListDto.cs" />
     <Compile Include="Entidades\Alquiler.cs" />
     <Compile Include="Entidades\Carrito.cs" />
+    <Compile Include="Entidades\ItemAlquiler.cs" />
     <Compile Include="Entidades\ItemCarrito.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Genero.cs" />
@@ -76,6 +79,7 @@
     <Compile Include="Entidades\TipoDeDocumento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entidades\Calificacion.cs" />
+    <Compile Include="ViewModels\Alquiler\AlquilerListViewModel.cs" />
     <Compile Include="ViewModels\Calificacion\CalificacionEditViewModel.cs" />
     <Compile Include="ViewModels\Calificacion\CalificacionListViewModel.cs" />
     <Compile Include="ViewModels\Carrito\CarritoListViewModel.cs" />
@@ -84,6 +88,7 @@
     <Compile Include="ViewModels\Estado\EstadoListViewModel.cs" />
     <Compile Include="ViewModels\Genero\GeneroEditViewModel.cs" />
     <Compile Include="ViewModels\Genero\GeneroListViewModel.cs" />
+    <Compile Include="ViewModels\ItemAlquiler\ItemAlquilerListViewModel.cs" />
     <Compile Include="ViewModels\Localidad\LocalidadDetailViewModel.cs" />
     <Compile Include="ViewModels\Localidad\LocalidadEditViewModel.cs" />
     <Compile Include="ViewModels\Localidad\LocalidadListViewModel.cs" />

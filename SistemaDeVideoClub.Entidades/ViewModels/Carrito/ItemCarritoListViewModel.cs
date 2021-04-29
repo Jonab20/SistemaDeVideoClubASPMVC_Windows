@@ -11,6 +11,7 @@ namespace SistemaDeVideoClub.Entidades.ViewModels.Carrito
     {
         public PeliculaListViewModel PeliculaListViewModel { get; set; }
 
-        public int Cantidad { get; set; }
+        public decimal PrecioAlquiler { get; set; }
+        //public int Cantidad { get; set; }
     }
 }

@@ -74,13 +74,17 @@ namespace SistemaDeVideoClub.Windows
                         MessageBox.Show("Estado Repetido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
-                    _Servicio.Guardar(estadoEitDto);
+                    else
+                    {
+                        _Servicio.Guardar(estadoEitDto);
 
-                    DataGridViewRow r = ConstruirFila();
-                    var estadoListDto = _mapper.Map<EstadoListDto>(estadoEitDto);
-                    SetearFila(r, estadoListDto);
-                    AgregarFila(r);
-                    MessageBox.Show("Estado Agregado con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DataGridViewRow r = ConstruirFila();
+                        var estadoListDto = _mapper.Map<EstadoListDto>(estadoEitDto);
+                        SetearFila(r, estadoListDto);
+                        AgregarFila(r);
+                        MessageBox.Show("Estado Agregado con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
                 catch (Exception exepcion)
                 {

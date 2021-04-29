@@ -1,4 +1,5 @@
-﻿using SistemaDeVideoClub.Entidades.DTOs.Socio;
+﻿using SistemaDeVideoClub.Entidades.DTOs;
+using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using System;
 using System.Collections.Generic;
 using System.Linq;

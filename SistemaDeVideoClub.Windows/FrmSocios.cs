@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SistemaDeVideoClub.Entidades.DTOs;
 using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClub.Windows.Ninject;
@@ -153,18 +154,22 @@ namespace SistemaDeVideoClub.Windows
                         MessageBox.Show("Socio Existente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
-                    _Servicio.Guardar(socioEditDto);
+                    else
+                    {
+                        _Servicio.Guardar(socioEditDto);
 
-                    DataGridViewRow r = ConstruirFila();
-                    var socioListDto = _mapper.Map<SocioListDto>(socioEditDto);
+                        DataGridViewRow r = ConstruirFila();
+                        var socioListDto = _mapper.Map<SocioListDto>(socioEditDto);
 
-                    socioListDto.TipoDeDocumento = (_ServicioTipo.GetTipoPorId(socioEditDto.TipoDeDocumentoId)).Descripcion;
-                    socioListDto.Localidad = (_ServicioLocalidad.GetLocalidadPorId(socioEditDto.LocalidadId)).NombreLocalidad;
-                    socioListDto.Provincia = (_ServicioProvincia.GetProvinciaPorId(socioEditDto.ProvinciaId)).NombreProvincia;
+                        socioListDto.TipoDeDocumento = (_ServicioTipo.GetTipoPorId(socioEditDto.TipoDeDocumentoId)).Descripcion;
+                        socioListDto.Localidad = (_ServicioLocalidad.GetLocalidadPorId(socioEditDto.LocalidadId)).NombreLocalidad;
+                        socioListDto.Provincia = (_ServicioProvincia.GetProvinciaPorId(socioEditDto.ProvinciaId)).NombreProvincia;
 
-                    SetearFila(r, socioListDto);
-                    AgregarFila(r);
-                    MessageBox.Show("Socio Agregado con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SetearFila(r, socioListDto);
+                        AgregarFila(r);
+                        MessageBox.Show("Socio Agregado con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
                 catch (Exception exepcion)
                 {

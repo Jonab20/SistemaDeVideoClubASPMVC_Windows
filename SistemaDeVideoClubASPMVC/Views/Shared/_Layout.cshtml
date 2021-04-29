@@ -22,13 +22,17 @@
                     <a class="nav-link" href="@Url.Action("index","Home")">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("Index","Alquileres")">Alquiler</a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="@Url.Action("index","Peliculas")">Peliculas</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="@Url.Action("Index","Socios")">Socios</a>
                 </li>
                 <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Archivos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -41,9 +45,7 @@
                         <a class="dropdown-item" href="@Url.Action("Index","Soporte")">Soportes</a>
                         <a class="dropdown-item" href="@Url.Action("Index","Calificaciones")">Calificaciones</a>
                         <a class="dropdown-item" href="@Url.Action("Index","TipoDeDocumento")">Tipos de documentos</a>
-
                     </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Contact","Home")">Contacto</a>
                 </li>
@@ -54,6 +56,11 @@
             </ul>
 
         </div>
+        </div>
+
+        </li>
+        @Html.Action("Summary", "Carrito")
+
     </nav>
     <div class="container body-content">
         @RenderBody()

@@ -1,0 +1,72 @@
+﻿@model SistemaDeVideoClub.Entidades.ViewModels.Alquiler.AlquilerListViewModel
+@{ ViewBag.Title = "Sell GeneratePdfPreview";
+    Layout = null; }
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sell GeneratePdf</title>
+
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body style="width: 21cm; height: 30cm; margin-left: 40px; background-color: white">
+    <h2 align="center">VC CD</h2>
+    <p align="center">
+        alguna calle de silicon valley
+        <br />
+        Cell: 2311-514977
+    </p>
+    <hr />
+    <div>
+        <table>
+            <tr>
+                <td>Venta No:</td>
+                <td style="font-weight: bold">: @Model.AlquilerId</td>
+            </tr>
+
+            <tr>
+                <td>Fecha Vta:</td>
+                <td style="font-weight: bold">: @Model.FechaAlquiler.ToLongDateString()</td>
+            </tr>
+            <tr>
+                <td>Modalidad:</td>
+                <td style="font-weight: bold">: @Model.Socio</td>
+            </tr>
+            @*<tr>
+                <td>Estado:</td>
+                <td style="font-weight: bold">: @Model.EstadoVenta</td>
+            </tr>*@
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            @*<tbody>
+                @foreach (var sellItem in Model.)
+                {
+    <tr>
+        <td>@sellItem.Pelicula</td>
+        <td>@sellItem.Cantidad</td>
+        <td>@sellItem.PrecioUnitario.ToString("C")</td>
+        <td>@sellItem.Total.ToString("C")</td>
+    </tr>}
+
+            </tbody>*@
+        </table>
+        @*<p> Total:<b>@Model.Detalles.Sum(d => d.Total).ToString("C")</b></p>*@
+        <br />
+        <br />
+        <h6 style="text-align: right">Fecha:@DateTime.Now</h6>
+        ______________________<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firma
+    </div>
+</body>
+</html>

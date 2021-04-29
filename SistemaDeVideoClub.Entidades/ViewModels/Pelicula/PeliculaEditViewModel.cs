@@ -12,6 +12,13 @@ namespace SistemaDeVideoClub.Entidades.ViewModels.Pelicula
     public class PeliculaEditViewModel
     {
         public int PeliculaId { get; set; }
+
+        [Display(Name = @"Codigo de pelicula")]
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [MaxLength(4, ErrorMessage = "El campo {0} debe contener no más de {1} caracteres")]
+
+        public string CodigoPelicula { get; set; }
+
         [Display(Name = @"Pelicula")]
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [MaxLength(250, ErrorMessage = "El campo {0} debe contener no más de {1} caracteres")]

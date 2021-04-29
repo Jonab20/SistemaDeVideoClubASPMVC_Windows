@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
+using SistemaDeVideoClub.Entidades.DTOs.Alquiler;
+using SistemaDeVideoClub.Entidades.DTOs.ItemAlquiler;
 using SistemaDeVideoClub.Entidades.DTOs.Pelicula;
+using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Entidades.ViewModels.Carrito;
+using SistemaDeVideoClub.Servicios.Servicios;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClubMVC.Mapeador;
 using System;
@@ -15,14 +19,18 @@ namespace SistemaDeVideoClubASPMVC.Controllers
     public class CarritoController : Controller
     {
         private readonly IServicioPelicula _servicioPeliculas;
+        private readonly IServiciosSocios _servicioSocio;
+        private readonly IServicioAlquiler _servicio;
         private IMapper _mapper;
-        public CarritoController(IServicioPelicula servicioPeliculas)
+        public CarritoController(IServicioPelicula servicioPeliculas, IServiciosSocios servicioSocio, IServicioAlquiler servicio)
         {
+            _servicioSocio = servicioSocio;
+            _servicio = servicio;
             _servicioPeliculas = servicioPeliculas;
             _mapper = Mapeador.CrearMapper();
         }
         // GET: Carrito
-        public ViewResult Index(Carrito carrito, string returnUrl)
+        public ActionResult Index(Carrito carrito, string returnUrl)
         {
             List<ItemCarritoListViewModel> listaItems = _mapper.Map<List<ItemCarritoListViewModel>>(carrito.GetItems());
             return View(new CarritoListViewModel
@@ -32,6 +40,17 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             });
 
         }
+        //public ActionResult SeleccionarSocio(Carrito carrito, int SocioId/*,decimal PrecioAlquiler*/, string returnUrl)
+        //{
+        //    SocioEditDto socioDto = _servicioSocio.GetSocioPorId(SocioId);
+        //    if (socioDto != null)
+        //    {
+        //        Socio socio = _mapper.Map<Socio>(socioDto);
+        //        //PrecioAlquiler = 100;
+        //        //carrito.AgregarAlquiler(socioDto, 100);
+        //    }
+        //    return RedirectToAction("Index", new { returnUrl });
+        //}
 
         public ActionResult AgregarAlCarro(Carrito carrito, int peliculaId, string returnUrl)
         {
@@ -39,7 +58,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             if (peliculaDto != null)
             {
                 Pelicula pelicula = _mapper.Map<Pelicula>(peliculaDto);
-                carrito.AgregarAlquiler(pelicula, 1);
+                carrito.AgregarAlquiler(pelicula, 100);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
@@ -74,59 +93,57 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         public ActionResult CancelarPedido(Carrito carrito)
         {
             carrito.VaciarCarrito();
-            return RedirectToAction("Index", "Productos");
+            return RedirectToAction("Index", "Peliculas");
         }
 
-        //    public ActionResult ConfirmarPedido(Carrito carrito)
-        //    {
-        //        try
-        //        {
-        //            List<ItemVentaEditDto> listaItems = new List<ItemVentaEditDto>();
-        //            foreach (var item in carrito.listaItems)
-        //            {
-        //                ItemVentaEditDto itemDto = new ItemVentaEditDto
-        //                {
-        //                    Producto = _mapper.Map<ProductoListDto>(item.Producto),
-        //                    Cantidad = item.Cantidad,
-        //                    PrecioUnitario = item.Producto.Precio
+        public ActionResult ConfirmarPedido(Carrito carrito)
+        {
+            ItemAlquiler ItemAlquiler;
+            
+            try
+            {
+                List<ItemAlquilerEditDto> listaItems = new List<ItemAlquilerEditDto>();
+                foreach (var item in carrito.listaPeliculaAlquiler)
+                {
+                    ItemAlquilerEditDto itemDto = new ItemAlquilerEditDto
+                    {
+                        Pelicula = _mapper.Map<PeliculaListDto>(item.pelicula),
+                        PrecioAlquiler = item.PrecioAlquiler
+                        //PrecioUnitario = item.Producto.Precio
 
-        //                };
-        //                listaItems.Add(itemDto);
-        //            }
-        //            VentaEditDto ventaEditDto = new VentaEditDto
-        //            {
-        //                FechaVenta = DateTime.Now,
-        //                ModalidadVenta = ModalidadVenta.TakeAway,
-        //                EstadoVenta = EstadoVenta.Finalizada,
-        //                ItemsVentas = listaItems
+                    };
+                    listaItems.Add(itemDto);
+                    //ItemAlquiler = itemDto;
+                }
+                AlquilerEditDto alquilerEditDto = new AlquilerEditDto
+                {
+                    FechaAlquiler = DateTime.Now,
+                    //PeliculaId = itemAlquiler
+                    //SocioId = 
+                    //AlquilerId = 
+                    //FechaVenta = DateTime.Now,
+                    //ModalidadVenta = ModalidadVenta.TakeAway,
+                    //EstadoVenta = EstadoVenta.Finalizada,
+                    ItemsAlquiler = listaItems
 
-        //            };
-        //            _servicio.Guardar(ventaEditDto);
-        //            ViewBag.VentaId = ventaEditDto.VentaId;
-        //            carrito.VaciarCarrito();
-        //            return View("VentaGuardada");
+                };
+                _servicio.Guardar(alquilerEditDto);
+                ViewBag.AlquilerId = alquilerEditDto.AlquilerId;
+                carrito.VaciarCarrito();
+                return View("AlquilerGuardado");
 
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            ModelState.AddModelError(string.Empty, e.Message);
-        //        }
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError(string.Empty, e.Message);
+            }
 
-        //        return View("ErrorAlProcesarPedido");
-        //    }
-        //    public ActionResult GeneratePdf(int id)
-        //    {
-        //        return new Rotativa.ActionAsPdf("GeneratePdfPreview", new { ventaId = id });
-        //    }
+            return View("ErrorAlProcesarPedido");
+        }
 
-        //    public ActionResult GeneratePdfPreview(int ventaId)
-        //    {
-        //        var ventaDto = _servicio.GetVentaPorId(ventaId);
-        //        var ventaVm = _mapper.Map<VentaDetailsViewModel>(ventaDto);
-        //        return View(ventaVm);
-        //    }
-
+        //public ActionResult GeneratePdf(int id)
+        //{
+        //    return new Rotativa.ActionAsPdf("GeneratePdfPreview", new { ventaId = id });
         //}
-
     }
 }

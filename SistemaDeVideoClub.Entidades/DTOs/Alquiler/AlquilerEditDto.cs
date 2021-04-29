@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaDeVideoClub.Entidades.DTOs.ItemAlquiler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,11 @@ namespace SistemaDeVideoClub.Entidades.DTOs.Alquiler
         public int PeliculaId { get; set; }
         public int SocioId { get; set; }
         public DateTime FechaAlquiler { get; set; }
-        public int DiasAtrasados { get; set; }
-        public int total { get; set; }
+
+        public List<ItemAlquilerEditDto> ItemsAlquiler { get; set; } = new List<ItemAlquilerEditDto>();
+
+        //public int DiasAtrasados { get; set; }
+        //public int total { get; set; }
 
     }
 }

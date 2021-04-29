@@ -29,6 +29,7 @@ namespace SistemaDeVideoClub.Windows
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnAlquiler = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -40,6 +41,18 @@ namespace SistemaDeVideoClub.Windows
             this.button1 = new System.Windows.Forms.Button();
             this.btngeneros = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnAlquiler
+            // 
+            this.btnAlquiler.Image = global::SistemaDeVideoClub.Windows.Properties.Resources.alquileres;
+            this.btnAlquiler.Location = new System.Drawing.Point(511, 12);
+            this.btnAlquiler.Name = "btnAlquiler";
+            this.btnAlquiler.Size = new System.Drawing.Size(119, 154);
+            this.btnAlquiler.TabIndex = 10;
+            this.btnAlquiler.Text = "Alquileres";
+            this.btnAlquiler.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAlquiler.UseVisualStyleBackColor = true;
+            this.btnAlquiler.Click += new System.EventHandler(this.btnAlquiler_Click);
             // 
             // button6
             // 
@@ -96,7 +109,7 @@ namespace SistemaDeVideoClub.Windows
             // button2
             // 
             this.button2.Image = global::SistemaDeVideoClub.Windows.Properties.Resources.salir;
-            this.button2.Location = new System.Drawing.Point(386, 172);
+            this.button2.Location = new System.Drawing.Point(511, 174);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 74);
             this.button2.TabIndex = 5;
@@ -171,8 +184,9 @@ namespace SistemaDeVideoClub.Windows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 260);
+            this.ClientSize = new System.Drawing.Size(637, 260);
             this.ControlBox = false;
+            this.Controls.Add(this.btnAlquiler);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -183,8 +197,8 @@ namespace SistemaDeVideoClub.Windows
             this.Controls.Add(this.btnLocalidades);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btngeneros);
-            this.MaximumSize = new System.Drawing.Size(536, 299);
-            this.MinimumSize = new System.Drawing.Size(536, 299);
+            this.MaximumSize = new System.Drawing.Size(653, 299);
+            this.MinimumSize = new System.Drawing.Size(653, 299);
             this.Name = "FrmMenuPrincipal";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmMenuPrincipal_Load);
@@ -204,6 +218,7 @@ namespace SistemaDeVideoClub.Windows
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnAlquiler;
     }
 }
 

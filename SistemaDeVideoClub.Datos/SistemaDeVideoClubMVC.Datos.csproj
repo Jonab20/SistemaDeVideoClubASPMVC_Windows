@@ -58,9 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityTypeConfigations\AlquileresEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\CalificacionEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\EstadoEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\GeneroEntityTypeConfigurations.cs" />
+    <Compile Include="EntityTypeConfigations\ItemAlquilerEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\LocalidadesEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\PeliculaEntityTypeConfigurations.cs" />
     <Compile Include="EntityTypeConfigations\ProvinciaEntityTypeConfigurations.cs" />
@@ -69,17 +71,19 @@
     <Compile Include="EntityTypeConfigations\TipoDeDocumentoEntityTypeConfigurations.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorios\Facades\IRepositorioAlquiler.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioAlquileres.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioCalificaciones.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioEstados.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioGeneros.cs" />
+    <Compile Include="Repositorios\Facades\IRepositorioItemAlquiler.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioLocalidades.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioPeliculas.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioProvincias.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioSocios.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioTiposDeDocumentos.cs" />
     <Compile Include="Repositorios\Facades\IRepositorioSoporte.cs" />
-    <Compile Include="Repositorios\RepositorioAlquiler.cs" />
+    <Compile Include="Repositorios\RepositorioAlquileres.cs" />
+    <Compile Include="Repositorios\RepositorioItemAlquileres.cs" />
     <Compile Include="Repositorios\RepositorioPeliculas.cs" />
     <Compile Include="Repositorios\RepositorioSocios.cs" />
     <Compile Include="Repositorios\RepositorioTiposDeDocumentos.cs" />

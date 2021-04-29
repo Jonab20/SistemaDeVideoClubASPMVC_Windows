@@ -21,6 +21,10 @@ using System;
 using SistemaDeVideoClub.Entidades.DTOs.Pelicula;
 using SistemaDeVideoClub.Entidades.ViewModels.Pelicula;
 using SistemaDeVideoClub.Entidades.ViewModels.Carrito;
+using SistemaDeVideoClub.Entidades.DTOs;
+using SistemaDeVideoClub.Entidades.DTOs.ItemAlquiler;
+using SistemaDeVideoClub.Entidades.DTOs.Alquiler;
+using SistemaDeVideoClub.Entidades.ViewModels.Alquiler;
 
 namespace SistemaDeVideoClubASPMVC.App_Start
 {
@@ -48,18 +52,56 @@ namespace SistemaDeVideoClubASPMVC.App_Start
 
             loadCarritoMapping();
 
+            LoadItemAlquilerMapping();
+
+            LoadAlquilerMapping();
+
+
+        }
+
+        private void LoadAlquilerMapping()
+        {
+            CreateMap<Alquiler, AlquilerListDto>();
+
+            //CreateMap<Venta, VentaListDto>().ForMember(dest=>dest.ItemsVentas, act=>act.MapFrom(src=>src.ItemsVentas))
+            //    .ReverseMap();
+            CreateMap<Alquiler, AlquilerEditDto>()
+                .ReverseMap();
+            //CreateMap<AlquilerListDto, AlquilerDetailsViewModel>();
+
+            //CreateMap<AlquilerListDto, AlquilerDetailsViewModel>()
+                //.ForMember(dest => dest.Detalles, act => act.MapFrom(src => src.ItemsVentas));
+            //CreateMap<VentaListDto, VentaListViewModel>();
+            CreateMap<AlquilerEditDto, AlquilerListDto>().ReverseMap();
+            CreateMap<AlquilerListViewModel, AlquilerListDto>().ReverseMap();
+        }
+
+        private void LoadItemAlquilerMapping()
+        {
+            CreateMap<ItemAlquiler, ItemAlquilerListDto>()
+     .ForMember(dest => dest.Pelicula, act => act.MapFrom(src => src.Pelicula.Titulo));
+
+
+            CreateMap<ItemAlquiler, ItemAlquilerEditDto>()
+                .ForMember(dest => dest.Pelicula, act => act.MapFrom(src => src.Pelicula.Titulo)).ReverseMap();
+            //CreateMap<ItemAlquilerListDto, ItemAlquilerListViewModel>();
+            CreateMap<ItemAlquilerEditDto, ItemAlquilerListDto>().ForMember(dest => dest.Pelicula,
+                act => act.MapFrom(src => src.Pelicula.Titulo));
+
         }
 
         private void loadCarritoMapping()
         {
-            CreateMap<ItemCarrito, ItemCarritoListViewModel>().ForMember(dest => dest.PeliculaListViewModel, act => act.MapFrom(src =>src.pelicula));
+            CreateMap<ItemCarrito, ItemCarritoListViewModel>().ForMember(dest => dest.PeliculaListViewModel, act => act.MapFrom(src => src.pelicula));
 
 
-            CreateMap<Pelicula, PeliculaListViewModel>();
-            //.ForMember(dest => dest.TipoProducto, act => act.MapFrom(src => src.TipoProducto.Descripcion));
+            CreateMap<Pelicula, PeliculaListViewModel>()
+                .ForMember(dest => dest.Genero, act => act.MapFrom(src => src.Genero.Descripcion))
+                .ForMember(dest => dest.Calificacion, act => act.MapFrom(src => src.Calificacion.Descripcion))
+                .ForMember(dest => dest.Estado, act => act.MapFrom(src => src.Estado.Descripcion));
 
-            CreateMap<Carrito, CarritoListViewModel>();
-                //.ForMember(dest => dest.Items, act => act.MapFrom(src => src.listaItems));
+
+            CreateMap<Carrito, CarritoListViewModel>().ForMember(dest => dest.items, act => act.MapFrom(src => src.listaPeliculaAlquiler));
 
         }
 
@@ -67,6 +109,7 @@ namespace SistemaDeVideoClubASPMVC.App_Start
         {
             CreateMap<PeliculaListViewModel, PeliculaListDto>().ReverseMap();
             CreateMap<PeliculaEditDto, PeliculaListDto>();
+            CreateMap<Pelicula, PeliculaListDto>().ReverseMap();
             CreateMap<PeliculaEditDto, Pelicula>().ReverseMap();
             CreateMap<PeliculaListDto, PeliculaListViewModel>().ReverseMap();
             CreateMap<PeliculaEditViewModel, PeliculaEditDto>().ReverseMap();

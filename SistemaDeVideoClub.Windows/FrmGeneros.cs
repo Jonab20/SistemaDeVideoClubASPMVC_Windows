@@ -84,13 +84,17 @@ namespace SistemaDeVideoClub.Windows
                         MessageBox.Show("Genero Repetido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
-                    _Servicio.Guardar(generoEitDto);
-                    
-                    DataGridViewRow r = ConstruirFila();
-                    var generoListDto = _mapper.Map<GeneroListDto>(generoEitDto);  
-                    SetearFila(r, generoListDto);
-                    AgregarFila(r);
-                    MessageBox.Show("Genero Agregado con Exito","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information) ;
+                    else
+                    {
+                        _Servicio.Guardar(generoEitDto);
+
+                        DataGridViewRow r = ConstruirFila();
+                        var generoListDto = _mapper.Map<GeneroListDto>(generoEitDto);
+                        SetearFila(r, generoListDto);
+                        AgregarFila(r);
+                        MessageBox.Show("Genero Agregado con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
                 catch (Exception exepcion)
                 {

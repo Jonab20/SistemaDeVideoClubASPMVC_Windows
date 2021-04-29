@@ -40,13 +40,17 @@ namespace SistemaDeVideoClub.Windows
                         MessageBox.Show("Soporte Repetido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
-                    _Servicio.Guardar(soporteEditDto);
+                    else
+                    {
+                        _Servicio.Guardar(soporteEditDto);
 
-                    DataGridViewRow r = ConstruirFila();
-                    var soporteListDto = _mapper.Map<SoporteListDto>(soporteEditDto);
-                    SetearFila(r, soporteListDto);
-                    AgregarFila(r);
-                    MessageBox.Show("Soporte Agregado con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DataGridViewRow r = ConstruirFila();
+                        var soporteListDto = _mapper.Map<SoporteListDto>(soporteEditDto);
+                        SetearFila(r, soporteListDto);
+                        AgregarFila(r);
+                        MessageBox.Show("Soporte Agregado con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
                 catch (Exception exepcion)
                 {

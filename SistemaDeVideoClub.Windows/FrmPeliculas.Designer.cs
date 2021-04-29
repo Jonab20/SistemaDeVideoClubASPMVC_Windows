@@ -29,19 +29,12 @@ namespace SistemaDeVideoClub.Windows
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DatosDataGridView = new System.Windows.Forms.DataGridView();
-            this.cmnTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CmnGenero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CmnFechaIncorporacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CmnEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CmnCalificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CmnActiva = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CmnAlquilada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
@@ -53,6 +46,13 @@ namespace SistemaDeVideoClub.Windows
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
+            this.cmnTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmnCodigoPelicula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmnFechaIncorporacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmnEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmnCalificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmnActiva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmnAlquilada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DatosDataGridView)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -71,20 +71,20 @@ namespace SistemaDeVideoClub.Windows
             // 
             this.DatosDataGridView.AllowUserToAddRows = false;
             this.DatosDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.DatosDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DatosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.DatosDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DatosDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DatosDataGridView.ColumnHeadersHeight = 30;
             this.DatosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cmnTitulo,
-            this.CmnGenero,
+            this.CmnCodigoPelicula,
             this.CmnFechaIncorporacion,
             this.CmnEstado,
             this.CmnCalificacion,
@@ -95,72 +95,23 @@ namespace SistemaDeVideoClub.Windows
             this.DatosDataGridView.MultiSelect = false;
             this.DatosDataGridView.Name = "DatosDataGridView";
             this.DatosDataGridView.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DatosDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DatosDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DatosDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.DatosDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.DatosDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DatosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DatosDataGridView.Size = new System.Drawing.Size(800, 376);
             this.DatosDataGridView.TabIndex = 1;
-            // 
-            // cmnTitulo
-            // 
-            this.cmnTitulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnTitulo.HeaderText = "Titulo";
-            this.cmnTitulo.Name = "cmnTitulo";
-            this.cmnTitulo.ReadOnly = true;
-            // 
-            // CmnGenero
-            // 
-            this.CmnGenero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CmnGenero.HeaderText = "Genero";
-            this.CmnGenero.Name = "CmnGenero";
-            this.CmnGenero.ReadOnly = true;
-            // 
-            // CmnFechaIncorporacion
-            // 
-            this.CmnFechaIncorporacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CmnFechaIncorporacion.HeaderText = "Fecha incorporacion";
-            this.CmnFechaIncorporacion.Name = "CmnFechaIncorporacion";
-            this.CmnFechaIncorporacion.ReadOnly = true;
-            // 
-            // CmnEstado
-            // 
-            this.CmnEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CmnEstado.HeaderText = "Estado";
-            this.CmnEstado.Name = "CmnEstado";
-            this.CmnEstado.ReadOnly = true;
-            // 
-            // CmnCalificacion
-            // 
-            this.CmnCalificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CmnCalificacion.HeaderText = "Calificacion";
-            this.CmnCalificacion.Name = "CmnCalificacion";
-            this.CmnCalificacion.ReadOnly = true;
-            // 
-            // CmnActiva
-            // 
-            this.CmnActiva.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CmnActiva.HeaderText = "Activa";
-            this.CmnActiva.Name = "CmnActiva";
-            this.CmnActiva.ReadOnly = true;
-            // 
-            // CmnAlquilada
-            // 
-            this.CmnAlquilada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CmnAlquilada.HeaderText = "Alquilada";
-            this.CmnAlquilada.Name = "CmnAlquilada";
-            this.CmnAlquilada.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -279,6 +230,55 @@ namespace SistemaDeVideoClub.Windows
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
+            // cmnTitulo
+            // 
+            this.cmnTitulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnTitulo.HeaderText = "Titulo";
+            this.cmnTitulo.Name = "cmnTitulo";
+            this.cmnTitulo.ReadOnly = true;
+            // 
+            // CmnCodigoPelicula
+            // 
+            this.CmnCodigoPelicula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CmnCodigoPelicula.HeaderText = "Codigo";
+            this.CmnCodigoPelicula.Name = "CmnCodigoPelicula";
+            this.CmnCodigoPelicula.ReadOnly = true;
+            // 
+            // CmnFechaIncorporacion
+            // 
+            this.CmnFechaIncorporacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CmnFechaIncorporacion.HeaderText = "Fecha incorporacion";
+            this.CmnFechaIncorporacion.Name = "CmnFechaIncorporacion";
+            this.CmnFechaIncorporacion.ReadOnly = true;
+            // 
+            // CmnEstado
+            // 
+            this.CmnEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CmnEstado.HeaderText = "Estado";
+            this.CmnEstado.Name = "CmnEstado";
+            this.CmnEstado.ReadOnly = true;
+            // 
+            // CmnCalificacion
+            // 
+            this.CmnCalificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CmnCalificacion.HeaderText = "Calificacion";
+            this.CmnCalificacion.Name = "CmnCalificacion";
+            this.CmnCalificacion.ReadOnly = true;
+            // 
+            // CmnActiva
+            // 
+            this.CmnActiva.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CmnActiva.HeaderText = "Activa";
+            this.CmnActiva.Name = "CmnActiva";
+            this.CmnActiva.ReadOnly = true;
+            // 
+            // CmnAlquilada
+            // 
+            this.CmnAlquilada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CmnAlquilada.HeaderText = "Alquilada";
+            this.CmnAlquilada.Name = "CmnAlquilada";
+            this.CmnAlquilada.ReadOnly = true;
+            // 
             // FrmPeliculas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -314,7 +314,7 @@ namespace SistemaDeVideoClub.Windows
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnTitulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CmnGenero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CmnCodigoPelicula;
         private System.Windows.Forms.DataGridViewTextBoxColumn CmnFechaIncorporacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn CmnEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn CmnCalificacion;

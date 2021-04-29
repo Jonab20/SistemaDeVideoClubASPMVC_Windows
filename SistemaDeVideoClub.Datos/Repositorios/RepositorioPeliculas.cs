@@ -47,9 +47,9 @@ namespace SistemaDeVideoClub.Datos.Repositorios.Facades
             {
                 if (pelicula.PeliculaId == 0)
                 {
-                    return _DbContext.Pelicula.Any(p => p.Titulo == pelicula.Titulo);
+                    return _DbContext.Pelicula.Any(p => p.CodigoPelicula == pelicula.CodigoPelicula);
                 }
-                return _DbContext.Pelicula.Any(p => p.Titulo == pelicula.Titulo && p.PeliculaId != pelicula.PeliculaId);
+                return _DbContext.Pelicula.Any(p => p.CodigoPelicula == pelicula.CodigoPelicula && p.PeliculaId != pelicula.PeliculaId);
             }
             catch (Exception)
             {
@@ -71,6 +71,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios.Facades
                         .Select(p => new PeliculaListDto
                         {
                             PeliculaId = p.PeliculaId,
+                            CodigoPelicula = p.CodigoPelicula,
                             Titulo = p.Titulo,
                             Genero = p.Genero.Descripcion,
                             FechaIncorporacion = p.FechaIncorporacion,
@@ -144,6 +145,7 @@ namespace SistemaDeVideoClub.Datos.Repositorios.Facades
                     var peliculaInDb = _DbContext.Pelicula.SingleOrDefault(p => p.PeliculaId == Pelicula.PeliculaId);
 
                     peliculaInDb.Titulo = Pelicula.Titulo;
+                    peliculaInDb.CodigoPelicula = Pelicula.CodigoPelicula;
                     peliculaInDb.GeneroId = Pelicula.GeneroId;
                     peliculaInDb.FechaIncorporacion = Pelicula.FechaIncorporacion;
                     peliculaInDb.EstadoId = Pelicula.EstadoId;

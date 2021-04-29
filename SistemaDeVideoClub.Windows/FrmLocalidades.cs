@@ -90,14 +90,18 @@ namespace SistemaDeVideoClub.Windows
                         MessageBox.Show("Localidad Repetida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
-                    _Servicio.Guardar(LocalidadEditDto);
+                    else
+                    {
+                        _Servicio.Guardar(LocalidadEditDto);
 
-                    DataGridViewRow r = ConstruirFila();
-                    var localidadListDto = _mapper.Map<LocalidadListDto>(LocalidadEditDto);
-                    localidadListDto.Provincia = (_ServicioProvincia.GetProvinciaPorId(LocalidadEditDto.ProvinciaId)).NombreProvincia;
-                    SetearFila(r, localidadListDto);
-                    AgregarFila(r);
-                    MessageBox.Show("Localidad Agregada con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DataGridViewRow r = ConstruirFila();
+                        var localidadListDto = _mapper.Map<LocalidadListDto>(LocalidadEditDto);
+                        localidadListDto.Provincia = (_ServicioProvincia.GetProvinciaPorId(LocalidadEditDto.ProvinciaId)).NombreProvincia;
+                        SetearFila(r, localidadListDto);
+                        AgregarFila(r);
+                        MessageBox.Show("Localidad Agregada con Exito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
                 catch (Exception exepcion)
                 {

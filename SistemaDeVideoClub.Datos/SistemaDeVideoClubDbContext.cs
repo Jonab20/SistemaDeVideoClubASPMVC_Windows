@@ -27,9 +27,10 @@ namespace SistemaDeVideoClub.Datos
         public DbSet<Calificacion> Calificacion { get; set; }
         public DbSet<TipoDeDocumento> TiposDeDocumento { get; set; }
         public DbSet<Socio> Socios { get; set; }
-        public DbSet<Soporte> Soporte { get; set; } //TODO : ROMPE EL PROGRAMA REVISAR 
+        public DbSet<Soporte> Soporte { get; set; }
         public DbSet<Pelicula> Pelicula { get; set; }
-        //public DbSet<Alquiler> Alquiler { get; set; }
+        public DbSet<Alquiler> Alquiler { get; set; }
+        public DbSet<ItemAlquiler> ItemAlquiler { get; set; }
 
     }
 
