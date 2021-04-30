@@ -52,9 +52,9 @@ namespace SistemaDeVideoClub.Windows
                 }
                 catch (Exception exception)
                 {
-                    //MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK,
-                    //    MessageBoxIcon.Error);
-                    throw new Exception();
+                    MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                   
 
                 }
             }
@@ -65,8 +65,7 @@ namespace SistemaDeVideoClub.Windows
             _mapper = SistemaDeVideoClubMVC.Mapeador.Mapeador.CrearMapper();
             try
             {
-                _lista = _servicio.GetLista();
-                MostrarDatosEnGrilla();
+                ActualizarGrilla();
 
             }
             catch (Exception exception)
@@ -74,6 +73,12 @@ namespace SistemaDeVideoClub.Windows
                 MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void ActualizarGrilla()
+        {
+            _lista = _servicio.GetLista();
+            MostrarDatosEnGrilla();
         }
 
         private void MostrarDatosEnGrilla()
@@ -141,6 +146,11 @@ namespace SistemaDeVideoClub.Windows
                 throw;
             }
 
+
+        }
+
+        private void tsbActualizar_Click(object sender, EventArgs e)
+        {
 
         }
     }
