@@ -1,5 +1,4 @@
-﻿
-@model  IEnumerable<SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel.SocioListViewModel>
+﻿@model  IEnumerable<SistemaDeVideoClub.Entidades.ViewModels.Socio.SocioListViewModel>
 @{
     ViewBag.Title = "Index";
 }
@@ -52,35 +51,35 @@
         {
             foreach (var item in Model)
             {
-        <tr>
-            <td>
-                @Html.DisplayFor(m => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.Apellido)
-            </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Apellido)
+                    </td>
 
-            <td>
-                @Html.DisplayFor(m => item.TelefonoMovil)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.NroDocumento)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.Activo)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.Sancionado)
-            </td>
-            <td>
-                <a href="@Url.Action("Edit","Socios",new{id=item.SocioId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
-                <a href="@Url.Action("Details","Socios",new{id=item.SocioId})" class="btn btn-info"><i class="fas fa-list"></i> Detalle</a>
-                <a href="@Url.Action("Delete","Socios",new{id=item.SocioId})" class="btn btn-danger">
-                    <i class="fas fa-trash-alt"></i> Borrar
-                </a>
+                    <td>
+                        @Html.DisplayFor(m => item.TelefonoMovil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.NroDocumento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Activo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Sancionado)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit","Socios",new{id=item.SocioId})" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+                        <a href="@Url.Action("Details","Socios",new{id=item.SocioId})" class="btn btn-info"><i class="fas fa-list"></i> Detalle</a>
+                        <a href="@Url.Action("Delete","Socios",new{id=item.SocioId})" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> Borrar
+                        </a>
 
-            </td>
-        </tr>
+                    </td>
+                </tr>
             }
         }
         else
@@ -93,48 +92,48 @@
     </tbody>
 </table>
 @*@if (Model.Registros.Any())
-{
-    <span>
-        <strong>@Model.TotalRegistros</strong> registros encontrados
-    </span>
-    <span>&nbsp;|&nbsp;</span>
-    <span>
-        Página <strong>@(Model.PaginaActual)</strong> de
-        <strong>@Model.TotalPaginas</strong>
-    </span>
-    <span>&nbsp;|&nbsp;</span> }
-else
-{
-    <span>No hay resultados para esta búsqueda</span>
-    <span>&nbsp;|&nbsp;</span>}
-@if (Model.PaginaActual > 1)
-{
-    @Html.ActionLink("<<", "Index", new { pagina = 1 },
-        new { @class = "btn btn-sm btn-secondary" })
+    {
+        <span>
+            <strong>@Model.TotalRegistros</strong> registros encontrados
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            Página <strong>@(Model.PaginaActual)</strong> de
+            <strong>@Model.TotalPaginas</strong>
+        </span>
+        <span>&nbsp;|&nbsp;</span> }
+    else
+    {
+        <span>No hay resultados para esta búsqueda</span>
+        <span>&nbsp;|&nbsp;</span>}
+    @if (Model.PaginaActual > 1)
+    {
+        @Html.ActionLink("<<", "Index", new { pagina = 1 },
+            new { @class = "btn btn-sm btn-secondary" })
+        <span></span>
+        @Html.ActionLink("Anterior", "Index", new { pagina = Model.PaginaActual - 1 },
+            new { @class = "btn btn-sm btn-secondary" }) }
+    else
+    {
+        @Html.ActionLink("<<", "Index", new { pagina = 1 },
+            new { @class = "btn btn-sm btn-secondary disabled" })
+        <span></span>
+        @Html.ActionLink("Anterior", "Index", new { pagina = 1 },
+            new { @class = "btn btn-sm btn-secondary disabled" })}
     <span></span>
-    @Html.ActionLink("Anterior", "Index", new { pagina = Model.PaginaActual - 1 },
-        new { @class = "btn btn-sm btn-secondary" }) }
-else
-{
-    @Html.ActionLink("<<", "Index", new { pagina = 1 },
-        new { @class = "btn btn-sm btn-secondary disabled" })
-    <span></span>
-    @Html.ActionLink("Anterior", "Index", new { pagina = 1 },
-        new { @class = "btn btn-sm btn-secondary disabled" })}
-<span></span>
-@if (Model.PaginaActual < Model.TotalPaginas)
-{
-    @Html.ActionLink("Siguiente", "Index", new { pagina = Model.PaginaActual + 1 },
-        new { @class = "btn btn-sm btn-secondary" })
-    <span></span>
-    @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
-        new { @class = "btn btn-sm btn-secondary" }) }
-else
-{
-    @Html.ActionLink("Siguiente", "Index", new { pagina = Model.TotalPaginas - 1 },
-        new { @class = "btn btn-sm btn-secondary disabled" })
-    <span></span>
-    @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
-        new { @class = "btn btn-sm btn-secondary disabled" })
-}*@
+    @if (Model.PaginaActual < Model.TotalPaginas)
+    {
+        @Html.ActionLink("Siguiente", "Index", new { pagina = Model.PaginaActual + 1 },
+            new { @class = "btn btn-sm btn-secondary" })
+        <span></span>
+        @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
+            new { @class = "btn btn-sm btn-secondary" }) }
+    else
+    {
+        @Html.ActionLink("Siguiente", "Index", new { pagina = Model.TotalPaginas - 1 },
+            new { @class = "btn btn-sm btn-secondary disabled" })
+        <span></span>
+        @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
+            new { @class = "btn btn-sm btn-secondary disabled" })
+    }*@
 

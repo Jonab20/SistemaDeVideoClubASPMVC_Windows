@@ -10,14 +10,12 @@ using SistemaDeVideoClub.Entidades.DTOs.Soporte;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Entidades.ViewModels.Calificacion;
 using SistemaDeVideoClub.Entidades.ViewModels.Estado;
-using SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel;
 using SistemaDeVideoClub.Entidades.ViewModels.TipoDeDocumento;
 using SistemaDeVideoClub.Entidades.ViewModels.Soporte;
 using SistemaDeVideoClubASPMVC.ViewModels.Genero;
 using SistemaDeVideoClubASPMVC.ViewModels.Localidad;
 using SistemaDeVideoClubASPMVC.ViewModels.Provincia;
 using SistemaDeVideoClubASPMVC.ViewModels.Socio;
-using System;
 using SistemaDeVideoClub.Entidades.DTOs.Pelicula;
 using SistemaDeVideoClub.Entidades.ViewModels.Pelicula;
 using SistemaDeVideoClub.Entidades.ViewModels.Carrito;
@@ -25,6 +23,7 @@ using SistemaDeVideoClub.Entidades.DTOs;
 using SistemaDeVideoClub.Entidades.DTOs.ItemAlquiler;
 using SistemaDeVideoClub.Entidades.DTOs.Alquiler;
 using SistemaDeVideoClub.Entidades.ViewModels.Alquiler;
+using SistemaDeVideoClub.Entidades.ViewModels.Socio;
 
 namespace SistemaDeVideoClubASPMVC.App_Start
 {
@@ -119,6 +118,7 @@ namespace SistemaDeVideoClubASPMVC.App_Start
         {
             CreateMap<SocioEditDto, SocioListDto>().ReverseMap();
             CreateMap<SocioEditDto, Socio>().ReverseMap();
+            CreateMap<SocioListViewModel, SocioEditViewModel>().ReverseMap();
             CreateMap<SocioListDto, SocioListViewModel>().ReverseMap();
             CreateMap<SocioEditViewModel, SocioEditDto>().ReverseMap();
         }

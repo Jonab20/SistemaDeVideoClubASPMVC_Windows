@@ -198,6 +198,7 @@
     <Compile Include="Classes\CombosHelper.cs" />
     <Compile Include="Classes\FileHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Alquiler2Controller.cs" />
     <Compile Include="Controllers\AlquileresController.cs" />
     <Compile Include="Controllers\CalificacionesController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
@@ -442,6 +443,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Alquiler2\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

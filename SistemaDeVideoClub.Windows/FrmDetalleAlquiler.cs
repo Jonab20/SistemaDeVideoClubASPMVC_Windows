@@ -63,8 +63,16 @@ namespace SistemaDeVideoClub.Windows
         {
             r.Cells[cmnPelicula.Index].Value = item.Pelicula;
             //r.Cells[cmnCodigo.Index].Value = item.Pelicula;
-            r.Cells[cmnSocio.Index].Value = socio.ToString();
-            r.Cells[cmnPrecioAlquiler.Index].Value = item.PrecioAlquiler;
+            if (socio !=null)
+            {
+                 r.Cells[cmnSocio.Index].Value = socio.ToString();
+            }
+            else
+            {
+                r.Cells[cmnPrecioAlquiler.Index].Value = item.PrecioAlquiler;
+                r.Cells[cmnSocio.Index].Value = "Compra Web";
+
+            }
 
         }
 

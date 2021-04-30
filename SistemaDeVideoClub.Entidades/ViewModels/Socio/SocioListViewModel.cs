@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace SistemaDeVideoClub.Entidades.ViewModels.SocioListViewModel
+namespace SistemaDeVideoClub.Entidades.ViewModels.Socio
 {
     public class SocioListViewModel
     {

@@ -246,7 +246,7 @@ namespace SistemaDeVideoClub.Windows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 397);
+            this.ClientSize = new System.Drawing.Size(726, 397);
             this.ControlBox = false;
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.pictureBox1);
@@ -268,6 +268,8 @@ namespace SistemaDeVideoClub.Windows
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label);
+            this.MaximumSize = new System.Drawing.Size(742, 436);
+            this.MinimumSize = new System.Drawing.Size(742, 436);
             this.Name = "FrmPeliculasAE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPeliculasAE";

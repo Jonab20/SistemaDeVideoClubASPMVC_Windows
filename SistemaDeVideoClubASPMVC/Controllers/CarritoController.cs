@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using SistemaDeVideoClub.Entidades.DTOs;
 using SistemaDeVideoClub.Entidades.DTOs.Alquiler;
 using SistemaDeVideoClub.Entidades.DTOs.ItemAlquiler;
 using SistemaDeVideoClub.Entidades.DTOs.Pelicula;
 using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using SistemaDeVideoClub.Entidades.Entidades;
 using SistemaDeVideoClub.Entidades.ViewModels.Carrito;
+using SistemaDeVideoClub.Entidades.ViewModels.Socio;
 using SistemaDeVideoClub.Servicios.Servicios;
 using SistemaDeVideoClub.Servicios.Servicios.Facades;
 using SistemaDeVideoClubMVC.Mapeador;
@@ -30,7 +32,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             _mapper = Mapeador.CrearMapper();
         }
         // GET: Carrito
-        public ActionResult Index(Carrito carrito, string returnUrl)
+        public ActionResult Index(Carrito carrito,Socio socio, string returnUrl)
         {
             List<ItemCarritoListViewModel> listaItems = _mapper.Map<List<ItemCarritoListViewModel>>(carrito.GetItems());
             return View(new CarritoListViewModel
@@ -46,8 +48,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         //    if (socioDto != null)
         //    {
         //        Socio socio = _mapper.Map<Socio>(socioDto);
-        //        //PrecioAlquiler = 100;
-        //        //carrito.AgregarAlquiler(socioDto, 100);
+
         //    }
         //    return RedirectToAction("Index", new { returnUrl });
         //}
@@ -57,8 +58,10 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             PeliculaEditDto peliculaDto = _servicioPeliculas.GetPeliculaPorId(peliculaId);
             if (peliculaDto != null)
             {
+                
                 Pelicula pelicula = _mapper.Map<Pelicula>(peliculaDto);
                 carrito.AgregarAlquiler(pelicula, 100);
+
             }
             return RedirectToAction("Index", new { returnUrl });
         }
@@ -77,7 +80,7 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         {
             return PartialView(carrito);
         }
-
+        [HttpGet]
         public ActionResult CheckOut(Carrito carrito)
         {
             if (carrito.GetItems().Count == 0)
@@ -86,6 +89,8 @@ namespace SistemaDeVideoClubASPMVC.Controllers
             }
 
             var carritoVm = _mapper.Map<CarritoListViewModel>(carrito);
+
+            carritoVm.socios = _mapper.Map<List<SocioListViewModel>>(_servicioSocio.GetLista(null));
 
             return View(carritoVm);
         }
@@ -99,31 +104,32 @@ namespace SistemaDeVideoClubASPMVC.Controllers
         public ActionResult ConfirmarPedido(Carrito carrito)
         {
             ItemAlquiler ItemAlquiler;
-            
+            Socio socio;
             try
             {
                 List<ItemAlquilerEditDto> listaItems = new List<ItemAlquilerEditDto>();
                 foreach (var item in carrito.listaPeliculaAlquiler)
                 {
+
                     ItemAlquilerEditDto itemDto = new ItemAlquilerEditDto
                     {
                         Pelicula = _mapper.Map<PeliculaListDto>(item.pelicula),
                         PrecioAlquiler = item.PrecioAlquiler
+                        
                         //PrecioUnitario = item.Producto.Precio
 
                     };
                     listaItems.Add(itemDto);
                     //ItemAlquiler = itemDto;
                 }
+
                 AlquilerEditDto alquilerEditDto = new AlquilerEditDto
                 {
                     FechaAlquiler = DateTime.Now,
+                    //SocioId = _mapper.Map<SocioListDto>(alquilerEditDto.SocioId)/*carrito.socio.SocioId,*/
                     //PeliculaId = itemAlquiler
                     //SocioId = 
-                    //AlquilerId = 
-                    //FechaVenta = DateTime.Now,
-                    //ModalidadVenta = ModalidadVenta.TakeAway,
-                    //EstadoVenta = EstadoVenta.Finalizada,
+
                     ItemsAlquiler = listaItems
 
                 };

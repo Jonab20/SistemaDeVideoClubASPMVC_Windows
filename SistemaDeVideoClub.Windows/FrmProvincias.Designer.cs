@@ -58,7 +58,7 @@ namespace SistemaDeVideoClub.Windows
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 74);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 376);
+            this.panel1.Size = new System.Drawing.Size(427, 376);
             this.panel1.TabIndex = 17;
             // 
             // DatosDataGridView
@@ -98,7 +98,7 @@ namespace SistemaDeVideoClub.Windows
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.DatosDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DatosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DatosDataGridView.Size = new System.Drawing.Size(800, 376);
+            this.DatosDataGridView.Size = new System.Drawing.Size(427, 376);
             this.DatosDataGridView.TabIndex = 1;
             // 
             // cmnProvincia
@@ -122,7 +122,7 @@ namespace SistemaDeVideoClub.Windows
             this.tsbCerrar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 74);
+            this.toolStrip1.Size = new System.Drawing.Size(427, 74);
             this.toolStrip1.TabIndex = 16;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -216,7 +216,8 @@ namespace SistemaDeVideoClub.Windows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(427, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

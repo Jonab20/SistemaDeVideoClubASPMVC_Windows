@@ -4,31 +4,42 @@
 <h2>CheckOut</h2>
 
 <table class="table">
+
     <thead>
         <tr>
             @*<th>Cantidad</th>*@
             <th>Pelicula </th>
             @*<th class="text-right">Precio</th>
-            <th class="text-right">SubTotal</th>*@
+                <th class="text-right">SubTotal</th>*@
         </tr>
     </thead>
     <tbody>
+        <div>
+            @Html.LabelFor(m => m.socioId)
+            @Html.DropDownListFor(m => m.socioId, new SelectList(Model.socios, "socioId", "Apellido"), "Seleccione Socio", new { @class = "form-control", autofocus = "autofocus" })
+            @Html.ValidationMessageFor(m => m.socioId, "", new { @class = "text-danger" })
+        </div>
+
         @foreach (var item in Model.items)
         {
-<tr>
-    @*<td>@item.Cantidad</td>*@
-    <td>@item.PeliculaListViewModel.Titulo</td>
-    <td class="text-right">@item.PeliculaListViewModel.Estado</td>
-    @*<td class="text-right">@(item.ProductoListViewModel.Precio*item.Cantidad)</td>*@
-</tr>}
+              <tr>
+                  @*<td>@item.Cantidad</td>*@
+                  <td>@item.PeliculaListViewModel.Titulo</td>
+
+                  @*<td class="text-right">@item.PeliculaListViewModel.Estado</td>*@
+                  @*<td class="text-right">@(item.ProductoListViewModel.Precio*item.Cantidad)</td>*@
+              </tr>
+         }
+
     </tbody>
     <tfoot>
         <tr>
             <td colspan="3" class="text-right"> <strong>Total:</strong></td>
-            @*<td class="text-right"><strong>@Model.Items.Sum(i => i.Cantidad * i.ProductoListViewModel.Precio)</strong> </td>*@
+            @*<td class="text-right"><strong>@Model.items.Sum(i => i.PrecioAlquiler * i.PeliculaListViewModel.Count)</strong> </td>*@
         </tr>
     </tfoot>
 </table>
+                            @Html.HiddenFor(m => m.socioId)
 <div class="text-center">
     @Html.ActionLink("Cancelar", "CancelarPedido", "", new { @class = "btn btn-success" })
     @Html.ActionLink("Confirmar", "ConfirmarPedido", null, new { @class = "btn btn-primary" })

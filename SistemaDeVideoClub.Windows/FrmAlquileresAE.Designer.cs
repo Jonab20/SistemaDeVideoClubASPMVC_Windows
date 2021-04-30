@@ -35,10 +35,12 @@ namespace SistemaDeVideoClub.Windows
             System.Windows.Forms.Label address1Label;
             System.Windows.Forms.Label cityLabel;
             System.Windows.Forms.Label label2;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.nudPrecioAlquiler = new System.Windows.Forms.NumericUpDown();
+            this.chkbxModificar = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtLocalidad = new System.Windows.Forms.TextBox();
             this.txtSocio = new System.Windows.Forms.TextBox();
@@ -49,13 +51,12 @@ namespace SistemaDeVideoClub.Windows
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtpFechaPedido = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkbxModificar = new System.Windows.Forms.CheckBox();
             this.chkbxActivo = new System.Windows.Forms.CheckBox();
             this.btnBuscarPelicula = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.btnCancelarProducto = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtPrecioTotal = new System.Windows.Forms.TextBox();
+            this.btnCalcular = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.btnAceptarProducto = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,11 +64,9 @@ namespace SistemaDeVideoClub.Windows
             this.txtTitulo = new System.Windows.Forms.TextBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.btnCalcular = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.txtTotalPedido = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.dgPedido = new System.Windows.Forms.DataGridView();
             this.cmnPelicula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,7 +75,6 @@ namespace SistemaDeVideoClub.Windows
             this.btnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.cmnEditar = new System.Windows.Forms.DataGridViewImageColumn();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.nudPrecioAlquiler = new System.Windows.Forms.NumericUpDown();
             nameLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             address1Label = new System.Windows.Forms.Label();
@@ -86,12 +84,12 @@ namespace SistemaDeVideoClub.Windows
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrecioAlquiler)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrecioAlquiler)).BeginInit();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -159,12 +157,44 @@ namespace SistemaDeVideoClub.Windows
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnCancelar);
             this.splitContainer1.Panel2.Controls.Add(this.btnOK);
-            this.splitContainer1.Panel2.Controls.Add(this.txtTotalPedido);
-            this.splitContainer1.Panel2.Controls.Add(this.label6);
             this.splitContainer1.Panel2.Controls.Add(this.dgPedido);
             this.splitContainer1.Size = new System.Drawing.Size(898, 616);
             this.splitContainer1.SplitterDistance = 293;
             this.splitContainer1.TabIndex = 3;
+            // 
+            // nudPrecioAlquiler
+            // 
+            this.nudPrecioAlquiler.Enabled = false;
+            this.nudPrecioAlquiler.Location = new System.Drawing.Point(733, 89);
+            this.nudPrecioAlquiler.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nudPrecioAlquiler.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudPrecioAlquiler.Name = "nudPrecioAlquiler";
+            this.nudPrecioAlquiler.Size = new System.Drawing.Size(46, 20);
+            this.nudPrecioAlquiler.TabIndex = 40;
+            this.nudPrecioAlquiler.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // chkbxModificar
+            // 
+            this.chkbxModificar.AutoSize = true;
+            this.chkbxModificar.Location = new System.Drawing.Point(785, 90);
+            this.chkbxModificar.Name = "chkbxModificar";
+            this.chkbxModificar.Size = new System.Drawing.Size(69, 17);
+            this.chkbxModificar.TabIndex = 39;
+            this.chkbxModificar.Text = "Modificar";
+            this.chkbxModificar.UseVisualStyleBackColor = true;
+            this.chkbxModificar.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // groupBox1
             // 
@@ -257,6 +287,7 @@ namespace SistemaDeVideoClub.Windows
             // dtpFechaPedido
             // 
             this.dtpFechaPedido.Checked = false;
+            this.dtpFechaPedido.Enabled = false;
             this.dtpFechaPedido.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaPedido.Location = new System.Drawing.Point(35, 20);
             this.dtpFechaPedido.Name = "dtpFechaPedido";
@@ -284,17 +315,6 @@ namespace SistemaDeVideoClub.Windows
             this.groupBox3.TabIndex = 65;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Pelicula";
-            // 
-            // chkbxModificar
-            // 
-            this.chkbxModificar.AutoSize = true;
-            this.chkbxModificar.Location = new System.Drawing.Point(785, 90);
-            this.chkbxModificar.Name = "chkbxModificar";
-            this.chkbxModificar.Size = new System.Drawing.Size(69, 17);
-            this.chkbxModificar.TabIndex = 39;
-            this.chkbxModificar.Text = "Modificar";
-            this.chkbxModificar.UseVisualStyleBackColor = true;
-            this.chkbxModificar.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // chkbxActivo
             // 
@@ -342,16 +362,6 @@ namespace SistemaDeVideoClub.Windows
             this.btnCancelarProducto.UseVisualStyleBackColor = true;
             this.btnCancelarProducto.Click += new System.EventHandler(this.btnCancelarProducto_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(650, 91);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Precio Alquiler:";
-            this.label3.Click += new System.EventHandler(this.label11_Click);
-            // 
             // txtPrecioTotal
             // 
             this.txtPrecioTotal.Location = new System.Drawing.Point(740, 95);
@@ -362,6 +372,16 @@ namespace SistemaDeVideoClub.Windows
             this.txtPrecioTotal.TabStop = false;
             this.txtPrecioTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrecioTotal.TextChanged += new System.EventHandler(this.txtPrecioTotal_TextChanged);
+            // 
+            // btnCalcular
+            // 
+            this.btnCalcular.Location = new System.Drawing.Point(740, 39);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(70, 50);
+            this.btnCalcular.TabIndex = 5;
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // label11
             // 
@@ -432,15 +452,15 @@ namespace SistemaDeVideoClub.Windows
             this.txtCodigo.TabIndex = 24;
             this.txtCodigo.TabStop = false;
             // 
-            // btnCalcular
+            // label3
             // 
-            this.btnCalcular.Location = new System.Drawing.Point(740, 39);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(70, 50);
-            this.btnCalcular.TabIndex = 5;
-            this.btnCalcular.Text = "Calcular";
-            this.btnCalcular.UseVisualStyleBackColor = true;
-            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(650, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Precio Alquiler:";
+            this.label3.Click += new System.EventHandler(this.label11_Click);
             // 
             // btnCancelar
             // 
@@ -466,24 +486,6 @@ namespace SistemaDeVideoClub.Windows
             this.btnOK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // txtTotalPedido
-            // 
-            this.txtTotalPedido.Location = new System.Drawing.Point(391, 234);
-            this.txtTotalPedido.Name = "txtTotalPedido";
-            this.txtTotalPedido.ReadOnly = true;
-            this.txtTotalPedido.Size = new System.Drawing.Size(104, 20);
-            this.txtTotalPedido.TabIndex = 65;
-            this.txtTotalPedido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(339, 237);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
-            this.label6.TabIndex = 64;
-            this.label6.Text = "Total:";
             // 
             // dgPedido
             // 
@@ -516,24 +518,24 @@ namespace SistemaDeVideoClub.Windows
             // 
             // cmnCodigo
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.cmnCodigo.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.cmnCodigo.DefaultCellStyle = dataGridViewCellStyle1;
             this.cmnCodigo.HeaderText = "Codigo";
             this.cmnCodigo.Name = "cmnCodigo";
             this.cmnCodigo.ReadOnly = true;
             // 
             // cmnEstado
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.cmnEstado.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.cmnEstado.DefaultCellStyle = dataGridViewCellStyle2;
             this.cmnEstado.HeaderText = "Estado";
             this.cmnEstado.Name = "cmnEstado";
             this.cmnEstado.ReadOnly = true;
             // 
             // cmnTotal
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.cmnTotal.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.cmnTotal.DefaultCellStyle = dataGridViewCellStyle3;
             this.cmnTotal.HeaderText = "Total";
             this.cmnTotal.Name = "cmnTotal";
             this.cmnTotal.ReadOnly = true;
@@ -561,28 +563,6 @@ namespace SistemaDeVideoClub.Windows
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // nudPrecioAlquiler
-            // 
-            this.nudPrecioAlquiler.Location = new System.Drawing.Point(733, 89);
-            this.nudPrecioAlquiler.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.nudPrecioAlquiler.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.nudPrecioAlquiler.Name = "nudPrecioAlquiler";
-            this.nudPrecioAlquiler.Size = new System.Drawing.Size(46, 20);
-            this.nudPrecioAlquiler.TabIndex = 40;
-            this.nudPrecioAlquiler.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
             // FrmAlquileresAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -595,9 +575,9 @@ namespace SistemaDeVideoClub.Windows
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrecioAlquiler)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -605,7 +585,6 @@ namespace SistemaDeVideoClub.Windows
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPedido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrecioAlquiler)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -633,8 +612,6 @@ namespace SistemaDeVideoClub.Windows
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.TextBox txtTotalPedido;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgPedido;
         private System.Windows.Forms.Button btnBuscarPelicula;
         private System.Windows.Forms.TextBox txtTitulo;

@@ -33,12 +33,12 @@ namespace SistemaDeVideoClub.Windows
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.DatosDataGridView = new System.Windows.Forms.DataGridView();
-            this.txtTotalPedido = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.cmnPelicula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnPrecioAlquiler = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnSocio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTotalPedido = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,7 +61,7 @@ namespace SistemaDeVideoClub.Windows
             // 
             this.splitContainer1.Panel2.Controls.Add(this.txtTotalPedido);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
+            this.splitContainer1.Size = new System.Drawing.Size(531, 450);
             this.splitContainer1.SplitterDistance = 381;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -82,26 +82,8 @@ namespace SistemaDeVideoClub.Windows
             this.DatosDataGridView.ReadOnly = true;
             this.DatosDataGridView.RowHeadersVisible = false;
             this.DatosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DatosDataGridView.Size = new System.Drawing.Size(800, 381);
+            this.DatosDataGridView.Size = new System.Drawing.Size(531, 381);
             this.DatosDataGridView.TabIndex = 64;
-            // 
-            // txtTotalPedido
-            // 
-            this.txtTotalPedido.Location = new System.Drawing.Point(849, 19);
-            this.txtTotalPedido.Name = "txtTotalPedido";
-            this.txtTotalPedido.ReadOnly = true;
-            this.txtTotalPedido.Size = new System.Drawing.Size(104, 20);
-            this.txtTotalPedido.TabIndex = 67;
-            this.txtTotalPedido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(798, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
-            this.label6.TabIndex = 66;
-            this.label6.Text = "Total:";
             // 
             // cmnPelicula
             // 
@@ -132,11 +114,29 @@ namespace SistemaDeVideoClub.Windows
             this.cmnSocio.Name = "cmnSocio";
             this.cmnSocio.ReadOnly = true;
             // 
+            // txtTotalPedido
+            // 
+            this.txtTotalPedido.Location = new System.Drawing.Point(849, 19);
+            this.txtTotalPedido.Name = "txtTotalPedido";
+            this.txtTotalPedido.ReadOnly = true;
+            this.txtTotalPedido.Size = new System.Drawing.Size(104, 20);
+            this.txtTotalPedido.TabIndex = 67;
+            this.txtTotalPedido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(798, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.TabIndex = 66;
+            this.label6.Text = "Total:";
+            // 
             // FrmDetalleAlquiler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(531, 450);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmDetalleAlquiler";
             this.Text = "FrmDetalleAlquiler";

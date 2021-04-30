@@ -9,36 +9,38 @@
             @*<th>Cantidad</th>*@
             <th>Pelicula</th>
             <th>Codigo Pelicula</th>
-            <th>PrecioAlquiler</th>
+            <th>Precio Alquiler</th>
             @*<th class="text-right">Precio</th>
-        <th class="text-right">SubTotal</th>*@
+                <th class="text-right">SubTotal</th>*@
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.items)
-         {
-        <tr>
-            @*<td>@item.Cantidad</td>*@
-            <td>@item.PeliculaListViewModel.Titulo</td>
-            <td>@item.PeliculaListViewModel.CodigoPelicula</td>
-            <td>@item.PrecioAlquiler</td>
-            @*<td class="text-right">@item.PrecioAlquiler</td>*@
-            @*<td class="text-right">@(item.PeliculaListViewModel.Precio*item.Cantidad)</td>*@
-            <td>
-                @using (Html.BeginForm("RemoveFromCart", "Carrito"))
-                {
-                    @Html.Hidden("PeliculaId", item.PeliculaListViewModel.PeliculaId)
-                    @Html.HiddenFor(x => x.ReturnUrl)<input type="submit" class="btn btn-sm btn-danger" value="Eliminar" />
-                }
-            </td>
-        </tr>
-         }
+        {
+            <tr>
+                @*<td>@item.Cantidad</td>*@
+                <td>@item.PeliculaListViewModel.Titulo</td>
+                <td>@item.PeliculaListViewModel.CodigoPelicula</td>
+                <td>@item.PrecioAlquiler</td>
+                <td class="text-right">@item.PrecioAlquiler</td>
+
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Carrito"))
+                    {
+                        @Html.Hidden("PeliculaId", item.PeliculaListViewModel.PeliculaId)
+                        @Html.HiddenFor(x => x.ReturnUrl)<input type="submit" class="btn btn-sm btn-danger" value="Eliminar" />
+                    }
+                </td>
+
+            </tr>
+        }
     </tbody>
     <tfoot>
-                    @*<tr>
-            <td colspan="3" class="text-right"> <strong>Total:</strong></td>
-            <td class="text-right"><strong>@Model.Items.Sum(i => i.Cantidad * i.ProductoListViewModel.Precio)</strong> </td>
-        </tr>*@
+
+        @*<tr>
+                <td colspan="3" class="text-right"> <strong>Total:</strong></td>
+                <td class="text-right"><strong>@Model.items.Sum(i => i.t * i.ProductoListViewModel.Precio)</strong> </td>
+            </tr>*@
     </tfoot>
 </table>
 <div class="text-center">

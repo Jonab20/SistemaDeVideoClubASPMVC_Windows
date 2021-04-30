@@ -59,6 +59,9 @@ namespace SistemaDeVideoClub.Entidades.ViewModels.Pelicula
 
         public string Imagen { get; set; }
         public HttpPostedFileBase ImagenFile { get; set; }
-
+        [Display(Name = @"Socios")]
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        public int SocioId { get; set; }
+        public List<GeneroListViewModel> socios { get; set; }
     }
 }

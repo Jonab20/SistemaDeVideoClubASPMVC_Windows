@@ -1,4 +1,5 @@
-﻿using SistemaDeVideoClub.Entidades.DTOs.Socio;
+﻿using SistemaDeVideoClub.Entidades.DTOs;
+using SistemaDeVideoClub.Entidades.DTOs.Socio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,14 @@ namespace SistemaDeVideoClub.Entidades.Entidades
     public class Carrito
     {
         public List<ItemCarrito> listaPeliculaAlquiler { get; set; } = new List<ItemCarrito>();
-        public SocioEditDto socio;
+        public List<ItemCarrito> listaSocio { get; set; } = new List<ItemCarrito>();
+
+        public SocioListDto socio;
         public List<ItemCarrito> GetItems()
         {
             return listaPeliculaAlquiler;
         }
-        public void AgregarAlquiler(Pelicula pelicula/*, Socio socio*/,decimal PrecioAlquiler)
+        public void AgregarAlquiler(Pelicula pelicula,decimal PrecioAlquiler)
         {
             var item = listaPeliculaAlquiler.SingleOrDefault(li => li.pelicula.PeliculaId == pelicula.PeliculaId);
             if (item == null)

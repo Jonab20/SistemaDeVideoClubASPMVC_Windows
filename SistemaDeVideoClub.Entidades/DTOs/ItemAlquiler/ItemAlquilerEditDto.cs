@@ -18,7 +18,7 @@ namespace SistemaDeVideoClub.Entidades.DTOs.ItemAlquiler
         //public SocioListDto Socio { get; set; }
 
         //public int AlquilerId { get; set; }
-        //public int SocioId { get; set; }
+        public int SocioId { get; set; }
         //public int PeliculaId { get; set; }
 
 

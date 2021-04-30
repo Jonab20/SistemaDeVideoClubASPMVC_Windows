@@ -136,7 +136,7 @@ namespace SistemaDeVideoClub.Windows
                     PrecioAlquiler = nudPrecioAlquiler.Value
                     //Cantidad = (int)CantidadNumericUpDown.Value
                 };
-                carrito.AgregarAlquiler(pelicula/*,socio*/, nudPrecioAlquiler.Value);//TODO: VER
+                carrito.AgregarAlquiler(pelicula, nudPrecioAlquiler.Value);//TODO: VER
                 MostrarDatosEnGrilla();
                 //CalcularTotal();
                 InicializarControles();

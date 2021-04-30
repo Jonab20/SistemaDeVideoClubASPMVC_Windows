@@ -17,8 +17,8 @@ namespace SistemaDeVideoClub.Entidades.ViewModels.Alquiler
         [DataType(DataType.Date)]
         public DateTime FechaAlquiler { get; set; }
 
-        [Display(Name = "Socio")]
-        public Socio Socio { get; set; }
+        //[Display(Name = "Socio")]
+        //public Socio Socio { get; set; }
 
 
 
